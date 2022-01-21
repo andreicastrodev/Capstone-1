@@ -1,0 +1,661 @@
+TA?</dt>
+      <dd>
+      <p><strong>Benutzerkontensteuerung (UAC)</strong></p>
+      <p>Im Verzeichnis "C:\\Programme" haben Sie nicht alle Zugriffsrechte, nicht einmal als Administrator. Oder Sie haben eingeschrÃ¤nkte Zugriffsrechte (z. B. fÃ¼r "\\xampp\\htdocs"). In diesem Fall kÃ¶nnen Sie die Datei nicht verÃ¤ndern.</br>
+<strong>LÃ¶sung:</strong> ErhÃ¶hen Sie ihre Zugriffsrechte Ã¼ber den Dateimanager (rechte Maustaste / Sicherheit) oder schalten Sie die Benutzerkontensteuerung (UAC) ab.</p>
+      <p>Sie haben Apache/MySQL in "C:\\xampp" als Windowsdienste installiert. Aber Sie kÃ¶nnen diese Windowsdienste nicht mehr Ã¼ber das "XAMPP-Controll-Panel" starten/anhalten oder sie kÃ¶nnen sie nicht deinstallieren.</br></br>
+<strong>LÃ¶sung:</strong> Benutzen Sie die Systemsteuerung &rarr; Verwaltung &rarr; Dienste-Konsole von Windows oder deaktivieren Sie die Benutzerkontensteuerung UAC.</p>
+      <p><strong>Deaktivieren der Benutzerkontensteuerung (UAC)</strong></p>
+      <p>Verwenden Sie das Programm "msconfig", um die Benutzerkontensteuerung zu deaktivieren. In "msconfig" gehen Sie auf "Tools", wÃ¤hlen "UAC-Einstellungen Ã¤ndern", klicken auf "Starten" und Ã¼berprÃ¼fen Ihre Auswahl. Danach mÃ¼ssen Sie Windows neu starten. Zur gleichen Zeit kÃ¶nnen Sie die Benutzerkontensteuerung wieder aktivieren.</p>
+      </dd>
+
+      <dt>Wie Ã¼berprÃ¼fe ich die md5-PrÃ¼fsumme (md5_checksum)?</dt>
+      <dd>
+      <p>Um Dateien zu vergleichen, werden oft PrÃ¼fsummen (checksums) benutzt. Ãœblicherweise erzeugt man eine md5-PrÃ¼fsumme (Message Digest Algorithm 5).</p>
+      <p>Mit dieser md5-PrÃ¼fsumme kÃ¶nnen Sie testen, ob Ihr Download des XAMPP-Pakets korrekt ist oder nicht. NatÃ¼rlich benÃ¶tigen Sie ein Programm, das diese PrÃ¼fsummen erstellen kann. FÃ¼r Windows kÃ¶nnen Sie ein Kommandozeilenwerkzeug von Microsoft verwenden:</p>
+      <p><a href="http://support.microsoft.com/kb/841290">VerfÃ¼gbarkeit und Beschreibung des PrÃ¼fsummen-Dienstprogramms "File Checksum Integrity Verifier utility" - fciv</a></p>
+      <p>Es ist auch mÃ¶glich, ein anderes Programm zu benutzen, das eine md5-PrÃ¼fsumme erzeugen kann, z. B. "GNU md5sum" oder "winMd5Sum.exe".</p>
+      <p>Wenn Sie ein solches Programm installiert haben (z.B. fciv.exe), kÃ¶nnen Sie die folgenden Schritte ausfÃ¼hren:</p>
+      <p>
+        <ul>
+          <li>Laden Sie XAMPP (z. B. xampp-win32-1.8.2-0.exe) herunter</li>
+          <li>Erstellen Sie eine PrÃ¼fsumme mit:</br>
+            <code>fciv.exe xampp-win32-1.8.2-0.exe</code>
+          </li>
+          <li>Und nun kÃ¶nnen Sie Ihre PrÃ¼fsumme mit der angezeigten PrÃ¼fsumme auf der XAMPP_fÃ¼r_Windows-Homepage vergleichen.</li>
+        </ul>
+      </p>
+      <p>Wenn beide PrÃ¼fsummen gleich sind, dann ist alles in Ordnung. Wenn nicht, so kann der Download abgebrochen sein oder die Datei wurde verÃ¤ndert.</p>
+      </dd>
+
+      <dt>Warum haben Ã„nderungen in der php.ini keine Auswirkungen?</dt>
+      <dd>
+      <p>Wenn Ã„nderungen in der php.ini keine Wirkung zeigen, so ist es mÃ¶glich, dass eine andere php.ini benutzt wird. Eine PrÃ¼fung kann mit phpinfo() vollzogen werden. Gehen Sie auf die URI http://localhost/xampp/phpinfo.php und suchen Sie nach "Loaded Configuration File". In diesem Eintrag ist der Dateipfad der php.ini abzulesen, der wirklich benutzt wird.</p>
+      <p><strong>Hinweis:</strong> Nach Ã„nderungen in der php.ini ist es wichtig, den Apache neu zu starten, damit der Apache den PHP-Parser veranlasst, die neuen Einstellungen einzulesen.</p>
+      </dd>
+
+      <dt>Hilfe! Hier ist ein Virus im XAMPP!</dt>
+      <dd>
+      <p>Einige Antivirus Programme halten XAMPP fÃ¼r einen Virus, typischerweise mit dem Hinweis auf den XAMPP-Manager.exe. Das ist eine falsche Positiv-Meldung des Antivirus-Programms, das bedeutet, dass das Antivirus-Programm XAMPP irrtÃ¼mlich als Virus identifiziert hat, obwohl XAMPP keines ist. Bevor wir eine neue Version von XAMPP herausgeben, testen wir sie mit unterschiedlichen Virenscannern, die zu diesem Zeitpunkt aktuell vorhanden sind. Im Augenblick benutzen wir <a href="http://www.kaspersky.com/virusscanner">Kapersky Online Virus Scanner</a>. Sie kÃ¶nnen auch das Onlinewerkzeug benutzen, <a href="https://www.virustotal.com/">Virus Total</a> um XAMPP zu untersuchen oder Sie senden uns eine E-Mail an security (at) apachefriends (dot) org, wenn Sie ein Problem gefunden haben.</p>
+      </dd>
+
+      <dt>Wie konfiguriere ich mein Antivirusprogramm?</dt>
+      <dd>
+      <p>Wir haben alle zum AusfÃ¼hren der gebÃ¼ndelten Webanwendung benÃ¶tigten Server und die damit verbundenen Dateien eingefÃ¼gt, sie werden also bemerken, dass XAMPP eine groÃŸe Anzahl an Dateien installiert. Wenn sie eine XAMPP-Anwendung auf einem Windowsrechner mit einem aktiven Antivirusprogramm installieren, dann kann das die Installation merklich verlangsamen und es kann sein, dass einer der Server (Web-Server, Datenbankserver) von der Antivirussoftware blockiert wird. Wenn Sie ein Antivirusprogramm aktiviert haben, prÃ¼fen Sie die folgenden Einstellungen, damit XAMPP ohne LeistungseinbuÃŸen ausgefÃ¼hrt wird:</p>
+      <p>
+        <ul>
+          <li>FÃ¼gen Sie Ausnahmen in der Firewall hinzu: fÃ¼r Apache, MySQL oder jeden weiteren Server.</li>
+          <li>Dateien untersuchen beim Aufruf: Wenn Sie die Virusuntersuchung fÃ¼r alle Dateien aktiviert haben, kÃ¶nnen die ausfÃ¼hrbaren Dateien fÃ¼r den Server langsamer werden.</li>
+          <li>Untersuchen Sie den Verkehr fÃ¼r unterschiedliche URLs: wenn Sie mit XAMPP auf Ihrem eigenen Rechner entwickeln, kÃ¶nnen Sie den "localhost"-Verkehr in den Antiviruseinstellungen ausschlieÃŸen.</li>
+        </ul>
+      </p>
+      </dd>
+
+      <dt>Warum startet der Apache Server auf meinem System nicht?</dt>
+      <dd>
+      <p>Dies Problem kann einen von mehrere GrÃ¼nden habe:</p>
+      <p>
+        <ul>
+          <li>Sie haben mehr als einen HTTP-Server (IIS, Sambar, ZEUS usw.) gestartet. Nur ein Server kann Port 80 verwenden. Diese Fehlermeldung weist auf das Problem hin:<br/>
+<code>(OS 10048)... make_sock: could not bind to adress 0.0.0.0:80
+no listening sockets available, shutting down</code></li>
+          <li>Sie haben eine andere Software wie das Internettelefon "Skype", die auch den Port 80 besetzt. Wenn "Skype" das Problem ist, gehen Sie in Skype auf Aktionen &rarr; Verbindungsoptionen &rarr; Verbindung &rarr; entfernen Sie das HÃ¤kchen bei "Ports 80 und 443 fÃ¼r zusÃ¤tzliche eingehende Verbindungen verwenden" und starten Sie Skype erneut. Jetzt sollte es funktionieren.</li>
+          <li>Sie haben eine Firewall, die den Port von Apache blockiert. Nicht alle Firewalls sind kompatibel mit Apache, und es kommt manchmal vor, dass man die Firewall abschalten muss und wenn das nicht reicht, sogar eine Deinstallation durchfÃ¼hren muss. Diese Meldung zeigt eine Firewallblockade an:<br/>
+<code>(OS 10038)Socket operation on non-socket: make_sock: for address 0.0.0.0:80,
+apr_socket_opt_set: (SO_KEEPALIVE)</code></li>
+        </ul>
+        <p>Auch wenn der Apache gestartet werden kann, aber Ihr Browser kann nicht darauf zugreifen (http://localhost/), so kÃ¶nnte es einen der folgenden GrÃ¼nde haben:</p>
+        <ul>
+          <li>Einige Virusscanner kÃ¶nnen das in der gleicher Weise verursachen, wie eine Firewall stÃ¶ren kann.</li>
+          <li>Sie benutzen Windows XP Professional ohne Servicepack 1. Sie mÃ¼ssen wenigstens das Servicepack 1 haben, damit XAMPP funktioniert.</li>
+        </ul>
+      </p>
+      <p><strong>Tipp:</strong> Wenn Sie Probleme mit belegten Ports haben, kÃ¶nnen Sie das Tool "xampp-portcheck.exe" ausprobieren. Manchmal hilft es.</p>
+      </dd>
+
+      <dt>Warum ist meine CPU-Auslastung mit Apache bei 99%?</dt>
+      <dd>
+      <p>Eines von zwei Szenarien spiel hier ein Rolle. Entweder ihre CPU ist am Limit oder Sie rufen eine Seite auf, sehen aber nichts (das System versucht vergeblich die Seite zu laden). In beiden FÃ¤llen kÃ¶nnen Sie die folgende Nachricht in Ihrer Apache-Logdatei finden:</p>
+      <p><code>Child: Encountered too many AcceptEx faults accepting client connections.
+winnt_mpm: falling back to 'AcceptFilter none'.</code></p>
+      <p>Der MPM fÃ¤llt zurÃ¼ck in eine sicherere Implementierung, aber einige Clients werden nicht korrekt behandelt. Um diesen Fehler zu vermeiden, setzen Sie "AcceptFilter" mit accept filter "none" in der "\\xampp\\apache\\conf\\extra\\httpd-mpm.conf"-Datei.</p>
+      </dd>
+
+      <dt>Warum werden Bilder und Stylesheets-Formate nicht angezeigt?</dt>
+      <dd>
+      <p>Gelegentlich gibt es Probleme mit der Anzeige von Bildern und Stylesheets, insbesondere wenn diese Dateien auf einem Netzwerklaufwerk liegen. In diesem Fall kÃ¶nnen Sie eine der folgenden Zeilen in der Datei "\\xampp\\apache\\conf\\httpd.conf" aktivieren (oder hinzufÃ¼gen):</p>
+      <p><code>EnableSendfile off</br>
+EnableMMAP off</code></p>
+      <p>Das Problem kann auch von Programmen verursacht werden, die die Bandbreite der Ãœbertragung regulieren (z. B. NetLimiter).</p>
+      </dd>
+
+      <dt>How do I send email with XAMPP?</dt>
+      <dd>
+        <p>To configure XAMPP to use the included sendmail.exe binary for email delivery, follow these steps:</p>
+        <ul>
+          <li>Edit the XAMPP "php.ini" file. Within this file, find the [mail function] section and replace it with the following directives. Change the XAMPP installation path if needed.
+          <code>
+          sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
+          </code>
+          </li>
+          <li>Edit the XAMPP "sendmail.ini" file. Within this file, find the [sendmail] section and replace it with the following directives:
+          <code>
+          smtp_server=smtp.gmail.com
+          smtp_port=465
+          smtp_ssl=auto
+          error_logfile=error.log
+          auth_username=your-gmail-username@gmail.com
+          auth_password=your-gmail-password
+          </code>
+          <p>Remember to replace the dummy values shown with your actual Gmail address and account password. If you don't plan to use Gmail's SMTP server, replace the SMTP host details with appropriate values for your organization or ISP's SMTP server.</p>
+          </li>
+          <li>Restart the Apache server using the XAMPP control panel.
+          </li>
+        </ul>
+        <p>You can now use PHP's mail() function to send email from your application.</p> 
+      </dd>
+      
+      <dt>Wie kann ich ein root-Passwort fÃ¼r die MySQL-Datenbank setzen?</dt>
+      <dd>
+      <p>Configure it with the "XAMPP Shell" (command prompt). Open the shell from the XAMPP control pane and execute this command:<code>mysqladmin.exe -u root password secret</code>This sets the root password to 'secret'.</p>
+      </dd>
+
+      <dt>Kann ich meinen eigenen MySQL-Server nutzen?</dt>
+      <dd>
+      <p>Ja. Starten Sie einfach nicht den MySQL vom XAMPP-Paket. Bitte beachten Sie, dass nicht zwei Server am gleichen Port lauschen kÃ¶nnen. Wenn Sie ein Passwort fÃ¼r "root" gesetzt haben, vergessen Sie bitte nicht, die Datei "\\xampp\\phpMyAdmin\\config.inc.php" anzupassen.</p>
+      </dd>
+
+      <dt>Wie schrÃ¤nke ich den Zugriff auf phpMyAdmin von auÃŸen ein?</dt>
+      <dd>
+      <p>In the basic configuration of XAMPP, phpMyAdmin is accessible only from the same host that XAMPP is running on, at http://127.0.0.1 or http://localhost.</p>
+      <p>Bevor Sie auf den MySQL-Server zugreifen kÃ¶nnen, wird phpMyAdmin nach einem Benutzernamen und einem Passwort fragen. Vergessen Sie nicht, zuerst ein Passwort fÃ¼r den Benutzer "root" zu setzen.</p>
+      </dd>
+
+      <dt>How do I enable access to phpMyAdmin from the outside?</dt>
+      <dd>
+      <p>In the basic configuration of XAMPP, phpMyAdmin is accessible only from the same host that XAMPP is running on, at http://127.0.0.1 or http://localhost.</p>
+      <p>IMPORTANT: Enabling external access for phpMyAdmin in production environments is a significant security risk. You are strongly advised to only allow access from localhost. A remote attacker could take advantage of any existing vulnerability for executing code or for modifying your data.</p>
+      <p>To enable remote access to phpMyAdmin, follow these steps:</p>
+      <ul>
+        <li>Edit the apache\conf\extra\httpd-xampp.conf file in your XAMPP installation directory.</li>
+        <li>Within this file, find the lines below. 
+          <p><code>
+              Alias /phpmyadmin "C:/xampp/phpMyAdmin/"
+              &lt;Directory "C:/xampp/phpMyAdmin"&gt;
+                AllowOverride AuthConfig
+                Require local
+          </code></p>
+        </li>
+        <li>Then replace 'Require local' with 'Require all granted'.</li>
+          <p><code>
+              Alias /phpmyadmin "C:/xampp/phpMyAdmin/"
+              &lt;Directory "C:/xampp/phpMyAdmin"&gt;
+                AllowOverride AuthConfig
+                Require all granted
+          </code></p>
+        <li>Restart the Apache server using the XAMPP control panel.</li>
+      </ul>
+      </dd>
+      
+      <dt>Wo ist der IMAP-Support bei PHP?</dt>
+      <dd>
+      <p>In der Standardeinstellung ist die IMAP-UnterstÃ¼tzung aufgrund einiger mysteriÃ¶ser Initialisierungsfehler mit einigen Homeversionen wie Windows_98 deaktiviert. Wenn Sie mit NT-Systemen arbeiten, kÃ¶nnen Sie die Datei "\\xampp\\php\\php.ini" Ã¶ffnen, damit Sie die PHP-Erweiterung durch Entfernen des Semikolons am Beginn der Zeile ";extension=php_imap.dll" aktivieren kÃ¶nnen. Es sollte sein:</br>
+<code>extension=php_imap.dll</code></p>
+      <p>Jetzt starten Sie den Apache neu und IMAP sollte funktionieren. Sie kÃ¶nnen die gleichen Schritte fÃ¼r alle Erweiterungen anwenden, die in der Standardeinstellung nicht aktiviert sind.</p>
+      </dd>
+
+      <dt>Warum funktionieren einige PHP-open-source-Anwendungen nicht mit XAMPP fÃ¼r Windows?</dt>
+      <dd>
+      <p>Viele PHP-Anwendungen oder Erweiterungen, die fÃ¼r Linux geschrieben worden sind, wurden nicht auf Windows Ã¼bertragen. </p>
+      </dd>
+
+      <dt>Kann ich das Verzeichnis "install" nach der Installation lÃ¶schen?</dt>
+      <dd>
+      <p>Besser nicht. Die Skripten darin werden noch fÃ¼r alle Zusatzpakete (add-ons) und Upgrades von XAMPP gebraucht.</p>
+      </dd>
+
+      <dt>Wie aktiviere ich den eAccelerator?</dt>
+      <dd>
+      <p>Wie andere (Zend-) Erweiterungen kÃ¶nnen Sie sie in in der "php.ini"-Datei aktivieren. Aktivieren Sie in dieser Datei die Zeile ";zend_extension = "\\xampp\\php\\ext\\php_eaccelerator.dll". Es sollte sein:</br>
+<code>zend_extension = "\xampp\php\ext\php_eaccelerator.dll"</code></p>
+      </dd>
+
+      <dt>Wie behebe ich Verbindungsfehler zum MS_SQL-Server?</dt>
+      <dd>
+      <p>Wenn die mssql-Erweiterung in der php.ini geladen wird, erscheinen gelegentlich Probleme, wenn nur TCP/IP benutzt wird. Sie kÃ¶nnen das Problem mit einer neueren Version der "ntwdblib.dll" von Microsoft lÃ¶sen. Bitte ersetzen Sie die Ã¤ltere Datei in "\\xampp\\apache\\bin" und "\\xampp\\php" mit der neueren. Wegen der Lizenz kÃ¶nnen wir nicht selbst eine neuere Version mit XAMPP ausliefern.</p>
+      </dd>
+
+      <dt>Wie arbeite ich mit der PHP-mcrypt-Erweiterung?</dt>
+      <dd>
+      <p>DafÃ¼r haben wir einen Betreff im Forum mit Beispielen und mÃ¶glichen LÃ¶sungen geÃ¶ffnet: <a href="https://community.apachefriends.org/f/viewtopic.php?t=3012">MCrypt-Eintrag</a></p>
+      </dd>
+
+      <dt>Do Microsoft Active Server Pages (ASP) work with XAMPP?</dt>
+      <dd>
+      <p>Nein. Und Apache::ASP mit dem Perl_ Add-On ist nicht das Gleiche. Apache::ASP kennt nur Perl-Skripten, wohingegen ASP des Internet-Information-Servers (IIS) auch normales VBScript beherrscht. Allerdings ist ein Apache-Modul fÃ¼r APS .NET von einem Drittanbieter verfÃ¼gbar.</p>
+      </dd>
+
+      <dt>How can I get XAMPP working on port 80 under Windows 10?</dt>
+      <dd>
+      <p>By default, Windows 10 starts Microsoft IIS on port 80, which is the same default port used by Apache in XAMPP. As a result, Apache cannot bind to port 80.</p>
+      <p>To disable IIS from running on port 80, follow these steps:</p>
+      <ul>
+        <li>Open the Services panel in Computer Management.</li>
+        <li>Search for the 'World Wide Web Publishing Service' and select it.</li>
+        <li>Click the link to 'Stop the service'.</li>
+        <li>Double-click the service name.</li>
+        <li>In the 'Startup type' field, change the startup type to 'Disabled'.</li>
+        <li>Click 'OK' to save your changes.</li>
+      </ul>
+      <p>You should now be able to start Apache in XAMPP on port 80.</p>
+      <p>For more information, refer to the 'Troubleshoot Apache Startup Problems' guide included with XAMPP or <a href='https://community.apachefriends.org/f/viewtopic.php?f=16&t=71620'>this forum post</a>.</p>
+      </dd>
+      
+      <dt>How can I use Microsoft Edge to access local addresses under Windows 10?</dt>
+      <dd>
+      <p>If your local machine has the host name 'myhost', you will not be able to access URLs such as http://myhost in Microsoft Edge. To resolve this, you should instead use the addresses http://127.0.0.1 or http://localhost.</p>
+      </dd>
+
+      <dt>Where are the main XAMPP configuration files?</dt>
+      <dd>
+        <p>The main XAMPP configuration files are located as follows:</p>
+        <ul>
+          <li>Apache configuration file: \xampp\apache\conf\httpd.conf, \xampp\apache\conf\extra\httpd-xampp.conf</li>
+          <li>PHP configuration file: \xampp\php\php.ini</li>
+          <li>MySQL configuration file: \xampp\mysql\bin\my.ini</li>
+          <li>FileZilla Server configuration file: \xampp\FileZillaFTP\FileZilla Server.xml</li>
+          <li>Apache Tomcat configuration file: \xampp\tomcat\conf\server.xml</li>
+          <li>Apache Tomcat configuration file: \xampp\sendmail\sendmail.ini</li>
+          <li>Mercury Mail configuration file: \xampp\MercuryMail\MERCURY.INI</li>
+        </ul>
+      </dd>
+
+    </dl>
+  </div>
+</div>
+
+    </div>
+
+    <footer>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <div class="large-8 columns">
+              <ul class="social">
+  <li class="twitter"><a href="https://twitter.com/apachefriends">Follow us on Twitter</a></li>
+  <li class="facebook"><a href="https://www.facebook.com/we.are.xampp">Like us on Facebook</a></li>
+  <li class="google"><a href="https://plus.google.com/+xampp/posts">Add us to your G+ Circles</a></li>
+</ul>
+
+              <ul class="inline-list">
+                <li><a href="https://www.apachefriends.org/blog.html">Blog</a></li>
+                <li><a href="https://www.apachefriends.org/privacy_policy.html">Datenschutzbestimmungen</a></li>
+                <li>
+<a target="_blank" href="http://www.fastly.com/">                    CDN bereitgestellt durch
+                    <img width="48" data-2x="/dashboard/images/fastly-logo@2x.png" src="/dashboard/images/fastly-logo.png" />
+</a>                </li>
+              </ul>
+            </div>
+            <div class="large-4 columns">
+              <p class="text-right">Copyright (c) 2018, Apache Friends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/dashboard/javascripts/all.js" type="text/javascript"></script>
+  </body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ä'gQ–À=Ò¯IÎÔïü¢)Æ}>Vg{’¶)R{¨fó?,9p“]9arõW0^TĞJlJ*O pElÛéq²Ôhîkà4OœA’ä'j¥F
+Ôpÿ•9yK³0ÏËúÙ
+¹Áë§`¤°‘ğŠÙ’†yõïŞ®|àáÂ»”ßBx±$æîéÚ8µÈ£¹XıC2ÊÁj©„qÆYî`ÊéîVª«=¯ı
+n¿³#âÊD¸»ÚoœÅs8Ìmíc}ç@ëtjœ“ä»Â¡¿}fSòŠ·a¤B5—²ï¿ÛÁü)“İÈ—ò'¯F‚Zt?)Ä	€02À@îÛâ¹®¸¹¢à“N‹hŒ¶Kë5Ã¤h!² 	9Á\¥ƒ„hXË®äPÃ’8	ä--¼`¡Oi‰«ê)Ùa²æß¢ãJ#†eÏ‹KRq=2ËE¡„RÇ€³r;d•–Õ‘õâÖLBÁæ.¥JânPKh-›“&"RúcšÄ'a?¨Áš„µÚ'Ò•E¤á@GÒÃ¹¸S†s8Z´~…#±ÏUóõB7fVfñ£Ó·Ğ XXúã+[ò\çÆºšŠè#E’@Ôa„¢1G˜§—Ûp5X¹š½<Ü¼¯qd©Ğ!à»êµ¸B¦¸ Ê°I[—;Â°çİV¡­øRû$^OkËŞ äµî06ıtêS[=Zş&·½iœXç
+ñÆ2S‰B¹èo­ÆHÆYatKŒu6Qùüg0PòfHÉ!bº-´Œ/~üƒ&zİÒêÄ_fÜ[B7á‚™ÒYÔuÕI,:+á…àPêpóq×~˜¥CÜ«—`nhÃÇtÛãİ9é¢§6¶E¥V³CÍ¶ÄŸ×<‘9ŠùZ'bpÂ9H½ù^™&òWñÃ9)Š:­FµĞv›û·¡µÚ§ªjˆ³Î%È†ˆeÑ‘âD`'ĞòşÆš]íÖ-æüES½‘B:RÅ;SµsŸ¸€)cŠ•Û,Ã>£sØ»—;¼š™½M™1hõ]Xc	_v7Ë5õ–6.éöum£hrÖôğ3Ho•}kÇ#ÅŸäé1ŞµWPëE¢	ÚÚ ÉŞOr¯–ßüÚE€é¬lP9­7!o*.ñÃÈ$¬ŞèAfBºõ,_!ÛI7õ2,ãíãÖûôÜ}åOR$¿a¼h/Àt=."0{]×Ş£Èï[Ş'w@´åKœeÒº±èI0ÕÏíÑø?’’'Ìï8»í;:¾úÖ0ü˜ûşø¿+c·‡ö=À[Ú£ÂÁ	ÜzÓèk<^¡ˆ ?ù{°ª¦^ÿ_*LRÅfé™ßß's±\4Ğg |ÂùoÑ‹v}‡×^JF#xˆ+`1Ó½8Û–”<n‡SÈÀ;yÖi•F³ä¦/4ÜTWféØÚQpÛûtûÓh>eH÷óñFƒïÉ5w¹‰nµ ” a²³ıGn"RÆŒfC(=àr¦!¨tŸÔQ—ßö& ³ÎP·6§µTkË¤[4×~Ä¿=Â¯sÒGu Š?ç>'Ñ©áĞ¡jß§ô~%_·‹L˜ô±»›Ôpğ¸h\oTıK›™ˆ(uh4àc»“>M(Á£ù¿-L®ŸŸµfğËÏZ|ßTí±”€D/p‡»W48î;0<“$óîFÍra¼ÜN*“$4‡ÈuD´ø)ÜçòQÊ§<-ßÁÈR¸»O+­A$KEÃ+`œEƒ‰Îü®«ºSÂ }îv‡»ö,^.ttR1–İ)gã…Ñ0ë™ÒNìûpøweî°ç5TãôBìğâóè/Én|Î"@¸¿´é'ên|C~z‹Ó>£E{¯<œH_ˆU,)»ºÚzañÌæ|äTæ«eL‡–¡uèàĞsóçAUXS]D d7)Z1;	~û$P½9úÒb5‘Ÿ[€ÚÄóq³9x0hW±>Cğ#‚@.*ºDY½±ØwR@âlÚ7›[u7T«Ï+wª‘—ñQ¢S¨¸Œ6eÙ@eD	èê…%©~#1Ì`KÒsæ&9LCÛ/¦÷Bx^ñˆİDËy°ñ g k¸L¹ßyo‰AÛ`é,Ø.ål•çZÌ2¦;‚¶DYäçï×ÊÁßRùğ‹ÀÓŞËŒRul“¼²Oğ©Æ\ü+\UôUšëŠUŸ* æÕ†y€Ä¥Kw¸Y8õôbÇvşIŠ>İÀE=9y›[WV/áãÉÃñ>Õö?'q•â:»‚AJ˜n«X7mÂ0°zVâ@Ï|	g:só”}÷d¬Q~{)(~ùQ\¶fü7F”ñËßo¿jõD•¹ÇV]‹	MÚ¼Ô„ÔèŠ–VG!˜u}‘û°ÒiÙÉ—×>Â› n¯C²ÛÖqÅWM	’éxX¦ø$¿nñÖE¨Rú«ô½œ€•ÊÔİLŠ˜:·?V”…µÎh[AjáôÎÓcÆ4qqz¢¢Zğzh²¸L„Tpv%òø$û^H9Ÿû]
+K(™ûD@œìBPygC¢ğòÕ¹6²eß©&S”£ıŠªÃ*wîş†#FL„?ëŠ½Ë*ë0ùe~ğŒÛ Y¯v,$şºr?‘æ3Ò.µGÁóB°î"Faã¿·ÑBH×‘‹*’—‚D”RúöòqR9=^yLÌ¼	uåÛwC›×¶	SQÓäï3DVGéë3ŒAşD²Œ÷ŠZÊ½¸ô¯,s5XÂ[i·B=ê	%
+êpé¾s!5÷È[²«Œ¿9b|ÚÑY'W_n;ñ%TÅ_.i»¯ùÌÌàU03ÿ|»ßßìŠÇK<á; ‰ğ$¤¸Øx…ƒsıcù7,¿ìm2/}q­<JÀØLGB^R-|€Ó,°ÊN÷{–‰ltê¥m¥bú±Ú—ıPB>W¾ne#sz ˆ<<³Ãß•ö¸ˆSÌ4y´ûëÛ›İ¢üà¼9¯iÑÀªMcÊ)áe×ûqo×rˆÊß>$0Y]?ThÌŞjÍ]ªröçFî¹¿EË ¿Zm«FMXz}?Ï­?»x÷`ğ„aÅ®ñy1)Ø³Áü>r|Ÿ¸ÖéCx´èÿ°¤t2¯±±L¹çÜ„İXø@nÆ0¹,Xá]¨ÒPèèÂT‚IGÛ=Ü“¨jŒÒŒÉŸ6™¢Ñ eIsÙ„Ò
+´¡ˆE_AÏêb–²Áô-¹£rÄ)‘¦%©-'&9gÁ“<9yò³jZ9Áƒd»ÀUf,u††HcsKêÅêß½ÌúuJØhî>ÂT>Ë+@¼F†…0 ±•]èO>“"Ü ü´E¦—´	ïÊõÌt»‘ê†ä-iÚM"G‘ˆ¶Ä“t#DUëÚ8É¬WVÀÑM™òŞ
+ä~o¢!Ë„áóV-@›ÏA6pËã=HèOæàfKÏ¼. (zå×Ùm-¯EŞÓ_Î#§Œ¤»3íNhyşùÄİ²×¸"œ#Ó5àãém<jú*€vÍ4ù[9áŠÉSkú,zí ¢ÓÁBÄyw^y'ÅFúTªõ|¨?•õÕE­‚¶ş£§ŞkaHg÷«R²;C#èW•ùöM$•Ñ(8ˆ~ƒjçIW\Òí3¨›o¿¤/=Æ$4H]ûÁw	2Õ•Ø¿öÜGl/—õ†j%~êbx`ùÛ¬}B?ò Á™€åª€2OV0Ú¥WI6Ãò)ísZJ¡
+aã/õ£ıòg‚–&fâª#±;ô5è	Äì††£¼·ÿ…}/·IDØ!gáAgBŞ÷ÖÂÓ÷ğ”¸½-ŠOçUÅÁøÈ¤ÖÂnôÍ‹tô‹²8’Ú 0±3E	ÜŒÈˆ2±ô&¼9\^d:pwg©OµÈ‘y;}Gëí,NSEâxß’…jM€½Ë‚î—æ!#K~RNTĞÙ®~¥k¹©XfåmX^ÀÕ·»Â“lªVßB‘“<Ì?ŞªÏn§N¦cí4UhÉ£ä«äuT¤»s“Eê¨İuõê+>Ø@3û³éÏ¶vZ°œØößò-Û:•3"÷Fç7S3MëçóvÁL1ÙøÌMøpœ7¥>åì×‰4¾Á¹8R'HB"$Æz¼¶°o-;ôhåd¨ûÁL­ª²8}à[ä÷÷í°_†šˆÄ(ÄÌÒqÍÌ“#·+})OˆM‡Qc%ĞÅ³$÷67­ ï)(ªí4¬Peq‡ç?SrÓÑóÊz"ô‚Y1„—U¦ÀñÊ¼ìÈÿÄ‹¨–É›S Â*zÄ7iƒ9ê”w‚^+ÜnWÌ°à!¹ ±Š®ıˆux¿)´J+CY;Œ‘qÆTÌøx…!éªT)ñ/r‘½*ƒ+<È…ßM«ø‡@åN±¤Êı„œ‘ŒG¹]A«=/‡»Ûu5÷?ÈDÆ*Áë?‹¸+(Ğì9ë3:äQ§¦5¾çë-qB&‰cAï'$lÉ»NŠÇ Å)h1’³Ø©êC¼H7€Íšµ Ë}G%ºè]eßt¸âí<ÌIH<zgy!’€ü·öˆtPƒß.»R5~ˆ—2 qUïF «ÙŠV²”G€H%
+ğ¹®%Æ@²›äøºğP£ŸTh×ÀdG°]o|d‹7}ê¸2S\.QR7¢6ĞÆ(ğmøï
+Q/•ïœœlº—oHÇş`uiaN±ÊÜurêgÃÏ³õM?D%´š£½dLÓ¿Éƒ¶§oD+éàXÖ›8„`ëj}·zE.dïUeU	Èq|¨İ¼øêšbM’˜ûiAê$¡W²,?DzE%$x¶[Q¯ıøı~!‚Ä¥Ï…ÂHPòz´å‚[’%ŒÀ^b®D; ‰ôÛÄÁG!Cs4şñl‚åµúãŠªÓ‘&"„Í§%è{¶68úQ%5ªP"Êíğ?[YÆßB²4&[«¼ÃĞŒ\H¦+tÅˆM-Ò:±í]S¦Ôë½u‡CÑ¾¿Ì–ãB!îhˆ!nÆ>°íeï£4ô`l´LÇµ§aM†n	¿b3pĞ¶HFnm_&}³Á˜ÖÖ+ê‡™îLÎ8KÔ­?óv;†Å›šş‡S®£jõÿ„cbıT?Õ©¾J	7;Ñu¨ ›-*¸AX&£«~cö(ÉàÅL÷‡PF©¼'›óõÓ^‰‹wF±TE™zÏ­ª´*7ªØZ	İPs`Õñ»Y/$LÍÈ
+©©ëT¡Ó‰{
+  am_pm_abbreviated => [
+    "ND",
+    "LK",
+  ],
+  available_formats => {
+    Bh => "h B",
+    Bhm => "h:mm B",
+    Bhms => "h:mm:ss B",
+    E => "ccc",
+    EBhm => "E h:mm B",
+    EBhms => "E h:mm:ss B",
+    EHm => "E HH:mm",
+    EHms => "E HH:mm:ss",
+    Ed => "d, E",
+    Ehm => "E h:mm a",
+    Ehms => "E h:mm:ss a",
+    Gy => "G y",
+    GyMMM => "G y MMM",
+    GyMMMEd => "G y MMM d, E",
+    GyMMMd => "G y MMM d",
+    H => "HH",
+    Hm => "HH:mm",
+    Hms => "HH:mm:ss",
+    Hmsv => "HH:mm:ss v",
+    Hmv => "HH:mm v",
+    M => "M",
+    MEd => "MM-dd, E",
+    MMM => "MMM",
+    MMMEd => "E d MMM",
+    MMMMEd => "E d MMMM",
+    "MMMMW-count-other" => "'week' W 'of' MMMM",
+    MMMMd => "d MMMM",
+    MMMd => "d MMM",
+    MMd => "d/MM",
+    MMdd => "dd/MM",
+    Md => "d/M",
+    d => "d",
+    h => "h a",
+    hm => "h:mm a",
+    hms => "h:mm:ss a",
+    hmsv => "h:mm:ss a v",
+    hmv => "h:mm a v",
+    ms => "m:ss",
+    y => "y",
+    yM => "M/y",
+    yMEd => "E d/M/y",
+    yMMM => "MMM y",
+    yMMMEd => "E d MMM y",
+    yMMMM => "MMMM y",
+    yMMMd => "y MMM d",
+    yMd => "y-MM-dd",
+    yQQQ => "QQQ y",
+    yQQQQ => "QQQQ y",
+    "yw-count-other" => "'week' w 'of' Y",
+  },
+  code => "sg-CF",
+  date_format_full => "EEEE d MMMM y",
+  date_format_long => "d MMMM y",
+  date_format_medium => "d MMM, y",
+  date_format_short => "d/M/y",
+  datetime_format_full => "{1} {0}",
+  datetime_format_long => "{1} {0}",
+  datetime_format_medium => "{1} {0}",
+  datetime_format_short => "{1} {0}",
+  day_format_abbreviated => [
+    "Bk2",
+    "Bk3",
+    "Bk4",
+    "Bk5",
+    "L\N{U+00e2}p",
+    "L\N{U+00e2}y",
+    "Bk1",
+  ],
+  day_format_narrow => [
+    "S",
+    "T",
+    "S",
+    "K",
+    "P",
+    "Y",
+    "K",
+  ],
+  day_format_wide => [
+    "B\N{U+00ef}kua-\N{U+00fb}se",
+    "B\N{U+00ef}kua-pt\N{U+00e2}",
+    "B\N{U+00ef}kua-us\N{U+00ef}\N{U+00f6}",
+    "B\N{U+00ef}kua-ok\N{U+00fc}",
+    "L\N{U+00e2}p\N{U+00f4}s\N{U+00f6}",
+    "L\N{U+00e2}yenga",
+    "Bikua-\N{U+00f4}ko",
+  ],
+  day_stand_alone_abbreviated => [
+    "Bk2",
+    "Bk3",
+    "Bk4",
+    "Bk5",
+    "L\N{U+00e2}p",
+    "L\N{U+00e2}y",
+    "Bk1",
+  ],
+  day_stand_alone_narrow => [
+    "S",
+    "T",
+    "S",
+    "K",
+    "P",
+    "Y",
+    "K",
+  ],
+  day_stand_alone_wide => [
+    "B\N{U+00ef}kua-\N{U+00fb}se",
+    "B\N{U+00ef}kua-pt\N{U+00e2}",
+    "B\N{U+00ef}kua-us\N{U+00ef}\N{U+00f6}",
+    "B\N{U+00ef}kua-ok\N{U+00fc}",
+    "L\N{U+00e2}p\N{U+00f4}s\N{U+00f6}",
+    "L\N{U+00e2}yenga",
+    "Bikua-\N{U+00f4}ko",
+  ],
+  era_abbreviated => [
+    "KnK",
+    "NpK",
+  ],
+  era_narrow => [
+    "KnK",
+    "NpK",
+  ],
+  era_wide => [
+    "K\N{U+00f4}zo na Kr\N{U+00ee}stu",
+    "Na pek\N{U+00f4} t\N{U+00ee} Kr\N{U+00ee}stu",
+  ],
+  first_day_of_week => 1,
+  glibc_date_1_format => "%a %b %e %H:%M:%S %Z %Y",
+  glibc_date_format => "%m/%d/%y",
+  glibc_datetime_format => "%a %b %e %H:%M:%S %Y",
+  glibc_time_12_format => "%I:%M:%S %p",
+  glibc_time_format => "%H:%M:%S",
+  language => "Sango",
+  month_format_abbreviated => [
+    "Nye",
+    "Ful",
+    "Mb\N{U+00e4}",
+    "Ngu",
+    "B\N{U+00ea}l",
+    "F\N{U+00f6}n",
+    "Len",
+    "K\N{U+00fc}k",
+    "Mvu",
+    "Ngb",
+    "Nab",
+    "Kak",
+  ],
+  month_format_narrow => [
+    "N",
+    "F",
+    "M",
+    "N",
+    "B",
+    "F",
+    "L",
+    "K",
+    "M",
+    "N",
+    "N",
+    "K",
+  ],
+  month_format_wide => [
+    "Nyenye",
+    "Fulund\N{U+00ef}gi",
+    "Mb\N{U+00e4}ng\N{U+00fc}",
+    "Ngub\N{U+00f9}e",
+    "B\N{U+00ea}l\N{U+00e4}w\N{U+00fc}",
+    "F\N{U+00f6}ndo",
+    "Lengua",
+    "K\N{U+00fc}k\N{U+00fc}r\N{U+00fc}",
+    "Mvuka",
+    "Ngberere",
+    "Nab\N{U+00e4}nd\N{U+00fc}ru",
+    "Kakauka",
+  ],
+  month_stand_alone_abbreviated => [
+    "Nye",
+    "Ful",
+    "Mb\N{U+00e4}",
+    "Ngu",
+    "B\N{U+00ea}l",
+    "F\N{U+00f6}n",
+    "Len",
+    "K\N{U+00fc}k",
+    "Mvu",
+    "Ngb",
+    "Nab",
+    "Kak",
+  ],
+  month_stand_alone_narrow => [
+    "N",
+    "F",
+    "M",
+    "N",
+    "B",
+    "F",
+    "L",
+    "K",
+    "M",
+    "N",
+    "N",
+    "K",
+  ],
+  month_stand_alone_wide => [
+    "Nyenye",
+    "Fulund\N{U+00ef}gi",
+    "Mb\N{U+00e4}ng\N{U+00fc}",
+    "Ngub\N{U+00f9}e",
+    "B\N{U+00ea}l\N{U+00e4}w\N{U+00fc}",
+    "F\N{U+00f6}ndo",
+    "Lengua",
+    "K\N{U+00fc}k\N{U+00fc}r\N{U+00fc}",
+    "Mvuka",
+    "Ngberere",
+    "Nab\N{U+00e4}nd\N{U+00fc}ru",
+    "Kakauka",
+  ],
+  name => "Sango Central African Republic",
+  native_language => "S\N{U+00e4}ng\N{U+00f6}",
+  native_name => "S\N{U+00e4}ng\N{U+00f6} K\N{U+00f6}d\N{U+00f6}r\N{U+00f6}s\N{U+00ea}se t\N{U+00ee} B\N{U+00ea}afr\N{U+00ee}ka",
+  native_script => undef,
+  native_territory => "K\N{U+00f6}d\N{U+00f6}r\N{U+00f6}s\N{U+00ea}se t\N{U+00ee} B\N{U+00ea}afr\N{U+00ee}ka",
+  native_variant => undef,
+  quarter_format_abbreviated => [
+    "F4\N{U+2013}1",
+    "F4\N{U+2013}2",
+    "F4\N{U+2013}3",
+    "F4\N{U+2013}4",
+  ],
+  quarter_format_narrow => [
+    1,
+    2,
+    3,
+    4,
+  ],
+  quarter_format_wide => [
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} \N{U+00f4}ko",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} \N{U+00fb}se",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} ot\N{U+00e2}",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} us\N{U+00ef}\N{U+00f6}",
+  ],
+  quarter_stand_alone_abbreviated => [
+    "F4\N{U+2013}1",
+    "F4\N{U+2013}2",
+    "F4\N{U+2013}3",
+    "F4\N{U+2013}4",
+  ],
+  quarter_stand_alone_narrow => [
+    1,
+    2,
+    3,
+    4,
+  ],
+  quarter_stand_alone_wide => [
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} \N{U+00f4}ko",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} \N{U+00fb}se",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} ot\N{U+00e2}",
+    "F\N{U+00e2}ngbis\N{U+00ef}\N{U+00f6} us\N{U+00ef}\N{U+00f6}",
+  ],
+  script => undef,
+  territory => "Central African Republic",
+  time_format_full => "HH:mm:ss zzzz",
+  time_format_long => "HH:mm:ss z",
+  time_format_medium => "HH:mm:ss",
+  time_format_short => "HH:mm",
+  variant => undef,
+  version => 38,
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ÙÕù ¡c×   uíÄè   N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 îàÂÀ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @            .aA/early_expiration_threshold13279207387847097fAƒOtyped_url_model_type_state
+©Í¾¢  H€ Çíå/p€ Çíå/’
+E
+annotation_chrome_sync51!tu	€­#ùÕ €­#ùÕ )Ù…˜şÕ 0€ÛÉß³õ
+E
+annotation_chrome_sync51!bd	€­#ùÕ €­#ùÕ )u…˜şÕ 0€ÛÉß³õ  *sYs4q4NAgb/7lLr9NpIhWA==2103794688868160462523;last_compatible_version16version51#mmap_status-1uíÅæ   
+   ‹ ‹Éñªå                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Aearly_expiration_thresholdaAtyped_url_model_type_statef;last_compatible_versionversion#	mmap_statusuíÄè   L   & &                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            …W UUU	;3‡;G!!3f96362f-95c8-4ed8-9beb-66e739766f1eC:\Users\kraze\Downloads\prorj\5.jpgC:\Users\kraze\Downloads\prorj\5.jpg /44~×Â]^]^ /44~ürAhttps://www.google.com/https://google.com/https://www.google.com/search?q=vaccination&tbm=isch&ved=2ahUKEwiHnqel47P1AhUGEJQKHQcrAhMQ2-cCegQIABAA&oq=vaccination&gs_lcp=CgNpbWcQAzIKCAAQsQMQgwEQQzIHCAAQsQMQQzIECAAQQzIECAAQAzIECAAQAzIICAAQsQMQgwEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgcIIxDvAxAnOgYIABAHEB46CAgAEIAEELEDUI4DWKAQYM0QaABwAHgAgAG7A4gBuxaSAQkwLjMuNS4yLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=bMDiYYe4J4ag0ASH1oiYAQ&bih=657&biw=1366&rlz=1C1UEAD_enPH988PH988#imgrc=O51K9haRl3vxgMhttps://www.google.com/W/"0"Sat, 15 Jan 2022 10:05:21 GMTimage/jpegimage/jpeguíÅú   
+   ‰ úóìåŞÖÏÈÁº³¬¥—‰                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	
+					uíÄè      ÷ +¯~-·+ŞL
+Å	·	_		µa½÷                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Cƒhttps://wwwassets.rand.org/content/rand/blog/2020/08/its-going-to-be-the-vaccination-stupid/jcr:content/par/blogpost.aspectcrop.868x455.lt.jpg/x1598055738172.jpg.pagespeed.ic.WPm0htSOxE.jpg!‚Chttps://afidavit.com/wp-content/uploads/2020/04/Affidavit-of-Loss-for-ID-LICENSE-Passport-and-Work-ID-Free-Download-Affidavit-of-Loss-Template-1280x720.pngR%https://i.pinimg.com/originals/3e/30/ec/3e30ec7e7bd6f5ce3f61ea5befaf28ea.jpgR%https://i.pinimg.com/originals/3e/30/ec/3e30ec7e7bd6f5ce3f61ea5befaf28ea.jpgT)
+https://philnews.ph/wp-content/uploads/2019/02/Barangay-Clearance-1200x900.jpgV-	https://media.philstar.com/photos/2021/06/06/national-id_2021-06-06_22-22-27.jpg‚„https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365ProPlusRetail&platform=Def&language=en-us&TaxRegion=sg&correlationId=5eda7567-6131-423b-a56e-c79b9d16c149&token=0efdbdcb-81aa-4a3c-995a-a86a6ceb6b07&version=O16GA&source=O15OLSO365&Br=2ƒ
+†	https://cdn.fbsbx.com/v/t59.2708-21/271841378_444529237350323_5561581586904914964_n.docx/Final-Document-by-Atalia-Castro-Sano.docx?_nc_cat=101&ccb=1-5&_nc_sid=0cab14&_nc_eui2=AeGyrR2_gXJQcd9-s9D0JToJk_RO50IPYwiT9E7nQg9jCNr0bxBpae9D-IQup10t453Vss8_zYrU9yrO3dhQf_SZ&_nc_ohc=ntZR7EtowIsAX_4Bo5K&_nc_ht=cdn.fbsbx.com&oh=03_AVKpn5iKV6xc8Klst5MXzCOGxdKs0qdJqOKEU6m92Z8fEg&oe=61E48563&dl=1	‚https://www.campcodes.com/downloads/online-hotel-reservation-system-in-php-mysql-source-code/?wpdmdl=6296&refresh=61dfc913e2fb91642055955K	https://www.campcodes.com/wp-content/uploads/2021/07/hotelbooking.zip	‚https://www.campcodes.com/downloads/free-download-complete-online-hotel-booking-system/?wpdmdl=9581&refresh=61dfd11663a741642058006tghttps://az764295.vo.msecnd.net/stable/899d46d82c4c95423fb7e10e68eba52050e30ba3/VSCodeUserSetup-x64-1.63.2.exeO	https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user/ahttps://code.visualstudio.com/docs/?dv=winz	uhttps://downloadsapachefriends.global.ssl.fastly.net/8.1.1/xampp-windows-x64-8.1.1-2-VS16-installer.exe?from_af=truebEhttps://www.apachefriends.org/xampp-files/8.1.1/xampp-windows-x64-8.1.1-2-VS16-installer.exeo_https://us.download.nvidia.com/Windows/496.76/496.76-desktop-win10-win11-64bit-international-dch-whql.exeuíÈ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Th™üWZi\Yå^5çÑÚ¼İe-tûS¬V'ø©ÂjÇ÷ÇdtşyøÅÒÇkFê[v„Á‘ä8ep%t¢ûŞ¬TöV±”j‹åƒãXÙÿ8 õ‘[¹oäµ3'ÿ–İ aŒ}KA!pâ½ŠÓ§i>â×ûyßóK£KÉ"Y§jLšNÎÈTŒîÒJØìÜ×suÑƒ3¶×,/gÜÌW]²ûêänéÚV,¥b(ÙÛ×2óÜÜS]Ù®¥­¦&ëÕ{–ùÇ‹éPy-µ|ÏÚÖss^Ë>\ŒÊy)¼8ÖÈ‰‘ÏH¥ìv-6ùHÅZ³m³Q9ÑÇµ_/	çX‡”ÁøEu“‘İMn	í%ïZ¶	9À¸°†ç~İğŸÍê-¹{D¯©–‡õ±î!c$S™/bk°×Ÿ—”–$Ç¢µœ½´„–´TËˆ\b’Ÿ,Ã¡§×Š‚ĞL4+ıŒ<çxÿ‘°û»eİ?¸bŞ\µ¹›~†dD0¦:à[{
+ÈÚ¿!ˆØ¿z!Z¨µµ7s|Hò‚Í=,É™nJ:€6²¿‚Ìo¤M3z^kù¡R6¤=àÀ[Íè«RU¯İûo%ùáÉ70 ’‰ş•çn‚‰¾BÅÏÂğÁĞ®$³“=ı¯0‘ÓÀ7°¼Ú«úB("\ ÿ
+¨ÿ-éMåªí\”¼²Ökı@U¸¬‰–xÁ^W:ù^¯‘bÁ‡})jfë„×…îËçuğ}á
+—ßc¯Q›—r¢pòQ—cE)çßUg$zÔ8Ø;+(2q’ıN§™XŠ¯J­Xğ—ğ|bOÜRS â‹“+bÀ¶‰¤2\BT„³/rÌ'=ÿ×}zA±6¢"÷ébuN!túìZr×¿Wkv_çúÑ,À´™ÃÓû¯È~×ôx	”ësjY:Şv0{ËÉå`<æ$ØîÁ²ë€‡^¢ÒÆ’"æz[Ûk¹¹ø ÖÍiöB9z=>dı	ë¼¶„W„Ùrœs®&ã_ÿÃ0ò|¸Å¸ [YáªĞíU¿ä‰ãÿnÎàW÷÷øâË‹Æ‡ÄØ#È“ÒãDÓ£ˆ‚n1Üe*$É|Í<p«no ¼»?šá”T¯Ì8LªÖB»¶Ã£eÙ…îİV2½™ÁZM’4¼»SşÎMÍ`Yå]†ô¸;Ó÷ ¹6„k`h		€|:zá•Iå" ÕcZLüYôÎÖ:ÖÌ¦:]F³÷ş†ÖU•l÷:¹î læ9~?«´/KJhN>B²F8¯Æ+‹ jƒdê5\¸½!gq´£)è­ª–ô:ÛÜ´N†âìj?M@_»èëi—×lbñ£bØ™R²Å;(¡ée¿±Æ*7Òƒµ?¡êØı(œÂŸİUP¥N&qÉÅlqi ;›D^ñ!UŒEwûÇÙ:ÌäCdÖ¡%Éñ*7Ë)ÿ‰Y-5HÄöç1¯õ6Ø­hÄæÊĞË¹i8öãO2'„ü¡”Æ'Ï–áÆ´¼}±ö˜ÑGšddèáë¶êœSğÜ¹úV²Êñ7ºò‡á—g ÁC;f2!™q÷_¢ĞwçßbQ]ÄgD7@$P“Mªı3%’I_ğ=pãØªSo—>x¢æ–îÙÿk&qåsÕ-ÂÛr“œF™0tªwr»¯8ŒMñÏ8ÑÌÉ/*©‰Çƒ›ˆc“ş<ùÁv=ù½ZÇµG/µ±ÖH£ë¯Â‡Q#(f&cB,¼Ô×ò/²ÓŠÙ¦ÇÓµÚ%±WX`Ì:a²^nÆlFÉCó,Q_iDš1ÛöØaƒ#²)5È»…)2vCkq^ÒôÂl¯ßD¬'l×ÿ5BÏ%¦2”Iœ¯ºIf©úFÄcÖqŠ_¹D®—j”i)Ç{ñ±¦S*»ĞêÓÈVv‘¶?ç•©¯àQ\º{¢—#İIÜØvoe"vôBƒzÔ=ª¢?FÈŸa ¡©IGÈ6¡&7z‰ÎhÏ_@$Ú‹ì@d,úwCßÎ5ldáLøHÂÏQ<_:Ÿúúx›C9XŸEÊ‚­…ïòjçô¢ÍäÖœ\j„¶²ççS·˜'H¹£jèò²ğ(&/Ä0>•aƒ,„g
+¯ï”±İVÃX9§åL5´Ø„–«à”º0	:\>_{7·g;D2O¿
+ßh§à|æƒW¤“Öÿ?– ç•²³1Ì¡À	­÷Í… 1y%|¯Li‡è½ÚØ³èR?µ²NAR9ïÿCyÊ"÷:ç—øÂÍ£qq²æiä©Ş÷fxæ$À/şVÿş·ß8ä¹5ü:¿¸‚¿/Ÿß7K×åU:8µúÏ[JÿT 8Ö‡÷Zı¾; ø
+Tiß•1Lâ_vû—º®ŸÕ6øˆ×Éá –îP×Æ7Îqn¦íß7GHlãqıåL¼ú~kê¯Tû=4]Ì}f#,Ù?ÌúİîÙéùŞˆ&€,5á±?-+fô9){ß=Ù¿åM¶lş¶ˆ Ó"v4§l•iyÓ,¿§05®9«dº°²^if†lŠHU¨+É«Ø}(
+Ï%ıT»¢x>ˆyÿ6º²F c5{ÕÑiåfÔ¬Ş<AZŞ\9ä6Å—m‘Ç±CøØ¢ŠJ&Ó‘9DÁ²ùø£Şô)03°kæeËcÑÖ†ˆûOƒæ
+`E08JKÆìïòÂ,…™<ú—¼µF$Yß-ñÒÉ„ş<çt‚ûŠ—Ë:¥ñä
+•ñ¡TŠ5%’o©(ª[x”[ËÀ$2Øš QÁ`-<Òu-„nÙ&àb§SÆk>sÇ~Ø5e\QÔÅÎœe¦çĞXUÏöé§jlÕÍ¹gÖP-5B¤háÜüÔæÿf–hTîIOrüD·zduí¹z±LÇK+æ GD*,K9z(–p¨•y	n"ÂæGh8Ïİ·¦}ŠÔ^ş‹¡8dãİ‰;-åp´—:´¡ûæ?¾au mO±4ÛƒÊcU;…|ÏZMãÌ§È;½{4àÖı=¼¡n†óN£6×@îä˜ØÈÙfæ~"L
+:9räUGoéüz½A{>İ0É ‹ÃøácD@Æó”á&BC#ÎˆıxªëKØL"‘•¼úŠCl¬QM"­íÌÛÓÁ".‹[ÛÂâ­¿Ù%ø¾ÒX™åf#,˜„"Î°'G¨·Ô¯G/läûÀxZÔ‚…d]Às%ŠØB ÏŸCĞW'#Â•OÍBÂã|]Ù'±?™O~"åó÷Û(á³P,vLUâ~®ìyãÓÀŞåØ­Õ«\ÛzÈG›•“ÎöA»9®L9ˆpA‚›)Ğæ3Å â¥»uÑ±Àò$Ñ7AI%Š¦g˜s:#'‡Hl•ıÎbÍ7Oƒá”Õ3L°eË¤éåqê~.¢c-âbnÓŒ‹k_´¼şø=7	?U0=Ä(&3Ï€±\ÖUg„½”¾;“ºĞ¾NÂRÚ^û?ª¦Óõ¶ûãº%|·‡‰©™qÑˆäv—k	êv*¦ªnxp¥=™šÒS¥g®–*îfå º0X4jkˆL0Õäª–y Ñ¶ªâí«\ßåº©Æé÷<Hã–
+^æ¤ @ê¦I¶`Äİ®‚#Áİ•XQhè&ò±6	ƒ˜l¢>=cgE2NëƒJæ£B.›êUUZã ô8A×Ñ1-Ïç°Ï´*—ø¹üøwøEøh'„"”älŒœ¤™ˆëu¤‹4Š ü:N´ƒ;,¦)<Wo­2Wªa\Î@£kyÿ¤+ŠÁøÌj”¸ ›KxÓmb]Ç²Ş’KR±ïµrÆq"À8-¦ÑJªéĞ¿ÿåPLºc©nÃöŸkÃ=?åÊÓ›êMùoáò>]ßÃ{¾#°s°Aí²´ V.4ÎÅ–ñæh‡<¬„øÍEAd¿‘Æö-¢uÀƒ‰‹Ñ …6}q8õI!T¹Ø¬„q@&Q	“\ÓV<Ö”»¡dÈù}øï{È2™O#0UÙP“Ü=V}Æ^jŠ•CDë¶“w…vönBäx.ùê;½d*^•Y¦*lqR´Äíå¥&¢¿•ŒSÑêÛ¥¶µÓXxH-Z4Û\ßŞĞ¢'´[g?#-£P©?õĞş:Jƒ3Ç”<±$\ÊKK+³Ÿnı vˆ<+Zßá<æŞxÒá˜¿xÍÒ0Ÿc;¢px³œŸş-¤œBB%t:jRùNE¾6hÇÏ6¶Vköéé¿ 6nCfa#=±¾­¸T	G>íT»ôiº‘¾âá} :ËZY½^íû¾ôÁÛÂ…tøíç†OŸ2†¾-Ú–O´µc³¤!òÌ´nİ·ÇYòïßÆò¡ÿE„©¥[™RŞ\¤XQx	cäP¨4“@>ê'Jn#¸L)˜—
+Ùü=åKáˆÄ]»ù8*›cëé84şœø'4.rãW_Y¡Òğî5“,tè*‰8û€çğâĞÃ?Nğ-Ğdîìÿ(~¸Ä”øœ­ğ!ñül·´VöõCÌ¥ bzVxÈQ’¹¾Ô`˜ºó¢…,Á¹ÆÃ¢VÅB÷ëİÉŒëõwsM8ÃŸ‰ßÍmp^ê¨tA@ˆN>U#£‘Rl†¥8ØjîáÔÖ
+Ã(	–¨Fp×Xú+µ|bÊõVšYüŞê¦hi·4eÍ‰i™yÛï‚ìùø   Æ    „@.ªê“™ìŸ"èÆÎ­ U“ıŞhÂù‘ÇúøŠ¢©³h4œé|jñàÏçñÿ§rX2²0Ûïà|¼½W3¢!2‡âø\.Êåc2üŸ(y ÷/Œ5Ó…tÏ¸¹»½ñ;	î6qØ+ÚŒ&àïËÄQ|VtÙßá'¿)QdMÇßô2õ×ÚÏ©q‰ÓÛ6ÊlNÎ†áî)p†¦`P†Ä@óƒg†“ÿ"7X]Mæxóû ŞVÉCï&‡5«,éÿ¤åÍmP¡ê1GYƒ±§Ë&´¥mDÁË€ŸÑ¼Ñ‚Á»ÉnŸ^KÍ÷úi™¿@ídz!¶ö~{‰	È /Êô]„v1œ0Î"?4ø u9án–åöä_umŸğ4¸ÿSµÁŠá}WøÔß{ù–/tÔmæ½ƒwåR³: ÛÑ„ä¢ákûö<D–¼MV.µ¾KL¤›‡“J·A\ç´Ìq‘
+«(gr(ü×${T²“Rh‘K¶¶D	‹è)5’Ÿâ›  0BÑÑÊÍÿa®®dt"ûlLt™\GùÒ£ÕH[v*•?K„ ı$QHnT	Ø­ õjæ‡Á˜‹¥z°ºûƒ;Ñˆw†3n>ª—YTR‡_hïTV4åÑÚ¼İc-tû®S²Xò%ø©ÂlÇ÷Çf½öyøÅÓÇoFìš_v„À‘äÇš´Ø$|œ¢ûi°TöV±”j‡åƒãZÙÿƒ%õ‘à¸hä3%ÿ– ğjŒ}KA1zâ½Ò§i£-sñKqLÍ"Y§j¿eâÕP¼ÔNØìÜ×s×Ñƒ3¶Ó,,gØÌV]²ûù$ÆìzÚ,k{%"ÓÖ2óØÜU]Ù®XR›\ßÄÑ{–ÿÇ‹é¸±%µ|ÏÛÖwsXÁ:\ŒËy)qCó~Éˆ‘Ïu´ìv-6ùHÅZ³o³Q9œÅµ_”àX%”Ãø™˜‘İMn	í5åZ¶8Àg?X.t×,Ïêá©D¯©–t
+7"`$ï¸+bk°×Ÿ5”–$Ç¢±œ ½°„—´TËv£¢«——)Ã}ÍˆÚ§M6+ıˆ<áxÿlO#’?¸bØ\µ¹áœdD0Œ¦>àJq
+ÉÚ¿åŞCp¾r Z¨µ@?s|Hò‚Á=,Ë™nJp‡6²¾¾…ÌÍ¦M3äµUkù¡R6´=àÄZÍè´Âi×'n
+%ªñÉ70 avpoJim‚g¥FÅÏÂğÁr®$³“=ù¯0•ÓœÀ7êO|r®ÿBÇ:eõ pş/éMå®íZ”¼²+”½¾ïŞQ¸¬‰–xÁAĞ_:ù_«‘sËƒ})kfëñ{-ïÃæuğ}«—ßc¯Q›—p¢pò:]—cş(àß÷g&zÔ8Só (2q’ıN§RŠ«J­çüÁÍ„ú cMÜDVS âxl¶’•Š¤A0XBT„³/ĞÌ'=û×}~A°6¢"	¢İK)qú±Œ’µ]³w]çúÕ*À´™>,Wì9~×òx	‰{jY;Şv!	ËÉä`<ìÊŒĞïÁ²ë§^¢ÒÆ’"êz[Ùk¥ø mÌi¬ö@9z=·¬ö	ë¼¶„W„Şxœsª~&ãùáFòøvdÄº SåªĞíU¿vO&sÊãW²õüâË‹Æ%ÄØ#È—ÒàD×£ˆ‚nÏ#¥‚!ÁyÍ3~‚+e*dº=šáT©Ì8LW)îb£§eÙ…èİV2Ëu™Á[M–4º±WşÎLÍ`¦ó.õõ¸;ÓÊ1¹6„k`h	€~:z¬—Iå™ÒcøNüY:ÊÅÖ:ÖÌ¦:]V³óÿ†ÖÏÄÛL0³2næ¹c;«´/K¹—¡Á¹HE8¾Â+‹jƒdê1\»½%gp´£)êm“ü?](Š
+Œ:íh?M@[»îëi—*“ÿFÜ™R²¾Ù ¡ée¾±Â*&Ø‡µ? êØ×É4Ê~ŸİUT¥N&qÅÅlqk ;›ò\ñšT‹°EuûÇÙ› ïCdÖ¡%Éñ:=Ë)ûˆY-Ïîbüíí®÷6x°lÄæÊ#4°£–õ\6'„ü¡6Æ'Ï–åÆ·¸}±öf.‡2aaè¬²ù©–Y(İ»úV²Ê÷7ºòöx<Õû4c ÁE;f2Xy÷_¢ÑsçÎhU]ÄfD7¿Û›;L¢ü3%’Uğ=pãÔªSo•>x¢¤†îÙ¸šÿÉ&såsÕ[ Ğr“œF™0~ªvr»}.¡(Gû9ÑÍ/*©‰Çpd™Õp?ùqi9ù½ZÇµå/µ±ÖH§ë¬ÂƒP#(fØœ‚„´ÑË£ ŒÙ€‘¤Ç×µÜ%±W¥ç¹¹n?a²^hÆlF¥‚û,Q_hD1ÊüÜa‚#²Öpş`º(2vC©z^ÒôÂl£ßD¬%l×ÿ1LÏ³$¡”Kœ¯m©úFÄcÖvŠ_½D®9QúÍ#Í§ğ³¦j;»ĞêÓÈ¥‰L÷şä•]«¯àQşº{¢—#ÙIßØrod"vô¼|º¶Ñ8ªzòô•kø «IGÈ2§&7‡vb±mTD$Ú‹ê@d,"ƒKßÎ4l`á]òLÂÏP< ÅTRûpšC9X.LÊ‚­…ïşjçô ÍäÖÔPj„³àçñ·š'HYDjèò²ğ8,/Ä4?•aŒ3`Æ ¥3–ÑRÃX9§³¨D‹•«D€¾0	:\>ı{7·g?D1O»ßh§ó¼N†_¡“	- ªíM³±1Ì¡Ä	«÷ÍxèË’’!|¯Lo‡è½ÆÅĞ³èR>µ¶_KV9ïşCy5İ<’æŸùÂÍ£Õ`²æiä©Ò÷fxä$À/£ŒşVDù·}8æ¹º
+1¿¸‚¿/Õ7KÖåUÜã‡ğÚÎŒ[éZûT 8%x/8–³½;}ìTiß•“Lâ_vû“¹® Õ6øv(	¯ä¨“E0âÌ=pn¦íÛ7AHlãá%ß?óş~kê©Tû=Œ£Ä}f#-Ù;Ìë×êÙé€ùŞwÙÊ(-=à±?R fô9){Ó=Ù¿çM¶l»£ˆ «Ò%v–ƒ§l•™³Ø,¿§ ?®9¯eº°'±ßá…lÂ‡nŠ‰Z¬+É«Ø}ÛõRÕ>[c·|>ˆyÿ6²F c5ÖÕiäfÔ¬æñ”DRÛ\.xXõgIÆ³CøØ¦ŠL&Ólû·¾¶=ıø¥Şôø;°kædË{c×Ü‚ˆûNƒæôõ«í10KKÆìóÂ,…™<ö—¼µF$QYß–ğÕÉ&ş>çt-5Š—Ë:¥áî
+‘ğ¡T›Öw¶˜³¨*ªÏg‹”[Ë3ú€ÔñÛš˜[Å`-<Ò×-„nÙ&äb¤SÂk?sÇ~&Ê¥µYYÑÅâ’!o¬?ÑZUÏöí§jlÕ0FËò)5B¤há`4Üæÿg–lTèCKrüDH…¯¹tå¹z±qåK+æ GH*,K;z(–³­•Âi"`äGh°Ö·¦}ŠÔ^şŒ«8dçÜ‰…öã¾æµ£$ÿæ?¾a†_ğêŒ¾7ÛjÁgU;…|Ï¼ZMãÌ§
+È8½4àÖÂÛ¤fƒóÛVûJäFåšØÈÙbæx"L÷ÅòÆ6QGoïüz ‰s>İ4É&ÇøábD¿98<à.CC#ÎÒıxªëKØ@"‘•¾úŠn¬Q!%ªí£ÌÙÓÁé%‹[ÛÂâ­¿É/ø¾Š	ÒX)/ô)&D… Î°#G¨·Ô¯´ĞÀÛùøÀÌ^Ô‚…d]bs%ŠØB ÌŸGĞV'#<j¥ÈJÇãc¦ä»ç›O~&åó÷ÛÕ=ª[ôLUâx®ìÃ+ÛÀŞåÜ­ßŠ«]Ûz7¸P=’Æ÷A»®L9ˆ|A‚Ö+ĞæˆÂ @¥»uÑœyËò$Ñ7AI%¬g˜
+r:#l¥,ÂfŸÑÿÎPÑ7OƒkHÃ“fË¤ï	åqê~Œ¢c-âfnĞŒk^´¼şÂ÷¡•7P0ßÇu,Y2Í€±XÖSg„½iAªxb$Ô¾NÂTÚ^ûà[®Óõ¶úã¾%m½‡‰¨™.Ç Œìw—k	›êv*¦ªbxp§=™SğS¥Ü¯‘*Lfç º0ÒüakˆL0Õä­–y¤Ğ¶ª”'ÿ,VÕ9»«ÆÊ×8Hã–
+^~*Zd¥I"dÀİ®‚#Á°İ•XQlè%òµ6	ƒ˜’]ş•fo@2{ŸqVì©ÙC,›êUQZå ô8¼(³“(Ëç°É´*—ÂnôøwøDøl'•&”ämŒœ[fCªê}¤‹4í¬ü:N´ƒ7,¤)<Wa­2ì«aşÌ@£êÄyÿ¤+ŠÆòÌj¹ ›Ú%hW³Ü’qCµïµrÆqÑ?àÍèÒ¨íĞ¿ÿåP2Lºc©jÃõ›kÂ=?ş
+{âHù‡² "WÕz¼#°s´Aë²´ «Ñ˜-À’ñæh<¬dkŒøÍEA`¿€Âö-€]Š¸‚‹Ñ ˆ6}q8õI-T¹Ø®„q†Q	(]Ó¼V>Ö”»!¬Ãù}øï{È5“O'1UÙB~åI\wÅÇ\jÄ”GDë¶“„zêùmBø{.ùê;d*^•Y¢*oqVµÄe§
+¿l{ËàÑ}··ÓXxL-\4Û\"!^X	=_g?#+£P©h-Øş:Jƒ3Ö8±$]ÊK´Ôx%—oı rˆ<+Zßá<æŞxÒá.½xÍi1˜c™¢
+px³íWõ-¤œBB%s0jRı~Nı
+Í‡	4¶Ÿxöéé¿óÉó³¥b#“º­¸T«G>íT»ği¹‘ºâà} ê÷úc_Q¸^¿ù¥­şËÃ‡tøíã€OŸ2{A°*n¥O´µc³åúÌ´nÜ·ÃHøëßÆó¡ ºO³¨­Z™R*Ğ\¤XQx		cäR¨4“\7>ê±Gi¸N)˜—Œ÷=åKáˆÄZ»ı9*›Ë%TK>"øá4*rãW¬¦ŞÎ~óî’(tè*+8û€çğæÓÃ;Nğ-Ğš÷.Dú ~õ•!ë–§( óül·°VğõCÌXÿ‚o…n|ÈQ”¹¾ÔÖP²ó¢…-Á½ÆÅ¨RÅC÷ë"6GCôrM8Ã¯ŠßÍmp^æ¨vA@ˆØ<U#3Ul$§8Øjm)ßÖ
+Ã(	–¨Az×Xş*µ| ÁNı\ÅXşŞº§li·4–2%°„}ØïZîıø   Í   Í„@.ªê“îyQzîš­ ê“ıŞh`ù‘Çúü‰¢­³i4œa¼ÂôèÊçÚRxRê³2Ûïàx¼»W3_Ş-ë¿æø\(Êåc£úôŸ(x ó/Š?×…tÎ¸¹DB:“æ7qØ+çŒ&àïËÄ]|VvÙß¬%¿)ÆiJÇ}ô0õ×ÚMÚ¢q‰ÓÛ6ÊlIÄ†áê(p†­°È?ŒÎœògˆ‡—ÿ"7X]¾å8#İVBë&‡—«,éÿ¤áÍiP ê1G§÷C¢Ã#´¢äÒÁŠUÓ¼Ñ‚Å»ÏnŸ^¶2j
+ª»@íbz!¯9~‘{‰Â$/Ëô]{‰ú41Æ#?4N=u9ánšåöæ_um´æ4ÿcTÁˆá}WÒÔ{ù–/tÔmö—½ƒsäR³ãj×xÛ8£ãk¢ñ8D–¼MVİJ–DÂ‚“‡“JA\ç°Ìr‘
+ª(grÖŒ~\·ÙÖ²Ab›“·´D	è/5’Ÿú„-ßFÑÑÊËÿa¢v¦dt#ûhLe“XFù-òh}ISv*•GD„ ı$QDnV	Ø"õj¥Æ˜)¥x°ºû©M0Ñˆw†3n>ºYTV†_iSYå^Š5çÑ’½İc-tû]¬é&øUÀhÇ÷Çf½TyøÅÓÇkFïš[v…À‘ä9etp!t™¢ˆåğ£^ü°–j‡å‡ã\Ùÿ~Úhaœ¡lä3#ÿ–İ bŒ}JE pæ½Ó§i\bÒ…rñK§KÍ"Y§j³eâ×PìÒNØzÑĞsuÓƒ3¶ùà'gØÌV]²ûó$ÆèzÚV,ªb(Ùß×2ßÜÜU]Ù®«­¦™êÒ{
+–ûÇ‹é¸±‡µ|ÏÛÖss[Á>\Ëy)¼3ÖÌ¹v9¤æ|õ7ûHÅ^³i³Q9a:(¯èäX%”ÅøEu‘İLní$ï^¶9À˜À“†uß-Ïê)¹D¯©–x
+7"`$Q™+bı½ĞŸ—””$Ç¢PM½°„—´TËf©¢«“–)Ã¡§ØŠ‚Ğ{L4+á„Œ<áxÿŸ°û»ÚÜ?(dÜ\µ¹áœ,dD0Œ¦:àIqÉÚ¿!ƒØ»z%ZÒğ/yvó‚Á=(Í™nJx)¿A†ÌÍ M3z]kù R2¥9àÄ[ÍèK~	ÁÖ&n
+%ıáÉ70 mvpoHim‚‹¾FÅXÏ÷ÁĞ®&³“=}g0•ÓœÀ7íE|rªÿB("S ÿ
+¬ÿ-éMåªíZ”¼²Økı¡AR¸°‰–xÁAĞı:ù_¯‘pË‡}(kfë„Ü…êËãu e©Õ»®S›—v¢pòÇ¢ˆnäß÷g zÔ8Ø;((2q“ıJ§˜X«J­
+e…ò¡cMÜVS âtl¶’•Š¤2XBÄ›´/rÌ'=~}~A°6¢"¢İO(qúìZ}×¿Wov_ç¡úÑ*À´™ÍÓû¯wŒ~söx	‰ÙjY;Şv"	{ËÈä`<æ
+$ØêÁ²‹å¨T¨
+Ç"êz[ßkëZç’ôi¬öF9z=>dş	ë¼·„S„Ør˜sª&ãZù~eÄº _YåªĞíU¿vO&qÊãWõ÷üâ]WŒÆ‡ÄÚ#È¼ëD×£ˆ‚nß)¥‚%ÀyÍ<p¤no ¸»?šu”T©Ì8L¤ÖB»	Â¤e…ìİV2Ëu¾™Á[M’4¹±SşÏLÍ`Xî]	†ğ¸Î¥0>³<\jbh	€x:zQhÔåÖcøHüYôÍÖ:ÖÍ¦>]G·óş†Ö0;ä1»3næ=~;«´/Kµ—¡Á»HE8¯Â+ŒŠ‹ hƒdê°½%gp´£)úm—ı?ÛÜ»N†æìj?M@_»îëi—ÙlbñËeß±R²¾Ù‚¡ée¾±Æ*%Øƒµ> êØü(	œÂ{ŸÒİªD×'sÅÅhqm ;›£³(8Q°EsûÇÙ:ÌçCdÖ %Íñ+7Ï)û‰Y-0FÊıåì®÷6Ü­lÄæÊ/4°¡–õáO6'?ı¡”Ä'Ï–›¼¸}±öa$‡2eaèáë¹êœSôÜ¹úl£Ê÷7ºò‡^–` AÃA;f2XÛ÷_¢ÑwçÍhQ]ÅfD7A$[“Iªù3›™Z—úåqáÔªWo“>x¢YyB ÿÉ&uåsÕ-ÂØr“F0t®wr»‚Ñj€Fó9ÑÈÍ/*©‰Ç|d™×p?ùÃv9ù[ÀµG/·±ÖHÚ#§ÂƒP#(fß–‚„µÑ×ò ²ÓŠİ¦‰ÓµÜ%±WV`s;a®]lÆlF¥‚Y,Q_hDš1ÉüØ`‚#²(>È¿…-2y,mvTØ,Ãn£ß@¬#l×ÿÌ³ˆ5J¥”Mœ¯ºIe©úGÄgÖp_½D®Æ®1e"Å¦ğ³¦W*»ĞêÓÈ©‰Lõşä•©¯¦áV\ºy¢—#²‚ÔØrod"vô¬vº¶Õ8ª¢?IÈŸa$¡©IÃ6§&7t‰Îhp^G$G†î@d,"ƒéßÎ4ldá^òHÂÎP<^:”úşxŸCØŠšFÀZ¬‡ïşjãô¦ÍäÖ)¯÷tq‘äçñ·œ'H¹£jèó²ğ)&+Ä4>•asÌ«n­2–µİRÃX9§³¨D‹•«â”¾0²;[>_{5·g_†:O»ßh§ù¼N‚^¡“Öÿ0– ç‘²³1›¾À	«÷Í‹ x"|nk‡è½ÆÅr³èR>µ²\KR9îşCyË"ü:ã—üÂµ3c¸ì±å«Ò÷bxâ$À/^sRä¡ı·}8à¹5ü9¿¸ƒ¿Š/ß3K×åU#L¼ñÛÎŒ[{JûT 8)x/8”³½;¢øTÒŞ•1Là_vûãÍ²® Õ6øq"	¯à©“î_×Æ7ÊqnÇåß7AHlãqıåó½ı~Öú­Tû=Œ£f}f#-Ù?Ìè×îÙè€ùŞ‰&
+€(5åQ_Ğİ‡l,8+{Ó=İ¿áM¶lF\$ù	Ù!v–…§l•iyĞ,¿£15ª9¯dº°ØNI„dÃ‡nŠLU¬+É«Ø}×õRÕ<[¹¢|>3xø6º²D c5ZİÕiäfÔ¬öû”@SÛ\9ä9Å—m•Ç±CNÓ¢ŠL&ÓŸ9D~³ş™¡Şôø™°kædËcÔÜ†ˆúNƒæ
+
+kE48NKE¸ĞË&]˜<ö—¼µF$¬ãõ4õÑÉ&ş8çt‚ûŠ—Ë>¥ğä…
+‘ñ¡Td)¼™²¨*ª_x‹”[Ë?ú€ÔóÛš¢QÅÛ,;Òu-†nÙ&“ª¯SÂk?sÇ~!À¥µ]XÑÅÎ“e¦ãĞXUöçé§jlÕÃ¹gÖï*5¦há`4~æÿg–hTëCOsüD¶zoqí¹GÉBóçGH*(K=z(–NR9Áb'm"`âGh8ÏŞ·¦}‹ÔZşŠ¡<dçİ‰az=K¿•çµ£”ÿæ?¾aŠ_ğê¾7ÛÊgU€„{ÏZOãÌ§¨3½4àÖÈÛ gƒóN£9×@îšä˜ØFÒfæx"L:9ÍåRGwëüz ‰Ñ>İ0É%ÃøàbDAÆø”å&FCøbò÷ôrrêIØ@"••¸úŠù‘C®²Ø®í£ÌßÓÁ"-‹[ÛÃâ©¿Ø%ü¾ŠÒXÖĞÈ\(.E… Î´#G¨·Ô¯¸ĞÀÛûøÀz^Ôî‚c]Às'ŠØBªöÇŸGĞV'#,`¥ÌKÇã|]Ö'±;™O~"åó÷Û&á³P“wLáà|®ìÃ+yÀŞåØ­ß«]ÛzÉG•—ÎòAs©¯Ï§”;ˆ|E‚+Ô|?*	Æ @¥»uÑ±Ãò$Ñ6AM%‹¦c˜
+s:#“Zçjg—ĞÿÎfÍ7OƒkHÃ“fË¦é	åÊœí~.¢c-âˆÛŒk^´¼şÈ÷¡‘6P0=Ä'&…3Ï€x\ÖSg„½š¾;,»×¾\ËPÚ^ûà[Óõ¶úãº%n½‡ˆ¨™pÑˆ‰är—)ªËã|ò§ªbxt¡=™®ÎU ¡•*Lfá º0X4ikˆM0Ñä«’y¤Ñ¶ªkØ4„Wİ8»«Æí÷8Hã–
+^r*Zd¥I´`Àİƒ$Áİ—XQ±.òµ6	ƒ˜‚Wş•bn@2NëŒJæ£B.›ÆqUZå ô8O×Ñ,Èç¿ºÍ´*—ÂnVøwøDøh'–"”åmŒœ¥™ƒïu¤¾ßkõ0–¶ƒ7(¢)<WúëN®aşÊ@£kyÿ¥+ÀøÈj¸ ›o%î±i_³Ü’ORµïµrÆqİ?àÏèÒHªíĞşâPL¸c©ş›kÂ=?ô
+{šãHùoáı>]ßÇ{¾#Šb°Aë²´ X.4Î0Ä‘ñ©j…<¬dk.øÍEAd¿ƒÆö,€£uË‡‰‹/¢7<?w©9÷I-T½Ø¨„q{øÌùTÓ¼V8Ö”»¡dËù}øî{È3™O'0UÙ½.á]ÄÇ\j•GDë¶“ˆzêùmBæx.Bë;½d(^•YhÉdqVµÄe£¿•Œ\ÑêÛ¡¶µÓ[XH-\4Û\ÑŞĞ¢O³\gk>/£P©h-zş:Jƒ3Õ<±%]ÊKJ+¸Ÿjı>Y,5!‚~İá<âŞ	xÒáÓBÔË4œc™¢px³œŸı-¤œCB%u:nRıNõJ³Ì	4¶Rköéé¿ÿÉó³§b#?±º¹T	G<íT»‚¡²‘ºâà} íıúc[P¸^íû¾ôÁßÂ…tÁüç€OŸ2ˆ¾-Ú³—Oû·c³åXÌ´nÜ·ÇKøïßÇó¡şE­¥_™j³MU®€Pz		gäT¨4“¡ÈÑØ°m¸H)˜—
+Ùÿ=åJáŒÄ\¿ı8*›4ÚŸã	6#ø#4*rãW ¦ŞÌ~óî7“(ï-‰8ù€çğ±ÛØÃ;Nğ-ĞŠı.Dş!~¸Ä›øœ­ô!ñül·´VğõCÌ« bÅWÈå¹¾ÔÖPó¢…-Á¹ÆÆ¨VÄC÷ëÜÉ‡ëñwwMv2kÖÇµq^æ¨‹pA@ˆ%Ãùú¸¿Ql$¡8Øjîá×Ö
+Ã)	’¨GpÓXş+µ|_>…U]˜ÄXşŞî¦li·4š2%°†}Øï€ìıø       „@.ªê“@ôÆİÕ[üLñç˜ş­‹ü¦õÚÏ  @     <“ıŞ¥Âù‘ÇúüŠ¢­êh4˜a¼ÂğèÊçñÿ£rX2²0Ûïà|¼»W3 !2¯†åø\,Êåc£úôŸ–…x„÷¦oÖ…tÎ»¶J½ú;	İ=Š×İìâ…½èfÍ§Y¿xzrÈÛp®%¿)QdMÇ}ô2õ×ÚÏªq‰ÓÚ6ÊlOÎ†áê)p†­°Ã?ŒÎ˜òg†—ÿ"7X]²å<#İVÉCë&‡5«,éÿ¤áÍiP¡ê1G¦÷C¦Ã#´¥m@ÁË€ŸÑ¼Ñ‚Á»ÏnŸ^IÍ÷úÒ˜¸@ífz!¯9~‘{‰Â /Ëô]„v:œ0Î&?4J=u9ánšåöà_um¶æ4¸ÿSÁŠá}WøÔÜ{ù–.tÔmç½ƒsåR³ãjÜxÛ<£ãkûö8D–¼MVÑJ–D	Â‚¤›‡“J·A\ç°Ìq‘
+«(gr×Œz\·“Rh‘K¶¶D	‹è/5’Ÿâ› ›1EÑÑÊÏÿa¢v¦dt#ûlLe“\FùÒ¨ÕH[v*•CD„ ı$QDnP	Ø õjæ‡Á˜)¥z°ºûƒ8Ñˆw‡3n>«—YTV‡_iXYå^5çÑÚ¼İc-tûQ¬í&ø©ÂhÇ÷Çf½öyøÅÓÇkFìš[v„À‘ä8etp%t™¢ûm°TöV±”j‡åƒã\Ùÿ%õ‘[¹oä3'ÿ–İ bŒ}JA pâ½Ó§i£-sñK£KÍ"Y§j³eâÑPîÒNØìÜ×suÑƒ3¶Ó,/gØÌW]²ûù$ÆèzÚV,¡b(ÙÛ×2óÜÜU]Ù®§­¦êÒ{–óÇ‹é¸3W¾{ØÎÃröµ_>à®?@âÙu¿¤cİÃŠ0à©Vyw»JåÚÖypÚåü{L w´‘İBµ'É#Ú˜NG¢pÏãAu"à4wT•dÑÊcì3ƒ$äÒM*_{L`@jÕgNKÜ¤÷öçşWçàıÓAşÑÚøxëĞÊÊàÿ	íè‘ªÌ…3 ­ìşHˆ“TÁóÊ›‹’Ivÿ,™•ğ¯È®*|ÀŠ°+bfk¥™íY£ñ)læğ :2ÒB×q 1ø>æZñWü±ì˜Á÷W
+}P>}"À­€cDé9«‡	Ù”Ô‡:Wm+N°¯QéyelXAV;,*_¢ÜğŒˆŒµ…ğçjç³s¬ãRµ˜ŞIƒË2!ã]±ln«*æªa¥aÅá®×Üô>_®ìıè©NØ,á…vÕ$hÕôS‚É)l,#¹.Ê‰É¢çÃ&¸<2¡ÿ!ãÍ=ÕWÛ:‹ñø2Z€z\(f°ƒF±}¶\AFW4ıš'ÉıSÉYîZèÇ¨‹È¿„&#»jy36ä"«:8óÕBÇªôV{İ“d7N­‚hiÛ™B12m‘sÌEaxÇ‹*[“ƒ4Vş(>µ=Èá¹
+áÕÿÛüë^¥xŸg<ßE))Öiö/F)5…¨I¿4ï32óëG·Ÿ{Å2Ç–¿üqƒN>©az{Ë‹D¯£N Ë¤'ONWzáÿåÁĞRÈ2è3cÃ½˜#¡‘2¡ÌÉ(0ŠÄ£Åû;?r2¦×§®«SŠÙŸ§zèVØ†Ã
+‚ïP¤¢%«Z…Ëk•<Šy" :lğ—É…jÆ1ß¥K%Ç¸bòC–á"œ×Ì“~‡Y<Üf´	(ä]ÉØ<îƒ4K«-È¥ôwÿîsÿdá	lf~ 1tW?éÒÅlU™/Ô=	’p‘m¹„_ ¤ÕS2)&úI§»Á“ä|ÿ!:‡T^bùÑY"ÆşÎ¯lYè‡y:WØÇì4JÂ#¨]3Úï@ÇÊF…7$LÃ¹xË‰üşÊBÎÌ(y)3Ş¯‡ø¢>‡¦¶x÷rSFæUùœr§0òıê
+dÅÜSÅ¨´’KbÎ}´ì´:>…^[c6Ä—å"$!l»²\”S!ÍâÜ* ©¢¯S¿,
+öék´lr™	µÜaãÎÄ$¿ˆ›ÚµZ·Î–õ÷¹F[{îØ¡T¤
+dÊ©Jí½å/ÈÂáµ„½yyİ“%C×@
+g›’¢ÜŒóŒË•5×o¹¾YÜ ÄÂIÂ% Z€w#C5)…0Á´® >u"d~pÔøÙcwÛYÏ©;¦Zôä;³p-îêªÎ‰SKÙ·¨UÅ:›y‡Ÿ7I³Ó	Í\!æU7W"ÉMÏ[4¨cXj¥˜z J
+àÇ“9#CËñ>p­á8lµñvçåk•ø˜â¬ê£Tw(ŒĞÎ¨7ç¥ı¢‘_ä¶øªùÉçRá™bôv8\\j'Û2	ˆ+À¢µz+ÛcæÜ•zëWİ[æP¯ıéLUë?µ‡â%S÷šéqL™°glHšDiŠ$İû'èèÀÈ ÎN–&£‰&eÂ>Ïy!Àm(¨„í¤öáx=õŸ¾ó†üÅS`Ó³‹û{İzİt6J0ÛÑÈf¡,±¨9j†ÙÔÓ±SAÚÇLbÑ5eæìg†yO‡^s{4¥î+3*E´ï¢)
+Icñ,fÿ€b-6¢³îïwL,súŸë*V6c(-ˆÎâÇÃŞ,ˆ˜Â¨–‘£1àÿÖÇ¥½øÚ;ÕÂ`"¡½æZ·ltäxMôÿa§dèRkßg‘ŸŒ‡SuİÁ0pùüÅ‡ÒÒQnIx3PÄ¢+P3õLO˜-õ3Óñ!ì6Õü¤–Uñæ‹ôÕÀnŠÍ¡nØ4¿¤à€[Ä,g;êBçºÁÒùšéÑgÁÓÿ3.T§—3
+˜W_®ùš­Î™	Â•;‘Åè›™ êg’jàØ»v«Î¼û8¦zÖĞEkÊÔ}ÊÑè@¶–skZ™±›¦Ş4 V—ƒÍ	&j°M€Uw}XamŞÿ‘ğŠa7¬mÜ_*ÛÚKîëGÕÍõx·#Gú¬ä¿!I›8²‡Tºp †¤‘c)±>?²±×ó¨2'ÆQéê ]$ob›ì¢¤¯¬éşÁh^Åkp·6ÿp À3¸u	?–{˜ê­–\•ƒÁSY½JädõÂµ 7„XZiWŸéÑeàlã(šôb÷•´É8æ·Bª!Í_¬‹‘3ƒ°h{YÔ÷îU½†ø!‡G%\Aã¹|—£¸É´…æ4'«Z[ªùÓª÷*”½ñş-T§`ãEZ0Ü|ÿWóÊŸ ÕØoñ)ª!ë=‘µêí¨:â”SL'$¨Ÿ9º†Ì×Iy±ÒBœWçiN ÿf´‹éh±h=©!Î·6ªÑæz®jÄ„ŒÉkâ™Õ‚9ñİG—ææT«Òq7®^^èô»GšÈã„Q@ci9¤/ºRÉ®
+Y ç7iàòñ‹Ô‚Ô=Eö•¿;0¼…ºÓb– Ì	¢ËZdaãS:Á@5x Æ¹ä.8‰$<%;^¨ğ?=1;¸YõV‘39\C”e&<xI(RLßÕÜV-L)g23¨$[ï›ÁÇşµ*‘øõP‚¼ûÛûæ’‘ÚÔ†•ê^ÄA¸£mÁ4ÆÜÊÜÌB¨÷¯Uö®r6(‘˜Ïx­ZÉ-Q}~’²K¦û]î2Æ´ñ™¢ÒÈ¸”‹2
+Gm8Z_~V»#;&¥Q¹=EÛSpˆXA§²€#†ÔÙÀc…4§šø„d+J¢³[“Å©&)NôÜÖœqŒE<ég¹â—ÄóƒOSDç>’­„Â—‘aØ÷Ä\—l}(¤{oÄr—Rfˆù›û˜•—±<Ø}3µîì8¤#Dş°
+ts§¿bdDoF¯á£9—‚5•FÂf]×;_g·"Ó¤¯X”Ğ$Ád?<¥L—nœ…Œ¾MªŒTŠÂç+}•º*ñùú´—%ëdu|UVkË4D>OTX¢š~œª#O3õtÏñ@ç‚ g™wikÄòGÖ_?vLòHµP«–b‘ºµfQU Á2K¦ÿò%¤Êl½¨2aà2Cd‘ ¼áØ=”è·I›¾ïÅu{…yH+±ïÉÂ\$³0ğÜôÒc|ò™çŒú¾¦ûŸ¡–ÊÊ;iº ®©°eäè¦Ñeú[‰CÉÙ 6ÍXPú%™<Ë«Õx	'±Ešdv%.(Ê v¼ˆÎ]õÍ¾ØÙ¼n°›işìƒ»×hªÛK+9a[Dëâ@ˆâÎáT´ù=6?
+‡o–•U]ÆßÖŞÛ-;`|§ËfÆ÷i0Kú09Šrq'÷VŸŞi¢WœíõIã«šØ>¶½/bÇ? ¡çj›³‹˜ŸeÈîvˆÏ—O>ŞÆìTk_cëGZ8G ÎY"ÚE‘s«d3êjh}V­àjŞ:à¬(Üı Ùñ¹ElmÜ¿÷8!üÓî8™©Y­•FŠ½‚ö²¤Élñ&]‰$Œ¢;Õ>q+Q›s[Ó¬¼(¤¤Š7’öÜ$»ÓÀHt`bf‡Ù°´HËiMàHKÊ‘¿6cŞòq’Ÿ@å#Xì!WÆÛ&Å„lÖ¤3@~™‘æĞ4ÙÁUqGÆPÿœI¢ûÖÀ¢š/ƒh©_Éq#NS,ù0º2“ç?ÆÙkdR†ÆòëÊN=…g}‰‹s^ÎDdÔáb-#v]áˆN52Sı×krÜğØ>¼ˆÑ×Ø£x1ysı…îšİ=$8˜k¨êP¬ŸX&|ÂnG¤÷^ÄP8š.9XÑşkÜ“éÅü}_.¶ƒzHƒl
+¡ˆ_É;¢¼Dúí¡K"=òÈÚİyåŞ9dN;Ÿ
+:g­oøh¤ôcJ[Ø"t‚' ­Ÿ¶‡§öæP0mãóZìêCtBgÍô¤IôÄö®Í]NÅ’×³-ÿ¿ÛYë¸÷âÃ”ˆ·xô'¿|Òÿ™ÿÖWoúàV/)“YŠ”¸Ñ¨—‰I	ª¬—‡¡@ª	Ã7‰ì1êa Z„5É=q1À]L$¡ˆzÆ{Êb2~óİ@õò*±iW¢³¨Š	D÷+|+œÜxJŠ'Rsü”Bg{>÷—pÌÉo¿¦ ¿yú\p3„EièTˆ‚¤¢£P„†N²a•»¤—Tk9Ô«ò™ğŞØhµÜ%ùà·°ì÷RÔ/€&è\É™ğ›‚pü¦îÉáï£·Û?a«c¾¥‰ŒÀ®§W9lãåß“APD+”Úê{aÇ•pbí±#p!ëm”&ÂÁ›·y·|yò¨GpËsş+µs·ÁEıR›   ?    „@.ªê“å/z)¯È7­ ˜‚òıhÍ
+÷óI…n¢g†9\³ZÿcÅ™ş¬!}<=å?‘ïà|¼»W3 !2¯†åø\,Êåc£úôŸ(x ÷/Š?Ó…tÎ¸¹»½ú;	î2qØ+ãŒ&àïËÄ]|VpÙß®%¿)QdMÇ}ô2õ×ÚÏªq‰ÓÚ6ÊlOÎ†áê)p†­°Ã?ŒÎ˜òg†—ÿ"7X]²å<#İVÉCë&‡5«,éÿ¤áÍiP¡ê1G¦÷C¦Ã#´¥m@ÁË€ŸÑ¼Ñ‚Á»ÏnŸ^IÍ÷úÒ˜¸@ífz!¯9~‘{‰Â /Ëô]„v:œ0Î&?4J=u9ánšåöà_um¶æ4¸ÿSÁŠá}WøÔÜ{ù–.tÔmç½ƒsåR³ãjÜxÛ<£ãkûö8D–¼MVÑJ–D	Â‚¤›‡“J·A\ç°Ìq‘
+«(gr×Œz\·“Rh‘K¶¶D	‹è/5’Ÿâ› ›1EÑÑÊÏÿa¢v¦dt#ûlLe“\FùÒ¨ÕH[v*•CD„ ı$QDnP	Ø õjæ‡Á˜)¥z°ºûƒ8Ñˆw‡3n>«—YTV‡_iXYå^5çÑÚ¼İc-tûQ¬í&ø©ÂhÇ÷Çf½öyøÅÓÇkFìš[v„À‘ä8etp%t™¢ûm°TöV±”j‡åƒã\Ùÿ%õ‘[¹oä3'ÿ–İ bŒ}JA pâ½Ó§i£-sñK£KÍ"Y§j³eâÑPîÒNØìÜ×suÑƒ3¶Ó,/gØÌW]²ûù$ÆèzÚV,¡b(ÙÛ×2óÜÜU]Ù®§­¦êÒ{–ûÇ‹é¸±%µ|ÏÛÖssXÁ>\ŒËy)¼3ÖÈ‘Ïq´ìv-6ùHÅZ³i³Q9Åµ_/	çX%”ÁøEu‘İLn	í$ïZ¶9Àg?S.t×(Ïê-¹D¯©–x
+7"`$S™+bk°×Ÿ—”–$Ç¢±œ½°„–´TËw£¢«“—)Ã¡§ÓŠ‚ĞL4+ıŒ<áxÿ“°û»ŞÜ?¸bÜ\µ¹áœdD0Œ¦:àJq
+ÉÚ¿!ƒØ¿z%Z¨µD?s|Hò‚Á=,Í™nJr‡6²¿‚ÌÍ¤M3z]kù R6¥=àÄ[Íè´Éi×#n
+%ùáÉ70 mvpoNim‚‰¾FÅÏÂğÁĞ®$³“=ù¯0•ÓÀ7ëO|rªÿB("X ÿ
+¨ÿ-éMåªíZ”¼²Ôkı¥AR¸¬‰–xÁAĞ_:ù_¯‘sË‡})kfë„Ü…îËãuğ}¯—ßc¯Q›—v¢pò8]—cE)çß÷g$zÔ8Ø;((2q“ıN§˜XŠ«J­çüÊÍ„ú¤cMÜVS âtl¶’•Š¤2XBT„³/rÌ'=û×}~A±6¢"¢İO)qúìZv×¿Wkv_çúÑ*À´™ÁÓû¯sŒ~×öx	‰{jY;Şv!	{ËÉä`<æ
+$ØêÁ²ë§^¢ÒÆ’"êz[ßk¥ø ÖÍi¬öB9z=>dş	ë¼·„W„Ørœsª&ãùáMòøv`Äº [YåªĞíU¿vO&wÊãW÷÷üâË‹Æ‡ÄØ#È—ÒãD×£ˆ‚nÎ#¥‚%ÁyÍ<p¯no ¼»?šá”T©Ì8L¨ÖB»Â¤eÙ…ìİV2Ëu™Á[M’4º±SşÎLÍ`Yî]†ğ¸;ÓÎ1¹6„k`h	€x:z®—Iå" ÕcøLüYôÍÖ:ÖÍ¦:]G³óş†ÖÏÄĞL0³6næ9~;«´/Kµ—¡Á½HE8¯Â+‹ jƒdê1\¸½%gq´£)ëm—ü?ÛÜ°N†âìj?M@_»îëi—ÕlbñÏeß™R²¾Ù ¡ée¾±Æ*&Øƒµ? êØı(	œÂ{ŸİUP¥N&qÅÅlqm ;›ğ\ñ!UŒ°EwûÇÙ:ÌçCdÖ %Éñ+7Ë)û‰Y-Ïî†büíé®÷6Ø­lÄæÊ/4°§–õãO6'„ü¡”Æ'Ï–åÆ´¸}±ög.‡2eaèáë²êœSğÜ¹úV²Ê÷7ºò	‡Z–` ÁA;f2Xy÷_¢ÑwçÎhQ]ÄfD7@$[“Mªù3%’Uğ=pãÔªSo“>x¢¦†îÙÿÉ&qåsÕ-ÂØr“F™0tªwr»}.ª(Gû9ÑÌÍ/*©‰Ç|d™Ñp?ùÁv9ù½ZÇµG/µ±ÖH§ë¯ÂƒQ#(fÙœ‚„´Ñ×ò+²ÓŠÙ¦ÇÓµÜ%±WZ`w;a²^lÆlF¥‚û,Q_hDš1ÊüØa‚#²)>È»…-2vC­z^ÒôÂl£ßD¬#l×ÿ3LÏ%¦”Iœ¯ºIe©úGÄcÖpŠ_½D®9QñÍ#Í£ğ³¦S*»ĞêÓÈ©‰Lóşä•©¯àQ\º{¢—#ÙIÜØroe"vô½|º¶Õ8ª¢?BÈŸa ¡©IGÈ6§&7x‰Îht^G$Ú‹î@d,"ƒKßÎ4ldá]òHÂÏP<_:”úúxŸC9X*LÊ‚­…ïşjçô¦ÍäÖÖPj„¶²ççñ·˜'H¹£jèó²ğ)&/Ä4>•aŒ3kÆ ¥7–±İRÃX9§³¨D‹•«à”¾0	:\>_{7·g?D2O»
+ßh§ó¼N‚_¡“Öÿ;– ç•²³1Ì¡À	«÷Í‡ Šx"|¯Lk‡è½ÆÅĞ³èR>µ²_KR9ïşCyÊ"ü:ç—üÂÍ£Ñ`²æiä©Ò÷fxâ$À/¡ŒşVÿş·}8ä¹5ü9¿¸ƒ¿/ß7K×åUÜãŒğŞÎŒ[JûT 8)x/8’³½; øTiß•1Lâ_vû“º® ŸÕ6øw(	¯à¨“îT×Æ7Îqn¦íß7AHlãqıå÷½ı~kê­Tû=Œ£Ä}f#-Ù?Ìë×îÙé€ùŞˆ&
+€,5å±?V fô9){Ó=Ù¿áM¶l¹£ˆ Ó"v–§l•iyĞ,¿§15®9¯dº°'±Ôá…lÆ‡nŠHU¬+É«Ø}×õRÕ:[»¢|>ˆyÿ6º²F c5ÕÕiåfÔ¬çñ”@RÛ\9ä2Å—m‘Ç±CøØ¢ŠL&Ó“9Dz³şø¡Şôø;°kædËc×Ü†ˆûNƒæ
+kE08NKÆìóÂ,…™<ö—¼µF$SYß-ñÒÉ&ş<çt‚ûŠ—Ë:¥ğä
+‘ñ¡T›Ö|¶˜·¨*ª[x‹”[Ë?ú€ÔõÛš QÅ`-<Òu-„nÙ&äb§SÂk>sÇ~'Ê¥µ]YÑÅÎ˜e¦çĞXUÏöé§jlÕÏ¹gÖë*5B¤há`4Üæÿg–hTèCOrüD·zouí¹z±uåK+æ GH*,K=z(–±­•y	n"`æGh8ÏŞ·¦}‹Ô^şŠ¡8dçİ‰…ıã¾âµ£ÿæ?¾aŠ_ğêˆ¾7ÛƒÊgU;…|ÏZMãÌ§
+È;½4àÖÂÛ fƒóN£2×@îä˜ØÈÙfæx"L:9ÉåRGoëüz ‰s>İ0É&ÃøábD@Æø”á&FC#ÎÖıxªëKØ@"‘•¸úŠn¬QM"­í£ÌÛÓÁ"-‹[ÛÃâ­¿Ø%ø¾ŠÒX)/ô)&@… Î°#G¨·Ô¯¸ĞÀÛıøÀx^Ô‚…d]Às%ŠØB ÏŸGĞW'#=j¥ÌJÇã|]İ'±?™O~"åó÷Û*á³P—wLUâ|®ìÃ+ÛÀŞåØ­ß«]ÛzÈG•“ÎòA»®L9ˆ|A‚Ô+Ğæ3Å @¥»uÑ±Ãò$Ñ6AI%‹¦g˜
+s:#l¥'ÂfŸÕÿÎbÍ7OƒkHÃ‹“fË¤é	åqê~.¢c-âfnÓŒk_´¼şÂ÷¡‘7P0=Ä,&3Ï€±\ÖSg„½–¾;(»×¾NÂPÚ^ûà[®Óõ¶úãº%m½‡‰¨™qÑˆär—k	Ÿêv*¦ªbxp¡=™QğS¥g®–*Lfå º0X4ikˆM0Õä«–y¤Ñ¶ª”'ô,VÕ=»«Æé÷8Hã–
+^r*Zd¥I¶`Àİ®‚#Áİ•XQlè&òµ6	ƒ˜“]ş•bo@2Në‡Jæ£B.›êUUZå ô8C×ÑŠ,Èç°Í´*—ÂnôøwøDøh'•"”ämŒœ¤™ƒëu¤‹4é¬ü:N´ƒ7,¢)<Wa­2WªaşÎ@£kyÿ¥+ŠÀøÌj¸ ›Ú.hW³Ü’KRµïµrÆqİ?àÉèÒJªíĞ¿ÿåPLºc©jÃö›kÃ=?ş
+{šâHùoáö>]ßÃ{¾#°s°Aë²´ T.4Î4Ä‘ñæh…<¬dkŒøÍEAd¿€Æö-€¢uËƒ‰‹Ñ šˆ6}q8õI-T¹Ø¨„q„Q	“\Ó¼V<Ö”»¡dËù}øî{È3™O'0UÙB~îI\wÁÇ\jŠ•GDë¶“ˆzêù‰mBäx.ùê;½d*^•Y¢*lqV´Äe£
+¿•ŒWÑêÛ¥¶µÓXxH-\4Û\İŞĞ¢K³\g?#/£P©h-Øş:Jƒ3Ö<±$]ÊKK+¸Ÿjı vˆ<+Zßá<æŞ	xÒá,½xÍÒ0Ÿc™¢px³œŸı-¤œCB%u:jRıNı
+ŠÍ‡	4¶Vköéé¿ÿÉó³¡b#=±º­¸T	G>íT»ğiº‘ºâá} ë÷úc[Q¸^íû¾ôÁÛÂ…tøíç€OŸ2„¾-Ú·—O´µc³åúÌ´nÜ·ÇHøïßÆó¡ÿE©¥_™R.Ğ\¤XQx		cäT¨4“^7>ê'Jn‚¾MdpGEi}®o“FâÅøyF˜6›°…­)\M	ÉÃĞYÄ(’àVÌÍn–F½…NŸ+u€7u¿½¯ÄêÖÂf]¤ÕŞ“8»:Hı&RŒ/mè;:O]ıÿj¶¡¥+ÉW¹_ßnÂQ~ÃïèfŠù¾ğ¤„'1Ë³íçOûËOôíÜ?ê 
+ËH<ï§‰ÙÌ‹;/óGâ}tMCÛê½èL¦Ç`0©;Şk#òDºŠÆ%¦¤DvÖî.ÁO"&õãÕP“ÇYY…CC'±Q8™4$2˜ºI1Øˆxà   g    „@.ªê“mëî™­ ˜•ÿhÎšX‰¸ú¡ã¯ãh4œa¸ëøèÌæwpŸ^lÙO |x_’ºW‘ !2¯†åû\,Ëåc£ûôŸ,x ÷N2ˆ~¹»»½ú?	î2qØÔ’o—¡ìËÄ]|VpÙß®%¿)Q`MÇ}ğ2õ×ÚÏíU±!ÒÒ3ÊlOÎ…\â)v‡+}Ÿ9 ús‘Àƒ9”¹#7Xÿ²å<#İUÉCë&†5«,íÿ¤áW»¯]«20E¦÷C¦Ã#´¥’¿ã©ÀWœÑ¼Ñ†Á»ÏnŸ^IÍ÷úÒœ¸@éfz!¯ÆæÔÖ™~‰Æ /Ëô]„v:œ0È&?6J=Ät>ánšçöà~®e¶æ5¸ÿSÁŠá|WøÔÜpù–.pÔmç×´ƒsåR³ãfÜxÛŠ<£ãIéö8D–¼MôÑJ–D	Â‚¤›†“K·A\ã°º|Ëê¡ğfp×ˆz\·“Rh‘°µ¶D‹è/ÊŸâ› ›5EÑÑÎÏÿAÕš3pşlLe—\¸yÒ¨ÕH]v*—CDm4ú$QDlPàÌ õkæ‡Á‰#¥z°»ûƒ8Úˆw‡7n>«—YTV‡_iXYåZ5ç;Ù¼İc-tYQ¬í&û©ÂhÆ÷Çf¼öyøÁÓÇk8©­©{æ8ett%t™¢’Wô²”j‡áƒã\Ùÿ%õ‘[½oä7'ÿ–İßLÕBA tâ½Ó§i£-sñI£KNâ Ûjµde–V£©/^{cÔ)tÑ!3¶Ó,/gØÏW]²úù$ÇèzŞV,¡twÒÙêòÜÜUYÙ®§­YbÂ¬X‰•ûÇ‹í¸±%µ|ÏÛÖssXÅ>\ŒÏy)¼3)7Æ%Ÿ™Êq´ìr-6ùHÅZ³i³Q?Åµ]/	çã$“ÁúEuïlÕLn	ì$ïZ°9Àf?S.tÜ(Ïî-¹¶©–x
+;"` S™+Dc°×Ÿ—”–†Ç¢±œ½°‡–´TÊw£¢ª“—)Ç¡§Ó¸óªvB>óüŒ<á|ÿ“°ûD!Ñq·±aÜ\µ½áœdD0Œ¦:àJu
+ÍÚ¿!ƒ'@º[ °D?sxHò‚Á=,Í™nLr‡6°¿‚wÌˆ¤M1z]‰sñ R6	¥=æÎ[ÍèµÉi×#n
+!ùá§0 mvpcNim†‰¾F£ÈÂğÁĞ®$“=ù¯0•ĞÀ6ëO|sªÿF("Xsºğ¯ñ'1LçªíZ¼²ÔkZ6ó°§Š–xÅAĞ_:ù_¯‘sÏ‡})ofë„ÜzKtøx¯—Ûc¯Q›—v¢pô8]—aE)çdö`$zÔ:Ø;(Ïy“ıN¦˜XŠ¡J­æüÊÍ„ñ¤cMÜª×`e[ ãõìğ”k2JX
+)Wµ³/rµÌ'=û×~~A±7¢"¢İO-qúìÂ6ìéZa®^åúÑ”*À´™Á,‡>nò}×ö|	‰{jY;Şr!	{ÏÉä`<õä±ÙâÄ²ë£^¢ÒÆ’"êz[ßk§ø Övn¬öB;z=>´ë¼·…W„Øt–sª'ãùáMùøv`Àº [ùõªĞíU¿zO&wÎãW÷uôâË‹Æ‡fØ#È—ÒãG×£‰‚nÎ"¥‚%ÅyÍ<ûì$-¶c>˜á”P©Ì8L¨)½“@ ^fÙ…ìÙV2Ëu™Á[M’0º±SúÎLÍ`Yó¥‡ø½;ÓÎ5¹6„k`h	€x<z®•Iå"»ÔdøLşYô¾7Ş:ÖÍ§:]G ¹óş‡ÖÏÄĞG0³6næ9ß+«´/Kµ›¡Á½LE8CÓ+‹ ºjƒdê1\¸¾%gqµ£)ëm—ø?Ûh¬k¸è4k=M@_¿îëi—Õ“Ù‚‡%™R²¾Ù ¡ée¾±Æ.&Øƒ±? êØı×ö\°ÃsšİUP¡N&qÅÅlqm&;›ğ^ñ!î‰°EwùÇÙ:MKdÖ $Éñ+1Á)û‰X-Ïî†iüíé®t²ÖÛkÄ–€a²)yı`è&w‚L5'„ü¤¡”Æ'Ï–æÆ´¹}°ög.ƒ2eh"È¿àDRòÜ¹úR²Ê÷7E]–© Y–` 
+ÁA;f2Xy÷_¢ÕwçÊhQ]Äf»È€ŒZ›Hªù3!’Uğ=pãÔªUo“>z¢¦†UØÿË&qåh/%ÂØr“FŸ:tªwr»v.ª(Cû9QÆÌÍ/*©…Ç|d™Ñp^úÁv9ù½ZeµG/µ±ÖH¤ë¯Â‚Q#)fÙœ†„´ğQÖĞ&¸‹Û¦ÃÓµÜ%N¨	,lt;a¶^lÆlF¥‚û,Q_lDš1ÎüØa‚ÜMé'?À¾…-2rC­z^ÒôÂl£ßB¬#lÕÿ3L½Î%¦’”IU²Ie©	úGÄeÜpŠ^½D®2QñÍ'Í£ğû±S*»ĞêßÈ©‰Lóş…–©¯àó\º{¢—#ÚIÜØsoe"wô½|¾¶Õ˜§ÑGIÂG`"¡©ICÈ6§ÙÈ,˜÷`w^G$Ş‹î@d,"ƒKßÎ0ldáYòHÂÏPáÃŸ’•òÿxŸC=X*LÊ‚­…ïşjáô¦ÍæÖÖPÑ…±²ççó·˜'ƒ±£jèó²ú)&/Å4>•a‡3kÆ¥7Ş±İRÃX9«³¬D‹ô¨à”¾0	:]æUvDLª¹TH»Rx¡»‚AÔIü;Õú;– E•²³1Ì¡À
+«÷Ì‡ Šx"x¯Lk9iWÍÉÚkéP>µ²™_KR9ï¼M§*ë9ç—üÆÍ£Ñ`²æiä©Òófxâ À/¡Œş© OV¶u=ä½5ü9¿¸ƒ¿/Ù7KÕåUÜXğŞÌŒ[)\ 9)x/>˜³½;¡øTiÔ•1Hâ_v]Šº® ŸÙ6øw,	¯àò‚îT×Æ•Îqn¦íß4AHlâqıä÷½ızkê­¨
+	Ë¨Î¥g!-Ù?Èë×îÙéÉHö0ƒ,5å±?V fô9){Ó9Ù¿áI¶l¹£ˆßïŠw§l‘iyĞ,¿§13®9¯fº°'áÔæ…lÆ…nŠHEe#É«Ø|×õRÓ0[º¢|>ˆrÿ6º¶F cLzÕÕiåjÔ¬çõ”@ÜØ\9ä2Å—Ï‘Ç±CøØ¢‰L&Ó“9Ez³şø¡y’í×ó1hjädËg×Ü†ˆû±|PO)F08NOÆìóÂ,…™<ö“¼±F$SY Ò1zÈ.û<çp‚ûŠ—Ë:¥ğâ
+‘ó¡T›†|±˜·ª*ª[iBœ[Ë?ú€ÒÿÛš¡QÅ`&<Òu)„nÙêb§SÂk>Ç~'Î¥µ]ÒÅÎ˜eçĞXUÏöé¤jlÔÏ¹g×ë*1B¤G '?ÖÔçıg–hPèCOrïpÚOuí½z±uåK+æ GH.,K=~(–±­•ç†ÉÆ#hæGh8ÏŞ·¦}‹Ô^şŠ§8dçß‰>üä¾â·£
+6î?¾`Š_ğì‚¾7Û‚ÊgU;|Ï^MãÌSÈ;½4àÖÆÛ ö€óN£2×@Lä˜ØÈÙfåx"M:8ÉåRCoë—İ‚yæÜ0Í&Ãøáşp-Îï—á&FG#ÎÖıxªëKØ@&‘•¸şŠn¬®²âì«ÉÛÓÅ"-‹[ÛÃâ­¿Ø#ø¾Š
+ÒX)”	ó)&@‡ Î°êO¨·Ô®¸ĞÀİ÷øÀy^Ô‚d]Àw%ŠØä ÏŸGĞW+#=n¥ÌÂÊã|]İ'±ç•D”‰ødL©ğÛ,à10‘€óÑCŸŠÕÂ+ÛÀ|åØ­ß«]ÚzÈG‘•“ÎöA»oUÇ-Fá‰~A‚Ô+/gü-C¥»qÑ±Ãò$Ñ6AI%¦g˜s:#l¥Ø=¦7ÔúÎbÍ7OƒkHÃ‹“`Ë¤éåqQ)¢c/âfn}D‡k_´½şÂñ«‘7P1=Ä,t&3Ë€±nÁSg„½–¾
+;(»Ó¾NÂ1Ù^ûà[®ÓônğéŒL>¿

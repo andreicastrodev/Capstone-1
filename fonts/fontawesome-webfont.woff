@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Backup and Restore MySQL/MariaDB Databases</title>
+
+    
+    
+
+    <link href="/dashboard/stylesheets/normalize.css" rel="stylesheet" type="text/css" /><link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="/dashboard/javascripts/modernizr.js" type="text/javascript"></script>
+
+
+    <link href="/dashboard/images/favicon.png" rel="icon" type="image/png" />
+
+
+  </head>
+
+  <body class="docs docs_backup-restore-mysql">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=277385395761685";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div class="contain-to-grid">
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/dashboard/index.html">Apache Friends</a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon">
+            <a href="#">
+              <span>Menu</span>
+            </a>
+          </li>
+        </ul>
+
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+              <li class=""><a href="/applications.html">Applications</a></li>
+              <li class=""><a href="/dashboard/faq.html">FAQs</a></li>
+              <li class="active"><a href="/dashboard/howto.html">HOW-TO Guides</a></li>
+              <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
+              <li class=""><a href="/phpmyadmin/">phpMyAdmin</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <div id="wrapper">
+      <div class="hero">
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>Documentation</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="sub-nav">
+      <li>
+<a class="pdf" target="_blank" href="/dashboard/docs/backup-restore-mysql.pdf">          Download PDF
+          <span>backup-restore-mysql.pdf</span>
+</a>      </li>
+    </ul>
+    <article class="asciidoctor">
+        <aside>
+          <h3>Contents</h3>
+          <ol class="sections">
+              <li><a href="/dashboard/docs/backup-restore-mysql.html#using_phpmyadmin">Using phpMyAdmin</a></li>
+              <li><a href="/dashboard/docs/backup-restore-mysql.html#using_command_line_tools">Using Command-Line Tools</a></li>
+          </ol>
+        </aside>
+      <h1>Backup and Restore MySQL/MariaDB Databases</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As you use XAMPP, you might find that you need to backup or restore a MySQL or MariaDB database. There are two easy ways to do this with XAMPP: using the browser-based phpMyAdmin tool or using MySQL/MariaDB&#8217;s command-line tools. This guide describes both options.</p>
+</div>
+<div class="paragraph">
+<p>This guide assumes that you already have a PHP application that uses a MySQL/MariaDB database deployed on XAMPP. The example application used in this guide is WordPress, although the steps outlined below will work for any application.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Remember that you can install WordPress quickly using the <a href="https://bitnami.com/stack/xampp#wordpress">Bitnami WordPress module for XAMPP</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_phpmyadmin">Using phpMyAdmin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>XAMPP includes <a href="http://www.phpmyadmin.net/">phpMyAdmin</a>, an open-source, browser-based tool for managing MySQL/MariaDB database servers. To backup a MySQL/MariaDB database using phpMyAdmin, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Browse to <a href="http://localhost/phpMyAdmin" class="bare">http://localhost/phpMyAdmin</a> or <a href="http://127.0.0.1/phpMyAdmin" class="bare">http://127.0.0.1/phpMyAdmin</a>. If required, log in using your database access credentials. On a fresh XAMPP installation without any changes, you can log in as <em>root</em> with a blank password.</p>
+</li>
+<li>
+<p>Select the database to be backed up from the list in the left navigation pane. In this case, we&#8217;re backing up the WordPress database, which is named <em>bitnami_wordpress</em>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image1.png" alt="image1">
+</div>
+</div>
+</li>
+<li>
+<p>Select the "Export" command in the top navigation bar.</p>
+</li>
+<li>
+<p>On the resulting page, select "Quick" as the export method and "SQL" as the output format. Click "Go" to proceed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image2.png" alt="image2">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>phpMyAdmin will export the database to a text file as a series of SQL statements. Once done, the browser will prompt you to download it to the desktop. This text file is your backup, so store it safely!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image3.png" alt="image3">
+</div>
+</div>
+<div class="paragraph">
+<p>At a later point, you may wish to restore the database. To restore the data to a fresh MySQL/MariaDB database using phpMyAdmin, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Browse to <a href="http://localhost/phpMyAdmin" class="bare">http://localhost/phpMyAdmin</a> or <a href="http://127.0.0.1/phpMyAdmin" class="bare">http://127.0.0.1/phpMyAdmin</a>. If required, log in using your database access credentials.</p>
+</li>
+<li>
+<p>Select the "New" command in the left navigation pane.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image4.png" alt="image4">
+</div>
+</div>
+</li>
+<li>
+<p>On the resulting page, enter a name for the new database (in this case, <em>myblog</em>). Select the collation "utf8_general_ci". Click "Create" to create the database.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image5.png" alt="image5">
+</div>
+</div>
+<div class="paragraph">
+<p>Once the database has been created, it will appear in the left navigation pane.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image6.png" alt="image6">
+</div>
+</div>
+</li>
+<li>
+<p>Select the new database from the left navigation pane. In the resulting page, select the "Import" command in the top navigation bar.</p>
+</li>
+<li>
+<p>Click the "Browse&#8230;&#8203;" button and select the backup file created earlier. Click "Go" to proceed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image7.png" alt="image7">
+</div>
+</div>
+<div class="paragraph">
+<p>phpMyAdmin will import the data from the backup file. Once complete, you will see a screen indicating the status of the import.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image8.png" alt="image8">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you browse the contents of the database, you should now see your original data.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image9.png" alt="image9">
+</div>
+</div>
+<div class="paragraph">
+<p>You should now update your application&#8217;s configuration and point it to your newly-created database. For example, with the Bitnami WordPress module, you will need to edit the <em>wp-config.php</em> file in the <em>apps\wordpress\htdocs\</em> subdirectory of your XAMPP installation directory. Within this file, you will need to update the <em>DB_NAME</em> constant to use the new database name.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image10.png" alt="image10">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, PHP (and therefore phpMyAdmin) is configured to only accept uploads up to 2 MB in size. If your database is larger than this, you need to modify the PHP configuration file to accept a larger upload size. To do this, edit the <em>php.ini</em> file in the <em>php\</em> subdirectory of your XAMPP installation directory and increase the values of the <em>post_max_size</em> and <em>upload_max_filesize</em> variables. Save your changes and restart Apache for the changes to take effect.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_command_line_tools">Using Command-Line Tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MySQL and MariaDB include two command-line tools that you can use to quickly backup and restore databases. The <em>mysqldump</em> tool is used to export the contents of a database to a text file, while the <em>mysql</em> client can be used to import data from a text file into a MySQL/MariaDB database.</p>
+</div>
+<div class="paragraph">
+<p>To backup a MySQL/MariaDB database from the command line, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Launch a new Windows command shell using the "Shell" button in the XAMPP control panel.</p>
+</li>
+<li>
+<p>Use the command below to export the contents of the selected database. In this example, we&#8217;re backing up the WordPress database, which is named <em>bitnami_wordpress</em>, to a file named <em>bitnami_wordpress.sql</em>. This text file is your backup, so store it safely!</p>
+<div class="literalblock">
+<div class="content">
+<pre>mysqldump --user=root --password="" bitnami_wordpress &gt; bitnami_wordpress.sql</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image11.png" alt="image11">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>At a later point, you may wish to restore the database. To restore the data to a fresh MySQL/MariaDB database from the command line, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Launch a new Windows command shell using the "Shell" button in the XAMPP control panel.</p>
+</li>
+<li>
+<p>Use the <em>mysql</em> client to create a new, empty database to hold your data. In this example, the new database is named <em>myblog</em>.</p>
+<div class="literalblock">
+<div class="content">
+<pre>mysql --user=root --password="" -e "CREATE DATABASE myblog"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Remember to use the correct database access credentials in the command. On a fresh XAMPP installation without any changes, you can usually log in as root with a blank password.</p>
+</div>
+</li>
+<li>
+<p>Use the <em>mysql</em> client to import the contents of the backup file into the new database.</p>
+<div class="literalblock">
+<div class="content">
+<pre>mysql --user=root --password="" --database=myblog &lt; bitnami_wordpress.sql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command-line client will now import the data from the backup file.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image12.png" alt="image12">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you browse the contents of the database, you should now see your original data.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image13.png" alt="image13">
+</div>
+</div>
+<div class="paragraph">
+<p>You should now update your application&#8217;s configuration and point it to your newly-created database. For example, with the Bitnami WordPress module, you will need to edit the <em>wp-config.php</em> file in the <em>apps\wordpress\htdocs\</em> subdirectory of your XAMPP installation directory. Within this file, you will need to update the <em>DB_NAME</em> constant to use the new database name.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/backup-restore-mysql/image14.png" alt="image14">
+</div>
+</div>
+</div>
+</div>
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    <footer>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <div class="large-8 columns">
+              <ul class="social">
+  <li class="twitter"><a href="https://twitter.com/apachefriends">Follow us on Twitter</a></li>
+  <li class="facebook"><a href="https://www.facebook.com/we.are.xampp">Like us on Facebook</a></li>
+  <li class="google"><a href="https://plus.google.com/+xampp/posts">Add us to your G+ Circles</a></li>
+</ul>
+
+              <ul class="inline-list">
+                <li><a href="https://www.apachefriends.org/blog.html">Blog</a></li>
+                <li><a href="https://www.apachefriends.org/privacy_policy.html">Privacy Policy</a></li>
+                <li>
+<a target="_blank" href="http://www.fastly.com/">                    CDN provided by
+                    <img width="48" data-2x="/dashboard/images/fastly-logo@2x.png" src="/dashboard/images/fastly-logo.png" />
+</a>                </li>
+              </ul>
+            </div>
+            <div class="large-4 columns">
+              <p class="text-right">Copyright (c) 2018, Apache Friends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/dashboard/javascripts/all.js" type="text/javascript"></script>
+  </body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ‰PNG
+
+   IHDR  X  ‚   ³I*_   gAMA  ¯È7Šé   tEXtSoftware Adobe ImageReadyqÉe< E“IDATxÚbÔé¾ã¬ÊıóÏ†Q0
+FÁ(£`ä€ b±Qäšà/1£`Œ‚Q0
+F&  ¦Ñ £`Œ‚Q0’@ V„£`Œ‚Q0
+F4  ¬¢7o\~÷ö1ÓÏo~üüÇÄÄğ÷ßFf+k'–ÑP£`Œ‚Q0l @ a¯Õ€µà¦-ÿçöQ²°eÿø•éßï¯Ü?Ïıùów´"£`Œ‚Q0œ @ ¡~ÿşıåË—,,ÿ¯]ûqğà§}‡øy¹D„…¸8ÁëJ‹K~²mÙœÙK7?úğ“Fûùáîİ§¿şğşİ9¹çÌı·£q6
+FÁ(£€Š  €Ğ+ÂöuN¹wç‰‘ ‡Ğû;wî:ıëÊ%†ûşüı÷ç?¬ü÷öüÄ	³?òikIıòô=ÙÖ_Û½jİşë¸d?>=×[XºıÁ'pÅ{µ*³`İñt”ßï.¼øùè’Q0
+FÁ(  €ĞÇ9üüÎêü„WP‰íîu•l\ÏŸùëók{`E­¬ÛÊ®éc Õõòüœ9›ß³G¤eó<Ü·ÿÌÃ§¯Şj[Z¿:³í¥°CA¼Õéµëo½}ûä3ojNìëC[ÿk¹©0Ş8råéÅMkw¿?¯¢Q#ôüàÊí·üüÔØlZsZŞ=ĞÇDñÿ?v]#…ë{3¨¸ßÜwŠ×È\…‹ëíÃ3«×ïd”wMö‘ß³dó÷¯~òëç%{?;¶vİ±;ò&aŠû—Ï>úò·ŸœGdàŸ«ÛVï¼¥ãé£Í÷æÈáëO^½V7·ûpaû#n“üT_†‡§®<,¨iãb+ttåŞ[ï_‹xYr]X²hñC)š`ÓÑ$2
+FÁ(Ã zƒİ[>îÊñÇÏîÔP¼(%°ÏHë—´àqŞ'À.áèĞè¯ßØ¤EE`š¾®¹˜Í8Ä_‹yıúõ×®œÚ{á—Ğü9ıÂŸŞqôñıC›¶ÿ–··à¼éÀá«gNß}óëÛËë§Ï¿Ñ47u°sWd»ÖÛ½ìíçG«7o=}äÀ/"¶Š@sÿşı!®n)É|÷âÍ;·7Òşùû—° ÿß?o÷,_qñÙƒ­ÛO¹y1]ÚµçöWiqáÏ¯nl_³åü¥]‡ïòDúŸß·óæÃ3Ó',{ıùÉº-[Î?¸ûÌwogÙ¥s–kz‡³_;pğÆµ%“g^şúà‡ßzô™¿ãí-^‹©˜YºZë¦Q0
+FÁ(ö  €Ğ{„ÿ3}xÍÉÁ§èì/şùóçûîrñœñråfeşúCXM‚U±i*±.:uØÍ:’‡á×ŸŸïß¾gÒĞUVûöæÀ«[?ÍìÍ5ôÿè‰}’SÑÑçüôò+¿´¼¡¥ĞßÃ7¿}gá`abú÷û×Ï?œ<¼<ßDøD9ÿ¼üÀ(ì¦%+rÛ|5]u~°»şÿû÷—]ÄÚ€kæÄn 4ƒ§Ïx±jñ'Ã—§¿üø'¯¨®£cğQFèçİÓÏŸ5pñ`9òôÍÛ¯ü²JÊÊ*
+’¢ÿ>¼ùÈ ä‘¬+'ötÿbk3MC=ÑGòªZZ2ß¼xù™Õ $ÈICñõ¡jZš&JÜ»ıfãçgM£`Œ‚Q0ì@ ¡÷½|{şÚ~~î#ÇÏ¼ÿğùç÷¿ÇÎÜ:ù©±½µµ-333D™¦W¬Û•ê’–Ööşc9|ƒtvw5µÎ? g$Éı›‰™‘‘ƒƒ‘…‹“““ãÿçË:kgíkeåik&½{A÷äåÇ™9dd%Îí^|ñ»¢—9ÿŞUv¸ò‡…ƒ¶0•‰…•™EÃÄ\VH\×Ü˜ãÿvN.¶7NûôŸ•“•\13srppó2ü}sáäµŸ,œÚzF?.®¨íœuãå7ASgşk6ì8~é#3°KËÆr33« Š·—öÕíÛ¶ì?öæ;û†¬\ì¼¼ò<ÿ®.Zy|4}Œ‚Q0
+FÁ° Ø«{–†8à—4÷’·&­¦±uqñcø\ÄNn®®:•~	]G'A)*86—4 ïr¹K´"~ÉoûÏ3ıáÑöÏ£ñnÿ÷¾¸¼¾¹»_]ò_¶·6Ÿ&eàÀ±†’•iL°+2êŒNİ„)¸CÀ¹Ä&.¹Ddz:mìî¬¹¾ï g4–Ğ	\b5Ÿe¨ºzAãDa¯ç[@30Z,n¥„(!PkÑ¬!\åÑüİñ|ÇF‚—Ø$’3€LeôMu»Ş×1ö?^oF'ë5£IRÂvØ±¿›g?©¤©4ò
+÷–ı–¦clŒÄ”yúÊP?ğši4ÿíS ¡òóñqsÿüÍ ¡¬üòÙA!‘¯_¾jª«aéK²°‰ËÈÃ+TaI¨‰lC98A•˜Ç.©¤$/#- ÀQ"Sì˜‰ˆAªaN)9t+˜Ù8 ]Pp½3™WJš—É
+VN‡[X†Dÿşô`Å¬yïı0‹Tc™,)‹b2Š.Q)9Q$YvN83¨$Ïhò£`Œ‚á ½G8<À¿ÿÁ`4‚GÁ(£`à 4<‰ab=CuŒ‚Q0
+FQ  €F+ŒQ0
+FÁ(# ĞhE8
+FÁ(£`D€ ­GÁ(£`Œh @£á(£`Œ‚ h´"£`Œ‚Q0¢@ V„£`Œ‚Q0
+F4  ¬á«	YñaQ±%]óÎÚ½ùğ…“›æ/Ş|•xC¿==]PTıàŠàÿ?_Ÿ=yÃÀğ}ÏÒÇî!Ã­®lï\¸é/õâÄ´e+¶-[~øöGò¼ıúú¶‰}ë¿˜wÌèÛpü\êÍ­zÖ~M£`Œ‚Q02 @ a­?¼úÎS<mqOY’‘•½¯­îûÇ×î¿]
+øêñÃg¯×açíyşğş“· 5à—WO?óìÎ®ŠÜºÓoÙ\B#LåxşşªyñT“ıûõëó‡×^¼ù‹×XIGÏ¼b`¸päô×¿¢îQ‘J|ÿÿüzöàÁ«w?ÿúúdÔŸ¿¿şügøÿëç<FıøüâŞ³gÿ@LÆ×ï?ûğÈzöğÁûo¾¿¼uÿÉ/ Q?¾<}üìëß£©dŒ‚Q0
+†1  ¬êÙÿ¼y´¤¿û¡µ•Çã—Ùµ¹„y9XïXÜ;ÿ#ŸDlCƒ¥03n3Ÿ_¸Å–ß–zdã±ŸÎjoÎoì´[[OëË•sÇöœ:úàìVï4á‹³fï~ÊÌÎÒÒöz~õª[ {xMÓz½”q,ld*±àÄùç?Ÿ>·NØÖYóÍ>UñşšÙ[®	ª*I|”±Ë‘:Ûºà}`“ç»9ÇøJâlq™ÄÆÁöäôöi39„X?8óĞÅ—åâºISÖ]âU1ôsä½ºkÖ´i§D$¾ş•í¯
+bM)£`Œ‚Q0L@ aíşcbå–QRScüóåË·ÿ™X9ÿ¿^µrÕSF¶?_>¼ó‰Ïì;|ëù¯'Ÿ.œØuúÁ³uó·—t·–…‡8¹º…gzÚ}ÿòùÛ‹‹›}([:·>D÷À¾İ/¿0™†Wt•¹İ8tè'>×²›Û˜Ü<°åéW-ŞOŸ¿ııxkñª-?¹ß¾{ÂÈ(pçĞá¯?~}}ëÖ³"rxú÷ï?'¿˜¢²ŠŠŠ’¸ ë—»‹VlüÆÏõşıã?³°1}ûòQHÓcâŒ"Ïw:¡£`Œ‚Q0
+†)  ¬=Â_ÿøìüüÍn½ŞşãÇïÿß¿12	p‰é›„äúéñòâ6ğ×ú-{™¹åî>~-Åós×¡óê|÷Î^~#iÊúïÿ§ÏŸüşò‡ñ'#ßŸ¯·.>á¾ûF\G“ñ6ƒˆ(+óOĞ€&;nÓµ¬:[¼ÿû¯f`øö÷;3›”¦wJ¸•2ï·ûe©\fäóÌ)9-5+V·ÿşÁ§¢áábÏËğ÷Á®=?ÿ1	ñH*x&ÅÙ«¿»¹üä…ïLŒ?¾¼wõø»ßbÂ£édŒ‚Q0
+†-  f“°b-^´şÒ—×•ôu…ØşşøÎÀ.¡$ÉÇ!¤ä­vdÕÒM§®‹«Ê	sà¨?ß{ù-8µĞÍÊÈŞHöñ[–È(ûsKl½tOÇ2˜ãÍŞS/¹M¤ÅÅ´]Ù–NšıRØ4#ÊçÿÛwBÊºÒÜ~1ŠéèÈáueàæfúÅfèä¬"ÆñãıGQMOsMóïºúÌĞÖNøïU{g-)–?Êæ
+xÌù÷ëÇï¿"Úz
+,ÿ¿¿ÿ ¤fïc#¸yşÂİ×*)kÉˆIóü}ytÿ©‹:EYÊŞC1
+FÁ(Ã Ğğ¼}‚rpdIõæ·6ù£A1
+FÁ(Ã Ëh`j!¡ßÅFÃaŒ‚Q0
+†=  ÑŠ;S1­GÁ(£`$ € bùşãûïÏ¯?üø?HDü]ºÿ‡~è(Ï‚Q0
+FÁà ÄòıûÏç/ü9XôëÃ?"¶°331°ñãá€uÛ¯¿ÿ‰¨âX™˜GÓê(£`Ğ ‹ €œÊ`Y,óûÃú» J±ÿï?¨bTÚAÿø3Ã¾'|ìøêB`8|ûÃ ÂÏ`.1šVGÁ(£€&  €h8GxãÆ...999âµ k8†Ò<úI@É_¾ÿqñâ¸øŸ?>}öçï_&FFxMd³°°Š‹‹³° ì§øùóç×¯_‘E¸¹¹ÙÙÑ71~şüù×¯ßŒ0™˜ùøø˜˜Ğ{£Ç722BÖşäÙ·OŸııÿØÁydÀ5%^6Øäafábøƒ»´öã†Œ/<üøõ‡ººúh’£`Œê€ Â^Ş}ş‘EV˜›#NŸ>¬í€5šø§OŸpiùöíÛÛoe%e1»~Œ c_™˜poüó¤ìï¿¿oß¾AqÉ™sŸ>ãääúûş313=~úêóç/Ş.6††úÈŠ>|øë×O`-¬o~üø	¬óttt899ó¿7o^âWdŒŒLLoŞ~æåTSCß­ÿöíÛ¨Cº3¬ÛûÊHU›‹™—‹õçÏÀ*ùñËo»4Tå¸à5ú_ gYqÖù î/°Îşüyô$ğQ0
+FÁ( >  ,áÕGï²–\ÌuV"²"Ü²e‹€€@LLŒ¨¨(²8333#~ÛíK^MËz˜h+£şãÏwNYAD_X~xùâË‡WLØ+CF9UFV`ÍÄÌŒâşwïßkj¨IHH ëÈÿÀ
+„Ô3û÷ÿşƒ‡oß¿Ãèl1ëo>>~hİüõÛ¹³çN:eff¯U)§‚’lµ
+ÛŸ¿îİ{ôãÇw===4Ï¢‡,++;‡†ºD´·šôÏ÷_Øöœü·cÿƒÿ£õù^Ü½ıç÷`5‹^	şûÇÁÍË"ª î‰2avCá}Ö[·n;‹ÀJWııûØgÖÖÀ.)„khh(++‹UñÅ‹¿ÿìjÀ&‹¹¹9V«oß¾}ïŞ='{—kŸüüõÃLÆ}4;‚Q0
+†"  ôŠğâ½×5»Ÿ¼VxûöÓ‹7Ÿ¾ıú¬Px¸Ø%¹àj~ıúõøñãÿ` ,"$;;ûš5kÂÃÃ…„„ğXöçûÛ'–zò`èéÿZŸ—¿œòêLÒ—_¬¾2{ÄMjXØ¡å8°v{~÷Ê×OÕÀğ )°¶øõûÏÃÇ/€U£ /¯¨#› ¦ùììl_¿ü¸víŞŸ?¿…DD~ÿûÏÊÌÄÇË%#!rï>zw
+ÔûûÿÕ»3ïMºöã¢—ƒ»„ÿ»7oß½{'--Pö÷/¨>d VêËÊğr0?~üùïßÌÌø–ë0ışÌòã-‹âÕÏV¬<—‘`/ÀöüÃÇLŒ’Èİ_ ÷^:ÎÍÁÉ«lX˜™_¼y÷şÃgÆÿòŠÀ¾¶ş(|ñâÅ¾}û<xàééÉÅÅ…U°¦,//g -÷ûÏŸ?ÀêÍÛÛ»··«âÅ‹?{öÌÔÔtİºu/_¾400@î%ÃÁÖ­[·oß®£¢¿ıóÊï—Õşœí¬:š£FÁ(C JExáŞëÚˆ«³0±ÎzñbÖú7?şşöõ»•(cOš„ ´4ÜÀ°”V„À²uÙ²eQQQxêÂoîñğ<WüiÊÄEè*#'ãIcÁwŸDÿ#®`úªYÿ1±ÿaÏ,ºÁU.‹¬œ<°ÛôıË;PGÛ$"#ãçÏ_tu´ŞúòæõÛŸ¿şòrsÜzöRDˆ³ÇÆÄÈôñã§Ö§•ï¿|pr;úeç/‰8FÔáZ ]o^½¹ÿğ)È£/9ÙØ-…î|zúïÿf¼!ËøïÓ¿¯ÿşü¹ú€[RÁQ€ŸûÒ•½¿s31şCö)È%,lÙà=ÂÿED$xù„şşùığÒX ÅÄÄ¾~ıº~ıúàà``¤`ªöğ€AÈÏÏlÄ »ƒÀú(‚Ë@`ÏRPPØP 2~üøñÇ„-°sÉÇÇl$p°²rÊHôÜ¯ab`uTÍT£`Œ‚¡ Q^{ô®tËƒ7’jÿØ8YXY>°)¾{ÿãÃçß^ışöóxEøæÍaaa`Õ©B °„J­\¹2))	sÉ	¬Ügæä±äå:ıéÙ÷GßãìôÔäÿù}ıÊ£ß?³q îªŠ<|ü·î=–—áæâba`ûõ÷;3Ó;À¢üVóX™ŸıüÇ,§ ùÿç·ßXYYyx¸>{ÊÁÎ‚ásÖN¿úùlšîR	))Ÿ7Õ/Ò4?ëŠ!øØ…âççUW•gfbâøııß»ß®mü>•ı¿…¾Á@F†¿L¿~übâ÷äZµvÛ…{<ì¬Œÿ¡vLÿss±«*J33²131ÿş÷óÛŸO¾ÒÓ”ûóë×ıçoî¯ V„ÀZXu=ş|×®]~~~˜j€‘ìk5`õÆZ=Ä#Å
+€ÑlÜü-óö‡ÿâßÊ[?LLŒşÿøø‹M€¿óB‰¼€ª’°öh¾£`! @ˆÒ‹MEŒû77ë£¬À:çë/†OŸ¾æøıíß_ÿQK@H‡€€%&xiå/`ØEÀì{!4şgø÷óûæW×6~¾şC]Wƒ•áË3V`é××ÿÈı°ÿì¬,¢’’÷>²ıùıXW]MBBhÁõn/ù1néo_>ÿøû_½ğç7ëÏŸÿÁ‹HYX˜ÙÙ9À‹HÑëPÿŸA†GRBXêáËû{^lzôê£ #JÌ|ÿşÃı„¸%>İyFl3++£×¢Wıÿşı±’ğÆå¦ÿ˜ÿ½üòí°ãÃ‡wöœúÄ&äòõÉa ûĞœ!ÀÇkca²ëşª_¿|c¿|ûøñ«?œ’Œÿ¿|#¸«XQ»wÜÜÜÀG›¹Døãÿ`h@jA`ÃwŒ8×ç0@Ô I`#àçÏŸ¸TÍ* ÊıùıßO&ñ@Y•ÑL5
+FÁ(Z  €#o2"<MîòæŸ;":¬ß<ÿİ÷ç}ã+ùİAöŸ¶$§´báŒ’’°/ÈËËìo–fşÿ,…U ˆˆHPP®°â¹|ÿñ‘«Jş%+é ù¿¾ÿùûó?h4’­o÷ÿ×¯ŸÿÿıŠÿûÍ0÷F÷¢S¾ûñÿ÷?`ÎˆcŸ!PôÏ¶_Å|`bdbgöâ˜ıú™gDSüıÏ7u¶œó¯Lıóõwû‹ŞË_ïİz}MĞ‚\j²ŠrÜ²¬wß¼|÷ï— ¯'ãóïğ…ìÿÌÿ^üúıãù›ŸçnÿãRşöóÏŸß_€=ET73ëB†ßO>?ì¾Qyáù	Æ¿Ìàzë×ïß¿şq¸ P;°ºúøñ£···‚‚®º¨ti] –¸Mş@•À$°Ï‡khô€Ìùõ‡éÿ»vìö¹–m¬Ìì£™jŒ‚Q0´ @ ¡TZ¢‚ÜE6R=9ÿ’1F•#ÀLXvûjì¬Ì\HC‹&&&’ØY²d	'''°;‚uU¢RùóWA˜»NÄ’‹ƒí/Ã¿_¿ÿıÿ÷Ÿ™‰‰½¢bUšL¿ÿ‚¶,ügüo)æ|ìåNæÿŒ,L˜«+‘Šæ¿¢¢Â_¿ı|ğìí£¿¬lLb?|şúçÛ÷/hŠ¿|ù"&§˜/T»úş’?L:•»™şI¾“ûüí³ƒ8¼Óóóç÷/_>Ş»wŸ[„ñ‘Dgç›µ·w¸‹g+dáë¨1üabøıã÷W+ÉÛ÷=úğûß¿¿Àš­gêr13°2³XÙËò*şúüXWıùò9~ [$222¶¶¶ŠŠŠ¸Ô¨¨¨dee½~ıÒÖs...¸»•Ÿ>}¶rLMMõ+U™±±1°Ôú­Ã'ÂnVÇÂÌ:š£FÁ(C zïM\«ÆYºríunq6V ÂÚ½ öÿà\`WC@@ ³ÄìIüùıëóÛWÿYÙß¼ö#şşMAé§Ï¾Éıÿ‡d>Ãï_?¿}xÁËÈûöóû'OïI‰Š§	6|zşùá‡»ß¿å•`€,—A³XdùòYLDøÇŸ¿]oYxX™J=xşò• ?¿ˆ0úíºïß¿¿ğñ£¬´¬/OØ¯Ï?˜Œ889O?:Í©„¼i„ñÎ{âÂ|<lÿş½Ò’ggş¯øı› Ş£4üıöíëÇOï^=»òêµ@zåó/ŸıáüöïıCd•Œà}ß¾~¾÷–ê#=n[ ß|øøõÓ{–oşıı4„‹ÖIÆ$$$âââğG3°ËMdšğ÷÷Gc`` dñ§f¤Q0
+FÁĞ „¥äaï×ıûŸØsƒ‚‚„„„0û‚ÀÎÚ|¡€¨òïïQÁı†A+1€}8`ïDL„‰ƒºwâ×†o¿8¥5¿y¬†ù”õo|úwíã{V&á¿ÿşüûÿ‘Y@•Ÿ›ÿ×P?’¥bei~áÒå×ï@ËJ{¹AÛùÿ³ñ*só°²²èé ¯àĞÑÑ¹sçÎ›÷oQ\($ˆ<ºÈÆÆ¢«gòìõW&& ïx¡ÇÃü—´Ñ2Gk"°±±¡õŞ#mœmY@‡„;‚"LÌâŒÀZßJXT^³ıüÇğ‡‘‰YRgÿÏ¬ÌÀªúÿßÿŸİl>ƒ?AÄÀ.¥RóÔóÆ3ù:
+FÁ(£€l @ŒIËÌúøe¼	¼¼´… ì‡aÎ9AÆß a} ÿŒL¬Ì,Î#dbıø¬a€%şÁÇ¿şşgeae—ûŒØºB¿~ıâfùo+óÿ×¯ßÀÙRvvv¬ƒ‰?ıBv!ĞI@@—£õäàsiğZƒƒs|2†æ$ ip•@\œ˜æÁ×oß.aawâ3hë=ÚÑ2_ÿÿ÷íÇoUAFMÁß¿ş2`5pŒ‚Q0
+F%  €ãß™áÍM‹k˜ µ©7;qİÈÕ@+IÅ@†K@=ZfÂ·O@V ıùŞ<9Z‚Q0
+Fµ@ F/9¹¸~2şrNç-búÜ`4
+FÁ(£€  €X@ÇH²0³°ŒŞwGM Şc÷‡´ƒi44FÁ(£`0€ bùúõÛı;ŸŞÿ7T¬øùEE„¾~ıúóçO&ÆÑFÆ(£`^ @,W¯ßº-ÁÂ+"şçh£7#3xG<#ÊŞ¾ÿÖ£áEøõë÷•k·¢Bı/]¼¸~Ã`€2Ö…£`Œ‚Q0X@ –th‹HÉCøşüúğş%+ë¿?¿ÿışù÷?h1Ç&611<GÆŒd l4lØ²óï¿ÿÿııö—MÎÀtDÎ(£`Œ‚A	 ½n»~õÜ•+O^½âã‘dù:óÿß/ml]DDDGÃ‹DğŸ•“G íB€tG{Ú£`Œ‚Q0p  €Ğ+B6ö¿ç.0÷ô°XxõôòıEöõßN¤“_~}¸¿xÚŒ³¯X<£Ó|MåÉ¬"şşşı—‘G/óÇíşm®Ii:R Å¡WÖMßóG'/Ì–ö+Oşÿşù‹‰•vÕàï}Û61
+~ÁâhCÌ:Õ÷OÏŞ>õv•¨Oıïÿÿ8tØ8äNÇÑ´8
+FÁ( Q³|üøqõŠõ—Î_—’æ`àxs÷şã{·ş}}ÇğûøâxAıéZWC3£aBeN(ëÉ´øñé•­m«àıû÷ÍŞ9}Ó÷] ótôtlÚwù/=äÕôòúƒ 7%}¹¹e÷•_b¶í=õ“8ı__½qê4+³§AÇêüûÇÈÆğŸùß÷oß ÷B`ï42±°±s²²—fbaef‰£`Œ’@ !Š×/Ÿ¾œ{~Xœ[QÁÌØøÇ»OoNŸ~%*!øõûOcÅğ>Íå½;>J{ÖxjÙ²^nhœsçã—Ô._é«“'ïûòû§ºÈ»3‡	´L®¹bÂ®Û½x\Ö¥üxÓ¹?VQ®ógî}ıèèâå]-ÜO÷.8,næèÈ3§j‘°o\qŒÃÿïÿµ,­ßŸ=ú(Æ’áÀ.]kS1‰ïî/›Øvş›nkCäá¾şão?>ûÀVÙÓ¯ğrgß¼Ÿ„İú«ÂÍk]tê%3Ÿ_^™ú‡½ıóº»­¸õİï×lJ–’_¯ì¿ÍPÑ=Áàç‘‰k¿p¨Æ•8i™uõ÷§/ÜúÙÁR›Ö/ÙÆªlÒšÊÇÆpæÀUUë	ãlĞk>ßİİÜ¶âÅ?†Àœş@c†eİÍ;¯~ˆ,Ÿ öfã¤U»E“âÌøØØÿãîöÿx¸UäEXÿ0ı¿}÷Ù»×ß 7;bÔo¬Œ¿^İ¼t‡…_VFQŠñÏ?ìu%Ó¿Ooÿáàşÿotğ(£`  QòşûûßÜMSZ]üØ¡­Ì÷ÊŠ\ùÿûã½ÛÏ®^y :6v÷ó×nv¸®Msæ3X¥-Tv{ë”S÷\zÂVÖQøp÷:í”îxÕÏ›Ÿ¾uû
+“vhw¾ÛÑMK®=~şğÕg†o\gêã‘hÍÙÖ4ùéïoÇo;yâì>µ”Ğén?Y´ìŒ®;~ìÖ#[+ÖßxxX¹¹îìß¸ÿæÃK7îX%Ö¥éÿ[·û‚ ¨#Ëßó;6ï:½kÛö¾]b?ïÜvyJ÷ôß¿Ÿ:ºıÄ©‹ü+h¯xyptXS¶	Ëîƒ{–Ìš~ğÎûÇwîÚwúüÃw‰µF_/^föñÎM‰áÜöãÙ‹ÿRÂ¼HÃÂß–N]*İ0³2ìäæiëçÌ;Çh1ÁlMn.¾??ßÚ¸ñöw6&ü}Áÿ¬Lzò¯ŸÜ;°÷è¹³·UT¤D8?~|ÇÄ„z¬#3ëÿwg7.½|ãÂİKÇß~eaçàäâáeafbbagçâáàâff\ÇÆÎöóÓÛo?~322³qñrrq12şgf)õ,~vĞ¹¬£°£`Œ‚Q€ Qf3³3‰½7¹wì¿ Ka±ƒ¢ÒG›G±ÏÓÃ23şa†İ°£m¨ùøÌ²£Ï@µÂ§¯/¿ÿ–É,Œl\Ü\ì,êÚb|Òª¢
+ÂÜ¢¢Œï¿± û2rr,™8¹ÙÿúõûİÛ—€şÿÃüŸ‘áï_×„¢S{Íe¸ùE¹ uÀ¿¯ş™Øú_Vzğ§™ƒ1×ÿWLñAÆ9Ä^ãï¯Ÿüü’
+ªâBb¢üïnôö,—w°Sùõë3+ËŸßØ…crçMí³‘ã’TV•à•VU“àbşğåë_6}°¾)s’le¹y%%D…Åø¹ş}úù‡ù/#$XX9Xşıúûû?èJDÈ²OĞ¤Ğ¿¬l\<Üìÿÿÿada)ıvµsò‡È8m1öŸ@{ğ¯ı/$&ğùı»«×ŸpHCâÙ‹BRb¬ìl~ÿB9j†‘™ùÏÛÛ_j»fûGDˆqüy}ûğ¾µ«~øüùÙ•ó{ÖŞ³éõ7fo]½ø—Kˆ›è˜Ï—wÎİ³sÛ÷ÿœŸîİ·fåãw_¾»qxí´³Wî20±¦øQ0
+FÁ(@ Ä,f‘`)ÁÅ+ğüõÛ³7ïJÊÉşad{óá«˜ØİÇOıúáãæ ¯ """™ÄbVUâ>¹}êæû…yªí5uÑÆS–Q%æB¯î<ç³´”½qæ–Š½Óã›?„•˜œŞ¼sûÁ‹O¼âë<õ×.š¾úØma]/ó£k¦<qÑù³töªßÊK
+ıø!`b¡ìşûùöÚ¥OvÁÌo^«yø«üuï¯¾>÷M;Şıâ5wµø÷à•¬¥5Û‹›¹4^lÛqâ?§¨OD4çÍõ+w<¾ÿAÛ7ŞGõûòÙ«?x#+)òó¯™•òí³×å¬l9_ßxÉ¬æ)·sáòİg¯óJI3½ı«í`úáÚ%vUg™¯Gçí¿ïjgÎÁÂÄúıÒ¾»<:ç.İ|pïcåÅÕ}ÖyàWæë©xyå¬é+vñ©Ûñ}8»ãĞu~)Uc#y¦W~‹ò)ÉÉ>{úäÚ­‚²Z(‹eşK
+2üúöîõ7v.F†ÿœ|lœü|÷oÜãäàbfAêşÿ÷CXR”åäŠî‡¿¤yŸm·øÓçg?ıüûhïÅâlî¾UâytêÂ¯OÎ¿ø%ôåÊÆ;ï¹äU¸şßß¹pé‡//¿zóêÖáW¿¤µuµ¹8ÙGT§pt	Ò(£€ @Œ:ÅöˆHÉŸ¹tmÑÚÍFêò‡Ÿ25·xşàî»ŸÿÙş×—æğññcŒïıùûXj3Š›¿@63ÖÁoS‹r9ü“íe`eÓß¿ ëu™ ıF&&Æ ;™@7ÜwTZd‰¡è&ğZ‘_?½{t®¦jvÔ¤9.²œà5),8LşÿäffTaÎ2¿ßoï^æ–Zb,ÉşçÏoF&Ğ™iÀ Pø~%‹şüZìBşÿûï?Ä}„¾.§O_½å€¢e0òö	á,ÿŒ¬µŞŞğâÙûÂ²ÒŸ?¼ÿø7+êîû¿ÿXx…yşŞ_6¥—KNõş•ÛÚ6übÒ?/lÿ¢í¬ÿkÇºİÌ:—V¾åÑ~í¸fr‹¹$ÿ½#½W7rvávv¹ÿÜ½vö¿¸¹™‰!Ó¿Ÿ#¡røùû/##ÇèÎ×Q0
+Fa @,ÈÍçß¿~^¿ÿ„›Oğöİ{?üúùë'f-È º§‰¾°ƒ‘¥ƒf¾–±«¢â*†—óĞÚh3‘Gr2a¯n•(¤fı¸eN×¶³ïc³d9	šÌÈÈÄÊ‚)Íˆ¨i9rŠ3Nù„…¦‹É¿L,P™™‰Z´	4üË—7®Ü•Tä•}ÿáçÃ‡¯ù=åúì½ ¿0°.„ve˜XXÿ<?½yõÇŸ?>3‰éhh¾ıàûç?ÂÒ,?ÿüúù•Y@]€õÙÉËbÖáR×O}ş%(¡¦)xbvûkcu]ikß?ÿ`ş÷ÿÇ—÷_|263aú?Ìû„À ¶H4å„„ù8Í4$şv
+GÁ(„ @ !*Be…üäXFÈ½?ÿB:z<<\”™ÏæOÇş-H~kUMäå¢º3ùxxŸŞ{ùôş«¿L¬¿¿ááøÏ)"ğû3çŸ¿Xà;%ş&PåÕ¿|§lb¦*/"ÊÍw÷öÃ¿¿XTlcş²	~ûö_Ã1AÂ’“õÓ/ë(6Q!Á8®ãŸ˜9Ø…=bXoİ| ìÅ220
+kyj²ıÿño¸×‚¿şüs2”5×”ÍÛ£`Œ"@ öÎaÃMQÚ¦vğbQhŠ‚bİüİv°¿Fl)ùjÎ8éØYòü„ã¸—g¸»o†Ï¶I—Y#„(Š{š2JiY>Ë!®”İ1ÆŒ¢ØúhU=ı Ğ`@õ«Èïù0
+Óó|×koîÏöùòZjğI%‡q`£¤¦kd>…7—#G“]¾8@«ZÀ4ÃZr­÷×«†Öÿ®§•A×c‡£;oDò$ÊÃGß¿{÷û×ï'»¸¸¾xñ’´"$@¶
+ »›Œß¿}}ûúûÿÿÿ8Øy™Y˜Q–x02 «@È###Ã¿??şAÚÙÏ¬ıûRöïdò?°Æ„Ö¢HŠ¡s”Ãºüùû¯¦¼ğh-8
+FÁ(  Éáù³çØØ9xx¸Å%$¯\¹òãÇß¿ÑÒüníäîu§ÕÍŠò‚1jÈÿ^¼`äåç$lõÙõgl:öúåwuÃÌ‚JsyL5/¯n]µï_j®/Ç _Ğ	k`€Uöï_Ği9l°Z|Ûè´9 XËñ²†Ã(£€T @èµÑ?ğ¹$ş
+2¹òáÃ;yy¹Ó§O[[Û\¹öøïÔÆËC½+ï6¯X$ôêŞ—×?øD¥üÿ¯ßq0ızõæ‹€Ãü†’¿U%Ú??½ıé·˜„(+ãßŸß¿}úñODõÅ«OüÂbÜl å(Æù­µKŠwt6ª±1|xùì;#»¸˜0ĞA_ß½~ÿı¯Œ´ÄÏO¯ß9ôı‹Ç¿ØÄ„xO·ç?èZ+F6VæÿLÄŸöÂ<š(É	êÿÿ99XM‡`wØdeeÁ!‘ÆFïS®Q @èá†.^¼XWWÇÌÌ<şü>#+ĞÓÓ;şÜ‰'”U5Õ¤>?İùÿÕk„
+qm;3&ç”&›ßøÛ©=œ{[ßš;üÌo¯İıjïm~áôÅ;Cşm5÷ÂƒyÉ–oºù—óïsNö‡îó{ÏíK‡¬4eaaç`ââbcxrpFıŒÓÿÙ¾[Ç÷F«_«®\ö‰á£¢SiŒ¯×c»æ-]tÀ,8=9ĞzğlÿıçŸ´O¶ŸÎŸ£×0Ñp°±ıW¯^İ¹sgll¬¨è ½ÚåóçÏlllììƒ®«ıåËú}úô‰››{ßF÷íhf„‹‹køåî?ş|ıú•ŸŸŸ†z¤š™™­Y³¦³³SVVvõêÕMMMh
+XYXşıı÷ë×/eÍÿÏgh|YøøıS†<$%"é•GW´4ÖO	u4|zvë‘×ÆF†OÎnÕ°ñ2ø}è$ol
+Ó½‹İ¶2•¾vù–úÛ/z>¥áÒ›óp®˜;»&¡öük[xÉÀÈÌÉğsÉš“n­“ƒÎ¶,_°øìOñàÌ	şŠíUíÄÌ9˜ÿ|ıøYT×İßÁ`Pl¿0ï§çdİĞ6
+ĞÁ…öìÙãää´eËwww))©ÁÙœcõôwØ 
+4Gãîà?š¤@è»èddd&Mštùòe`w°££X/¢)ø÷ÿ?++°‘Èğ÷;£\Äû÷Š–(*Ş?:{ç™{ÛûÂ*†·Ö/ØzWÅÒ.­°JèÊ¤Ü[ş±ü~úô·Œ¬abiWgªçÆÿbòB,ÌüÒ<œ,ìœ!¶}ÿùşïûv~ÖÿÏ¯=º÷!›°¬”óÛ[Ï_Ü¾ñ‹U\HàÇ«¯¿]B‹B%¯¦–u¼íz‚!’«ïÜ¹addäèèxãÆAëÔA;8:P9¢ #ĞÈp€ ÂÒSéééùòå‹ºº:¦ìïß¿ÙÙØYYYÿ3r~¹2QN—áûã.Í`„
+A®›s&M¹õÚ4 Ï\SõƒÏI5®ßëçL<úV#"Å]éÙïö­kJ“ì¦N¨®Ğ76ubäàdT57bö9¬ì¤¹a5›”•1Ğ•±¥-m“§p)¥—•jó?zÔ2©®‡)¢¨Î˜óÒóß×ö-š{øGXP´èh×k‘\İòª   ''7:5
+FÁ@€ ìWKOQæ±ğo° ìPIÓ#‰eDKÓ˜ °ƒMxD(á¥!NB ¤<l§3;3™v::Wï<:§K5E*†¸ĞouÎÉw¿ûåœ{·«;²!åi¿c H:Çb1œâ³»Ï¸ù®Ó…;W‘ä`j|òˆ3ü	ã¼]ß @FEK‘¬¹¾«Ëh²XåB:M‚ZM 2ŒÔˆM9‡Q\5ˆª:+j¶ïU¾$?×GÅ`œ¡q”2™ÁHÖùYÓe2I’/ù~Ca’W$‚Jæ%ÅV1œ(·ºñ ¥‡û‰cÂrZÕjKdyõÂÄà9¾ÈD^i^—§	FÔ/È†sÊu=øú°gÅú«cT6¼ß‹}24÷î¤ş,á™™-Ëÿë¡ªªe5[–§Şí…¯²*ĞŸ6—ŞŸµV,í\Lß$ç—s•Ó4-X±fÊ,>ŒÏÑÀ9Ï‹nÓs"÷CåfP%Xífz¼öúş@èÅôªh[²Pj·ÇÄL·ökÙ“ÍÙGúûzzÃ#Ï?RàMßğ=«BÓë	®£“:õjbø^8yùF´ÛS¼2>M
+ö_yŠÁ,Á-‰@$_ù.**~ÿşƒ×¯ß	r)ß~ÄÀ*dˆCíßÛWoi¸™Âûw#üyp(ØÍzÉ¥ß÷wjêY¬½öûü’<‡Œé?°õÎH÷(Y ¿¹¼Ğ'£åÈˆ—5aÆùKnş±ËFO¿|í½ïçg;E/\Ô¶rkñ5¥Şé¯Ğ¯0f\]ååQ¶‚áaš«WÍz†7g|ıƒ×ÿŒPòh·pØö[HCğß.&xº5L^ÚV–=}/’i¿×Çô†p.,)ò+˜°¤;?æaøàx[nXÅœs4°¡/#wÆ!üsaesLNÏéÃG–.ßø‰`P¾=›™´õÚ7cà×—g7Ö­Zÿğ'ÃßïÏnÜ{ú›áİËgo¿ş :÷÷ß×O?|úö÷÷§¯ßşÀóëË§çÏßüü=šxáàû£gŸ«¦Í¬ğ\×ŞvõÃ¿ß¯Ÿ¿øô˜lş|xóüåÛO@°¢{ñüÙ§¿şşıòñƒ®K³ö¿ÿÿøşúÕ; )—wN«n^ôK14&@†“áïÏo/Ÿ=ÿúĞÿÿşùğáÍ»ÏßIs×ß»=3vÖÍè©øxaCyaûu`Òş	tÆ‹¯ÿ>>Ü]QĞ~ıè`à¿ÿşÿû:Yâß¯·/Ÿ½ùøÌ)µ7GúVİ«[°°,Şüæ¶Yuó^ıgøóõİó¯¾ıí™úóã×Ç÷Ú‹Ê¶]û ôÕ_ Å ½¾şÁŸßï^½ùú:‹cà›Ó×–,)¨RÜÔh!*şşı÷ıçÏÿÿş}z÷öÃpPüıóöÅ‹wŸ~‘: ÿüáõGo¿B8ÿ~ÿ|Œ—¯àÛĞÿı}ÿúÅ§ï¿€)"»eJËCÉåºp]™0sÈÎŸ_yá×_Dİ8¹ãö­»»O\—hß_¿xöîóá‘²ˆä‘Dáôô4ĞÕ²¼ì&éüêaÜ¸–ñ0[‡¤ŒÀ­¥§,'~÷ÜÙnqòñ>¸xŠáÚ}8†/k—,yú×#8ZòË¹M»Ïücığá7;'Ã×—[¶íØ³û³4h+»´±ÑúKW.^ıÇË÷şæ™?®Éè¨»GyË¼dşüdË½ûv^ıÏdÇÎÂpåèæcW^ÊiÛzØ¨#ÂÒË©}Ş½{Ç¾füÿêÆÅ³?¹DÅ­¬Ä_ß>²yß5n%ëpv.Ö§¶.ú}EÌÃÏC”‡”qøCbs9NM9vñœ	£Œ…ø‡ãÿŠ3sğ~yptÑÜ÷º¾¬l¬¿ÿ±Xø¥«ğk>8{hÏé[Jê<œ¬çÎn^²øµ•‹«UP¦È_ù³‡·^}ğæÇv[ï@Má·›×n|ğQJÍÀÃÅ‚›ñûî‹pÄ&××Š1ıùçê‰=Ç.>–Ô´ó6åÛ¾yÏãw¿ØX™ÅÔ¼m.İõúcjv®¡"ÇÛûÇWo8Æ¥aë©{|çæK?k›ºØÊâˆß\ÖúüKçlŒ°æáfıûçÓÃ¥Óvİë”½³¦æ“àï¯o%Õõß^ØÇj[69Sqzsß•Çß5#Ó‹|MF0¤EÅÊÈÉÊÈÈ¡èëk´áÌåï¯/]°÷¾”¹³£î¿%s¶ëxÅ§øë-ìl¼ğ‚9¼4ÿÅÜömï•}ì¸ŞşÑÒf;·`ó#÷2Î±b.<ğûÀiÍÇ+:U$ØràÁqóºæÅ©Eø_<ûUĞ?ÍIè¥ªÌ2Îò›»º$ëóÜºpäÈn¹}×¤”öÍ\ô×*@ííéãû·;tıÌnÎÀrÓïîe3Ô~»låIë°ÌD_3r¦SD´lµg5NÎ­I|qşÔşOwŠ²ı¹«mÁf>­„b?†Šì‚¦b'/œy»wĞÅÇ—ÿ;æE0wTîsS™]»‚[‘å-³Q_Wè vvN^![&îI¯)y¼²}³âç-Û?‰ñ={ÃYÛ×ö{ïÔ›®rÊiçÔª²“T¾³³2Bz;Öô5m½ü–‰O®¤­éç®‰[Ÿ²ş~%ëTXŸbÍğûæñ{¢‰İö@uVî§V\8°çÙÜ){9ù>üÓˆŸ] n®:~î[vWáéõgøï]Ğ¹úÈS×¸¢h'Ía²ˆ‰=<<<¼¼¼à|ÁÌÍ'¿ª?~<wîÜiS§NŸ1gò”û÷ø7zm:“ª›¢ü£Kk×ßHò6»xzõÎ»Òş†ò‹+Z7?g¼¶(­¬ãà®EIÀş—¨ ;÷¿KckVİáeÿ÷ï/ø¤lv+]k®‡;çœxéåéÏüdëüãß­?™Ô2{ÃÄªÔªå·Dx9ÙØYï]ßxáÄú°ØĞ5ç? uªè»é|¾0çÀãPS¶óSw_•’÷Tı{2&(kÿÑ•y5+Îs‚v÷ÿÜ6%-gÚ>pä²p1½ŸÓU±áæŒ‹şš´ùÇŞ\\^Q>s÷&Îo_ş~»½**½øú{A¿‡WOì˜² (ÇåÍr2L~³²óÜÚÒPÜ½p÷šÙ3Wí˜Ù;eÓı‡;J»ç/hÎoØòêÇ¹å95}Ï@JÎ˜ü6Í'óõ5M&ïzôùÖê˜¨Ê³'¶&¦DM_½²"-}ÏSfñ_Ç“K¯Ş½ßUºıÂ¥S&íØ¾2>,ëúA-5ñSkÚ’r&^>¼Ğ=*şôS\Ë¥şÿúşÍÒ;IöëÙ'qs03ıúı›Cè×ıKç¿üô•Ñ¯ %ÙIğ›ù”95ÿ¯İwpëºc·yÅÿ]»|{´DÔ„ÀF’ßß+³Wìdå|üàæÓÛO5"l¯®y[È}ÎìÉ®j"/?şöÎÊ·‘fyûñóçOŸdÌ#¦Oiøví˜˜U`ldb ©â›ŸÛ{â‹ü¬ÅK}Eì8võó¾„–)vÜÇ_%Å]ì¾©EÒS*?(:†F§ûkıûòëÇÓÓç9Í\‚}#3=ì>}xìşÿÿıëÛ—Ï_>}’6òòµÓ%wQPzeG¨Ö»ÆÊ©~Ñá‰Ñæ’?¾3ãı§ï¾ÿÄ¥âÔÕÖdï™›ÊÃğáã`gîï×/_¾ÿô—_§mâ[‹{¯!ºSÿüæ“5Paıyúâ©sÏ}¬eß|æÎì˜šcÅ¶ï–Å«¶|áåxıêŞÓGßI1È¼ó¯‡ÇvÜbëZ²0ÕˆyçÖå[Oÿ©™;-ÅIáÃ{ğã¯ŸàÛâşıûıŸ‘õ××·ÜZ~ÓæÔ±Ü8tÜısçØ¡«¾ü{÷âîçÿııCÅ*ĞÃLix$l€ b¢º‰§OŸ^´h7Ÿ˜¬ŠüoU©?/œ›7oÁ÷ïğ(üÿéİË—¯ß}üğHşÆ¨"Ác(£{ÿüxñìù‡¿PÿÅ}†4ØŒøEèœ|´ÎnYxí_DIâã­KÏäÔV–<°m¿}tZjfĞ£3g¿ü,¥å‘j#ÅËñùíë#‡N8ÆeD9ë°0B/Q0³7ùõtÇ¦CO«3¹ŸœÛxàš±“=û?Æ¿_ß=pÌ.6-ÚU‹é÷ù-ËpK›»ÅµU¨
+ƒš)¢êúŠb·çÍ;`™¯'É¸rîuwŸ¯Öy÷GËÆ¯¶¢ÎI]à;›°kDJ°—ŞÓà¢ÿÿŸï¸İÓš6/šd®'üó÷v6V6f†¿ÿşÊ›xgäE1¾zùòåffæÿÿq
+«eÇF\Ş:ÍÖÓŸ™Ùµ,¼"}L¯İyôí#;+ó/N5[o_Kù—.ïÜ²WÏ38ÖÇ„zƒ„EÌ¡Ë÷»ÜÿMîo^·fË=VAcçÈ–Ê=qö¿\j‘aÁ^™µ¿ïMšÖuù‹Kn ##ëÓ“[îrÊ'e'™(KÜ²ü˜š½_Z[QŠ(Î}eÿüûú•]0&ÂæÈ¼é×^3{ŞwyG_kÅ??²ğòKó²3	Jò²2s°³ÿşÉğŸ[JÚ ¾¸³''`´şC
+Ãoß¿ytjÑ…·²:ò\Ò.}µEQÉE	z³Ê_±Kÿ{õğáÛoÿ~3²°ñr3ÿıÿç÷¿LÀ†È¯on\úÉ,!Äÿıå‹—ŸşÿüÃğ‹•›‡éÍ»ûïß<ö	%8Y98™ÙY˜ÿ}'eğûÛK—¯Š[…ªñ¾»ùø)°²ùúáIÿŒ­F>az²<ÿışøñÅ‹ÿ‚<¿ŸŞt÷æ¥ë?ü¢ÊÜ¹¦Tö½#¯Høğäìgznßo=|óæã§Ïï_Ÿë]rÎ/&L†—ñ×ŸÿœÜl¬ÿ¿ÿxóäÉw^nö÷¯Ÿ<¸|õæ·ÏÌ “…¿|uãÉ[vI1øn¯?ßÿ}ıÂÀ¤½¢¡í¹˜š?0ÜŞ¿|qûşi1>q+¿´ÉMÖJ¤í›üÃğåõ«ç¾üøÅÂÅñåÓÃ¿ü%©(ÅùçÍõ+O?{ó‡|‚³²³ö¿¥ówúó|õÂõÜªvâì?…DxXØ89ÿşşŠ];·øËvûÆU¿;÷œğÉìĞÿ°*­uÑ¯a‘²ˆÊ!°\Ü·w¯µƒ‹º®¡š¶áß?_uDïz˜±}ÿöq÷î=ğØ9²~zIvŒ·WTûüo0š8OÏ­ljZ…$üu÷Ì®ÒúšŞY+^!®n¯[~ä).—œY=¡oî1d‘óë&¡‰ĞÈY»0ßÍ"b`c /ùõÍ.U5QßÀ“Ë&Ö7-Öuw—çüöõ;hªäÏa+;›£‹Úgíûö›rL(›•ì×Ï/H9é™iqyõQÔÜ”ûç·ïÿ¸­ìmO.él˜±ûİ6]×µŸo|ùÉÇÄÈ! åUÓ~y—ÑŞÄÒT†óÓ‡ßf2æöÂlß~äøûŸWVìïÓ3›Kçn»çæiüúó—rÒ— Ï¡…=k<``bfeüfÕ„’š™²&VÚ
+|_€eÖßß_¾ÿæW5·’ÿsèôµŒŒÿÿaüõXA‚¦&€Íš¿¿~ÿùñı;#'¯µ³óù•z–şò›4lóïÃÒî¢æYËÏ=æ11µ·ñôÕşÿùÑç¼Àv¾8ÿOĞ!~?dâMæôÍĞQàüúù“¼SŒ×ëúæMG¯™¸‡I½üâû_vVV!\M|K[qfF9·â¬#=MçO§w>ãRÓ•“Ö7±ebQ24Pc`1612u‰Œ¶ã˜\[9mÓÉÑ
+>À¯§§~b^ËÔíŸsZÓ%t=Ïhm»îø®³v>qrñ‹ˆu—ùĞRR²ıÊ'c+'9^f>	]KEv&ög§×v-;é“akd-Â|qÛÑ·Ö6–:&¾	ş’İyUŒ#ü´µõLÍù¤Ô-ŒTÅIp'÷«s;JsJ~èÄFFh*}ZµçaP°Ñ±u{„ôŒµ•,Lu~®^}Ö'>æÁî)knòFXkŸÙ5oé–È`_AòŠ@Î›[æçTLTó.Lg»¼å
+K„›ÄÖµg4¬LdÅUÍUøœİTv­İ `.óı`Çê«ÎÖvüllÿ_]éêœ,îf'µ›‰MÊÚÚœï?«Š“¤»‘‰53Ë?®_ïçõµ<‘q²¶É*	»»zbUßÜ;oHš²fÑ00|v`auSûÿfÅ¦óJ‹ïK8„X9$D;^=ùğı_‚|Ğ‘V‡Ì:+Öù™ÕŸuÂÃõ…µŒÔ¥øÍm¬„Aõõ¯ÿBZÕİ9éÙİ]Ö²·,™°ådl #Û°HÙ „¸˜—„fáÿÿgÎœ‘““GO¬ëÖ­}ûş£±•¡¶*°DŸ»`fºå³Ÿ¾İş {ôÊÏÂüèİ„÷Ï›¶•¡µ#éÓı‹—}‘×3UâûwıÌ‰Ï|ò|ïÎÙÂXQôâÑ;m-yÆ·‡#2—V.¡ñïÃ?VÆw÷O]¾«`®{¸«ã•º¯–¨²®® Ë¿ûWÏ=şÀaf¡Ãöçı•×ÏïŞô„Û-/Îä/#/Ó×/ÿ˜¯l˜°óuSãÕÓG¿2K›I¿¾sÿÙ·ÿªºê<T]µ¿˜÷È‘#.\())I|½|îÜ?	]}y¾ûWN½cU0V—`ø÷ñèÁÃ¯òZØÛó}¾}ùñ?ccõ/¯Şı!b(ñÿø‰“ïÿpJ*¨éi*€ ÿ=¼|ê)£¤•ü»‡®¿å¶4RıôøêïÂFRŒ'Nœ|û‹]RAİHKáÑµ“®>æ’Pµ±Ñçûîİƒ+W^3˜ë°~¼{âæ']~Æ·Ïnœ8qõ/¤µ™æ³ÛW¿xË(¬no¦É¬Mş~ºtî¿‚¦¼(¨*ıôøÖéË×¸…¥åUş¿½rëÁ—¿ìºæöRî]Ç&Æöíí/¶oÏ®¿ı#hn«ÿíñ½ß¼JRÌÏo ¥X¿|bdùöò¿ªÄß7?˜©
+Ü½{}ÇäòÉ×vï/ËüïÁ¥#çn¿æä—²t°`axrûÜÙ‹÷ØEU¬Läî\y «£+ÊÍúëÃóSçoËëYÊ
+|¿pé´†!ç—;]`‘Ñs3W½uîèÕ»/…õ¬MÔFÏ+£"øôé;PhÎúŞœëÒ	UT›mıüù3+++=O–ùğá777…çáİ?>½kÍ¿ŞlÌ„ÿÿ|=µeÉö{\eE±œåä­/˜ß¯Jb=ıõ+hiĞø•½y|ûåë×ó{û52{Rlä‡DRüóçÏ—/_ha8@ ‘SÁ©S§îŞ½ëîî.$„r]ßŠËşe4²´W•“|òêÓÚ5sı5p±2~ù#°í’@b|¬°°04A™=yKWOâ£ƒÛæ®ú+’ëû¯}Æ‰ĞÔTmÎ‹×Ü•”úø[2´$ÚØùÛµhâÊ}w#*&¸Ê>l©›ø…SÆ+)òÉÜ–u„¤şŞál,Ğ½WQ¿ñã£œ|…Ó‹·=şsçˆLd…êİm?lK}vu­üîbğãÂG]W‰+}Ï²pp{åûí/iç,­Éõ¤îİ8+ÂQ .ìZ½qïáS÷½sS=5Gd$T„÷Ï~Ç­a¬Aµ“ä†hEøùùÕó·ş[Úë`šòçóÃ7k†$Kpşûùìèûº®Ö´©/í^¶ñğ-i×˜0ë¡Ò¥£iE@dN›™™133ïØ±ÃÛÛùğ7Ğ\:èBœ?/?~¿}ïîû/ûZèÊ³Šò|füÿÃĞîîâ“zıúş/~ıÏ¢B\ÿì[Ø£Õ°b¨v·¸23Ã5¥*ëÊ¼“°é.ffø9ÿ7›STAˆÔ¾¾u§÷~¸~ï›½¡<Ç³+§I´t—_™Wsô'°Rfdac`üÏÊÂğ‹‘‰ãß‡}~”×“bzÿI@Ñ<:Õsô):=¯@© TY)şÑĞ!@ÑØVq4x%µíp\ÍÂ+““,e—²u§á‘{z®Qz®£±  Dşá?ØØØ€Õ!J\²²üüùıõËoŞ¾SVVJIŒÏJˆTĞq¿ñAùû÷¯ìlˆÆÇ?†Ÿß˜ÜX¸ıª¹)Ã/ak'U†É=]g_|4ğˆ’ú||ãá; ¥ïmÙ²ıòkf¦ÿÒêªÿïŞ°óØóoş²ücçecøÿçÇŸ’’ò2"Ê~á¾®–ü?®-Z½÷à±S¯x$™ÏØ»s×Ş;ÿ~şÿÿı›’´¼´¤nXX¤…ßç??™˜FÓ ½—€„¦¢ÿè1*ƒŒ5Šlãˆ¯Ñ¤H  f1«ˆK	.^Òú›‡zùò¥§§'|ÎøøxO;.&*òéë7vAGO^¼zõêÎÕsòò²†ˆ­÷,Ì\¢b2
+Êšr<oÎŞúåìë!öëŞ¦#÷|bL”4-\-dn\{®¢£ÌÊÁşôÌá½çÚ…fyÛšÉr;¼ÿ(³´¶²ŠŒ‚¼¸ /?¿‚«×‡«{œc5	uQ>|ô„Œ—›±‘™¥Öİ‹Gßrk†8Ø©(ÊŠ‰ª:ûZ~¼rìà•"òº†*ªrJ2œÔ.ÿıûwãÖ]uU¥G½xñÂÊÊj´<àß?Ğf¿~ÿ’ÿÎCÂ-e&&¦Á×`:	Ø
+§§Ã A1ÈÁ:†_R„xF· ™‹e®^½*---((ˆµ<tè°´œ<€;ç¯ŸßŸ?¼ÏÌÄËË;"†!Gç!øôıç®3÷4äDOİz.ÆÇqõæƒì[.Ñ£` 9µ+°fÖÑÑÁ%kgg'%%µ{÷îÏïß2ƒw-««k¸¸¸°±±0vßqq1ppüæçûÁ6º†qàÁ×¿ŞùÁÆËûäÓoEÉ_¿1rp>{óIQŠ••eô&äQ0
+F:  št3UÀ`däÌ9.0€×°±üûgvï!ë–Í:Ï‰½~Íğø9ÃŸá~;Ô¯ßÅJƒt=ÄÑËîúaa¬z`ãÖ»O>«j«›šiÏÙv,ÖIGW4raÿšÿêA†R_·/Üª¡Æ|ã‰{<Şqº[(¡c|xtzÿ™ßŞAVÄ¶ìş=[Ğ6íÂëÏ2&nÎ²Ì/ØU=-•‰vû¿;·üRÒıyù¢°·–Ø@¶«~<»²ÿöw{‹W—œxÄàm|íÜ¾GoÿüÎåêg‹qì÷Ck¶òYxÈpişİãkg/9øS@Ì7ĞçÇ½‡z~ş2ÄöØÿ[5sÍë¬âr‰¹¥BÄ¤ØgëW7
+–§à ä‡ÖùªãiŒÖşóû/	CïÿÿıùËÀÂòûÈúõÌz^–ÊÔ9ûwnûÆïr¶ÖÚ"Ä¥´Ÿ¥¬muÅ@^Û³pâÚ¦Ş1ñ>Æ8›Šÿßm_±[Î%H[tÈ7÷ˆúá·o_oŞ}ùt¡àĞ2R&VĞY·ÿş¨)IŠ‰ğÏj`ÿA†ŒT8‰AÌ#†ÃûGDSàÆu†½»§ÓTåD¾ÿ½pæÂãÇ¯k2"ÎÜ~şæÓ7	9ñÏ^C*ÂO®{cdòqŞ’é*A*¼g\ø^™ÆÎ%‡~yy×ş/®DW„¿Ü=~ñEHK‹0“3')nÿõÄ®/ÌüŸìPÑtØŠƒãû¶m‡,ì,œß²Ó XÙ±™İ­<Ğš[9òóÔ¾mR
+NÄW„×Oø£èRoÍÅÎÁ ,ÏMÂ–o§Sô.U»5·Ö¶™^D”|"ö<œÇÿç›Ö¯9şQÁÒÉXÅ©Ï¦–N7-o´’$v°á÷‡3íúËL\sPñŠ‚¿—o{÷[›¸Š˜Òv<×UV„¿ïlïY~'»!ã×ó¯Ÿ1àLè|–î.ì|Ãáê;€ ¢²şÿÿ¿}û¶Í»/ÚyJ‹ü¶s~Şfá’~ğèİë×Ÿ½¡Ûi||~åÒ­OUõ-dI2}óâ!3¿Œ 'ó—¯ï?~øüíË_YuÅŸçù¹	â‘Ğ ”d 3†1`{óÃ§ƒÖ‰ŸüúÇÈöñısCM1~½ÿ½úÆÆÉ}öÚU_PšT×1>sâÄµã|Êú¦lOïgı``hpyëŠ?z–6.9üòİ³ì¥}ºŸ·Wu¬ÿÊô…IÀ›éçƒ®Š®K/ßÙÅ6ëıİ÷]7NææÂmmÒœ~o:úõÙ±çŸd·xé	12±±ıú÷êé£Ï|ò//¼öOQêıñÛ_„Eÿ>»mûñ·Vşv¿¾~ñöÚÔ5I+¾ˆõŞö¯úïÎÌ\}‰)«<Ÿ“ï7Ë/NÖ_İ#d`Â³áìÍ{Ÿ>ŠšI³]ytüÙGÅ ™'Ë=1¶äX=sç³/Ä­³[“M6ô7m}øáÓı?‰¬7¶Oí˜˜Kİ*+ÔöÌÍ'aş†³ÚVúg?;¹ãç/¦›W3iy—dGğ31°1rüzÿöé³WŠJ\Ûfo3ÏÌR'¶åÌÄşŸõÍ‹—Ä”Í„ÄÏïXtı¿U˜Í—9snØ¸‹¯›²ñÉÏWÆ)-I2“K§ßÿÿñ+·Eo[ğë4C,N˜wóÏÇ/\&ıY/wLïZ}‡‹ÛÌ7=ÚM¿•¯¯\`UqâúqñÌ3eÓwSºOÇT'^Z<ıÖŸÖ/Ú/ ³$KkJÛŒ+¯ßÛÇ·‡ª?˜Ô¿ãóï×ìªVŸ.î¿ËRÙİ§üzgß¼U¿ä\<Do-_±ä›•±çÏ»¿ŒÂM9ÏµµÌø­âXQš!NÑ„#;t=Ñï#Ëúg¯?Ã«e_UÍıô@GËÌÊ¥Y	§—Ö¬¹ÊIiï™@•7«˜(×¿×o~u1bı|ovÏœKØBëŞ/™»óÎ76qŞø’ÃWÛûO¾ÿY=8EìÉº	«DÊ"LWNpş£WQ¾§šØ*Å ˆÊk®şüıûæí[n.NiqEe%E‘ûòé
+‚dåä˜V[ZÛWÛ¶ğäÅKÏ>>1èş‰ıÎÜƒ°­™8g×} ãĞ‚õ§}xıæÏà
+ÆÿlÜÙØÿspıcãøÃÂägÄoöŞÉ¶o_¾İ½õĞÈÁæİŸ¿Ï_ßtşÑ¿ì¯=³3T;s´EGR^şß—[›/½´³rcûpüèÍ·ŠÚê/®Ÿ{úîÍ…ë7Ìãª“õşïÚ¿cñÊı–im>ºÌßv/÷^-tÑÌ¦g{¦]}Çxqï©×î9{åèÖƒï?<Øîk\°%f¦ŸŸØ¿ûÜíÇ¯_Ş¿óôÕıûWe]£ÿêš¶ëãã‡N?ºóüò®Ãçoİ»ëä™£ç8¥$ß\9´åğ¥?,ƒgE«–ï‘ıÛp;ÇØ0ï^¿ï§º¶Ôï×o>xóúÖÕï
+½ù¯m=pvëáÇ2új”şyqjÎò«E‹WDÉ¾Üyâìƒ»/nî;xòæÉı[Ü¸|óáÃsOùlSBùÁˆ™éïı+§ö:şâÓÇÛ×¯~øMRü}aÇ¼;¿D{¿¾sñŞ«Ï?İ¹óàí»»Ş‹vu—|>¶åôóG§ï~ÉmjQ}wjÏõ»÷oß|ûéùñ[3ZU?\ØyêÀò­Kû'›<;ÿğ-A+/Ÿ:ò]ØÔB’i÷¾Cß¿º~ëŞ/†'×¯±*{º•æ„œZ>÷ƒVäÂ©µwM;qïÉù»ò[‹ï]+Ñœ¢ûkíÎ³‚b’L,¿¯ÙøGÏ1À#<'ÜùéİËOŸ\˜Ö½ÚªlZUªõ–Uüy~`Á–gµ«VyñŞ^·uÇÌÕyú«Ò¥øÿr	£§4>“¢§››kgì8´yÉ¢í×|»¼fË‘[÷î™Å©p9qùğÅ{òŠ²/ïŞxtçğ”i‡â'-kLõ¾¹}òœÍ×~¿²rÓé¡Õœ rz„Ànßäää”•Ñ§:Aû"€fşıöÓßÌrÿİzğXúÿü§dTÅ#÷~q:E§–ÆX¾xñâ}éÛWÏ2K©2<<uàôGçwÎWw¯Ü¦Sæ€0ÇmÛ—½79©QGŒMC]mßñSş¼§ïDÇé2?|Œº»çw:ûÙÒÁ˜‘á»’Šúİç%Lõ¿¿|ÄÆ-şùñ‰}ÇŞ9†xp¿¹süì}YG#YZ†ço†Ùóûûî\·ÉÍÉöä©SW®\Í,(`øùsxö99ì.äÎüıû×‡/oŞå×1¼ıñÿ¦oo®=äùöÑ»/oèk(³
+©	¾´áÜ›ˆ%ñÛªº.Ÿ_Áwï×ÿÿğI)kH±\fùğåç?nNN.Ğ-¡ş³[ÛÜ¼ìì:Fæ[§6î×MÏ•Û3óOuEfF GwMfÃ³ö†Píß?ò(êg5V«01[²˜}X˜ååDşşúÁ­¨›\U¦.-zoMGËº]Á¹//Ì¸"—êtséüÂIQÎ·~ıúÿûïÿ~ÿ#
+F—£+Œ[Vëé2T—-‰]ËÆr•	t>‡¦ª¿¨ŒóßÏŸ€%*'7+è2ÕÌ¬\ì¿Ù9XDtÜØ¶´laKˆ8wbÎİ‚¶$ë-“²Jš{úUx~üf²M/	1d`¸±ôÓï//®Ş{+,Íñê=³ Ë§LÒ:*Â8[à,<Ñ­Âg¦.ÙK‹—ã/0Êß¿}ıçÏÿ?lêÊŠB²’lÿ?½ÿ§ +/!$%ÅÇñëã/`ÓüÏFYiIaIÈ»oÿ˜ÙxøØx9ùØÿê|ÿ»»fÓ©·b_Ş²½¿~“éRL:Ó?ß|şÈÍÊòŸù/++ó·¿ÿ€)„™‡‡‹íß?fum)9uQE	)~VI	Áw·ûz.Ê:…Û½İñ÷ÿŸÿÌÿY@õ9ã¿?¿~3ròò002S>ğ˜lAéæÿß¿ÿYX9¸€)–ıÏ‡_@+@c°÷¶Ï[CÒş€7êıûğò#ŸZiUurÕÌ*
+¦öå¥ñ2âŸ'Ÿ;",.i§d¿­uÊ1ƒŠ`ƒ‡ËVKóßY¸x@ƒö?ü”2²-­Šæb ˆÌU£ÒÒÒÇgffVPP@“İJºt‰•ƒå• Óm.V1–óÿşg@LÊÎşkã„º‡×Ãâı¹mü1±6dûÊU²6&›'¯bác>Ïø[ëöúÃ¬,™.t~ıo,!+ùO„›ÔáPÓ7å?}äôö#ÿ5ô¤nUNÜ“o?½z:«(×©û—x9…²C?ôtÕÙäÍâ¾±ä¿”úşy«ÿr3ŸeøeøtëöW¼9i¢‚ÿùù¾	ÿ—•ùñàÁgşÇ@‘á<2Ê:æÉmT…ùxšçl–––üìg|{'!Î/#«øé×N`!ÁÀÀao¡sŠ‘G™E_MùŸ?°Y,.ÇÄÃÃ$)ÃñŸE@TS=Àøg^s†°0—„J€g¤ı•ò¾˜LNñ•æ:âWEÿšÿ»³í“´Ø÷9ı“®¼QÒ‚ôy¤$¤Yÿ‚Ê9)É?‚ŒR_YEÍ‚}T'ÖÔ¨{$UØšK=fä|æŞ6N}yv¦¥3w?áµú#ÍÁËÃ)%'À>ğ›ùDåtuõ´äÄy„Yt¬ÔµäåX˜ÊJ‰óñ²‹ÃŒELJJÇÀùõîò¨œs|Ì’
+j6ê^—êƒ£E4¬K#-¯ß¹úÕ>ÔáéÅƒ’6&/O­è[}Q^Û^<Ê/"#ÂÉ¡²òÊ¬_nìØ|ÛÊMèÌ5vî{wXpW„Ì¢²œLœvî¾»§n·r}×;9ó°Ğà‘†“¸Œœ 7Ÿ„„$°v”’cçáı--+ÀÅ+)!‘ä’3×6=Sœ–ÅõöµJ0¾ØÇ+×Ä\Ó&ç„K¥]óZŸ<q1ı››–Ãû…;NTKRéïÄşE““c´ÎŠİÎä‘Vg&qñª °âa•m\fc—ç°rí&>.IY)CY—n³“ÿ+ièœı²>+f—•sY…C£Ìâk¦Õ\Ú£’RP”è|ª48FÊÀµ2Óç‡Ô—†ÂÄ#6	¦Ü›¦î~Ii2ÿøAB&–·‹kšÏ½ùbê•™çÅßXÖİTÓà § ÌÃğ‹AÂHQhÉ9Qf!1		5û¤¨!¡j‰…Aú'Zš«ÌRrüŒ†P1@d5
+×®];vì˜¿¿¿¨¨(òĞè‚ùs}¦ïì'ıç-Ã5_deYuä¿S—’ğó0€(Û?£ö›ge’Ã%m}ŸdùÙXí…ö§N»“í.©ªôtÅ– :OÖ½Ø©}¾şß¸(ÚÒ¸ß0µ}÷ÖYQÖï«ó÷Øx±÷Ï¿í))§òõìk_ØyÿüøÅğı¯¦«æóª‰çcb½%U”^¯[úÍ6/Í6Ë·ïdğò ÏşbØ´å·¯÷†õ[FÊ>BS+†3ÇAK†ÓÇ³Kœ¿-"ÀıüåkN6–ÛOšZš¾}÷á÷»7e‰>Ä ù÷ÏÏÿL¬,ày—ÿÿ~ıúÃÄÆÆ‚ÑrÿÿØ¼fbf#¼ù÷/ĞF6VôåÀ¼ÄÈÄÊ<4wıÿÿûØIce»ş°_ÈÀÄáEĞÍh¿şüeeg§æ¨:°ÎÄô®Ìì$î+ÿıãËÇ7z+•Ò{Rmñ‰ÿa`È^ú…‰•<hŒ=f`ìãL!°tò¤4ùûÿï`Ÿš`şÿùóëï? FVÊ£ØÃüõ÷?+;3ã¿ßÀÎ&è’+pY²‚h°³ø—=¥ú¥ÿÙÁ»¿€¾ÁÄìåâjŠ=òë?3°7QÌÌ
+Ì$C(Á™nıõë×Ã‡eee‘…›212;õß?|8°ÙXBFäêƒ?¿xÀínx7âëñí+g.Zzş	ƒƒ›ğÂŞİº^frªºJìÌ?~²ñórşaøş÷ßÿŒ?~şcâça>¶}ãÅ—{¯X­ÔX÷¿®i Âğëë—?ß%5ŒT8˜¿gbã’vĞbŞ¾ï¢Cx<ÓİƒŸ¤¬Ítu8Y¾ÿ`øã×ß¾øë‡¯³v¿\uá+I7xıüôèÜ™›­~v`÷aÒîoÀÆPUCQÊÑBßÂH;ÈV_C˜ÃL^ØL[¤c”™YØY`§™02±±c/ãYA2Ä·0³U²b)¯™X˜‡j-
+ `AÈs=++;6/ûÊ,Ô­A†2ígc'ùt•¿GVO«¨ÀjaK cÀˆVB¬„Ô‚à1Ğ4øR,°ÂvY0"Ÿ™ÔÎÎNZœØ@Ì6vø¾Y6ˆLÌXRXîvvvÜµ Ä#@å,Å,CììJ€ "sÕèşıû1¼ù>ØúùáıOn†/oşüö´|)å˜øfå]|ld0ü‘Ñ›¾ĞNƒ›‰Ï§¾NøäÅ_>³ùe”3ñ2ye'0ËK1dqœdûû²,SØ.}ÓâpE!`“Æ ·XAAM¡ªãØù{ÀÖœ UêÜ7ªJ‚%ÓX%Eøey»ûå3«WJÙ^Éé??§lxÅªÊ'ğıç•GÿÎßüî*Äƒ¿³döGm?k¾ãSgßî0©!ÿÜ~&1I1öÑSU‘€›ñh Œ´F‰cl™cìh8ŒD @d.–ÑÖÖÁ¬AÇÁ11ıòåëïÿ/B?]?óÙ#ö7×÷//ÿüAìáSqDì¸7Ò‡Õ&¯m	DHæI(ƒë
+'7DjeR×¯»aPÑM¿ÉhZ„iZ@d5´A“´rĞË}d4ÌÂ4ÌGßûßã/,ÅøÃTY¶l»Û´õû/iîTÉ_-[ŞşàãÌõÿqçíşG¿o¾úíd+å)ÇÌğëú’Ù½g¤ŸLÊÒøölZs=‡¼CyœãÓÛç­8¥âìæj lÛ=<·cŞÒÍ²î9)öÂKfÎ{òK>¦ÀåÊÜå§½ãUÓOüw}ÏÇŒâ¿ÄuÔZ?máeß¼T'ñ%3æ<ú!•£02jÈ¿ÿş_ôZQBàøÕÇòbwŸ¾t0Rå=÷gŒ‚QÀÀ @ä‚ÀÚNFFëM`ÌÌÌÑÑÑş>rÜLŒb_mXe•y~“ácSÙ!ÍÙ)ukßİ’]ï¥x¬Uùİ•'®{!¢#fÇşsöÑ÷'¯½ÖXAZ¬kö¿­İf“644q±sV•b½uï“…“éíM+<:×]İwëù½ùóç]{TôuõÒy_äüRÜÔ¶N­Ÿ¿íÊåã«æoÜ»}Ï>'¯ŸW_º÷õäîc¿Y¾ìŞ¼åòù#}³¹¤–„;Éí˜Ñ¸`Û•k'WÌÚxm„ÿ‡/ßßz¹çÊË/¬œÇî¿ÚwöÎÏŸ¿Góÿ(£  ˆú‡°²±Ç„;†,:øó…Ÿ«1]©lÆƒ=¬<ÊâlòìÏ>1hsirrŸ}úû/«¥¾€…Ò¯çßşË ÌÌ#(&üOE†“ñ¢‰½µ×íå»_Ş~ø’…Ç%&U_LL´Ğ;£¢{ËÒ©İK¿q¾ù.ceŸåc-%ñaÆE{3û?×'ÌoãÒÎ·Ğ¸¹üÄ—÷¿É™ õı~úòµ”¥s–¯©„´ÂHû£W½úúËÔDíùí;×®¼”W‘³´1\´ë¼Ÿ…š¼4¨}öáõVinÖïŸ¿ã”åøÿãåûÏ¿ß¿gUäG_·÷çÇÇ·ş‰JİŠüùèÆG/ß³	Ëj+9óóıõã‹×o3	ªšèÊb³èïÛç¯Ù…ÅyØ°÷ÿÅ“k×o}V70Â½ñ×ÇÛ÷ŞJ©*q“2›öêÙë7©èêÊa=¯äçÃ[¹¤•E1ıòêá‹Ü*r"´ˆâÏïİ¼ó˜_Ô@O‹¨iş~½{û¹¨²
+ƒ??>{ıW@Fˆ‹ZÃÏîŞeÁ’äÈÿ?½~õ—SP‡(?½yù—]P¤øÓûûçÎ?•VÑQ•Ã³èıÇƒ›xåT„9‡ü¨@ ÑĞÿÿıÿş|øÿïËÿÿÿF8`ù³öÀóÚU/şI„ëüx÷yé]†xkÎ•K÷Ÿûám*,Îü÷Ø±µ[Şjë‰)€Ê&y)şmKæœ}øƒ›ı?Ã_&f^9S?3é£k6ï=uùè(?×Ïî?zúÉÛŸlîÿ®Ú²cßíçß8ÙÙÿ|ew¶z~ò¼š	/ã+o#Öëyñ9Kİq	øíÔÖí{o>û4Â^ˆ—ó/'ûËÏ×®İ*ÉÃúìá.Î7?~¼ÿô¢àØºÉóûáË3“Ö^g`xr {îê§O_¿ûŠåÀ†—×·´-ÿN¼õß/6d”¬Ú{ìüµ{¿qäƒÿ?ïX¹ã¼Îx°§­}ÂîÃ§÷ïÛtõV=ïfÕÕï¿ÿ«i_o˜Ø;wÿ‘­;OßÄ·ùğ×§'ı$e{â×KëÊ*:vŸ>1³»iûy”]çßßÜÚ¶şğo¦×üÅÍßŞ½xú’FéíÛ²–²	‹·¯è©Ÿ¸ñ&q•Î·'~ûKQÛvI_UAí”oèâŸ÷¯Ú|ÿ	%Şß¯·¯Şó…éıÓÇï¾Rq âïæÉÍK÷?$Rñ¶i-‹ö€.ùpsvû”Gvm;p_„ıûùüÑãO?‡ÃÉY È9·˜6Ë8ŒôğÑRÚB=Ğ¯‡…Rpc´uĞÊqL”U¶1ç¢qWŞ˜,\Ìh"ãÂenqj¢11™qÃ*‰Hm@K×+¥ızb+…¶´´kíá+RÆ—hbŒ÷ïİ›÷ÿüüŸçı‡!o:µ‚ P R£0øeOÖV`UZÊ#påÄÙ»CÃ?UvFĞZ(eûó·à—´i5É|>'?Øñ+‡ú§›d®XÖ Äı¦éŸmÅ,+ç¤ŠıqVíâ
+_Èü·ów® `ó!ÈN!	PC9…é&/‚Ém4nM/GB¨Œ8Æ‚¡í0–”uÿ¤ÆCÎÍ?XÂØ³/b2I˜óa[*	›â64w_õ›Ì*6›½«vW/‹\Û±|:C|Y¦ •÷iÿ€Šu_¹€'ùİ—¤g:•Æ¢–\ıPèÚRéÙÿ!Œ ;™Ù¤G“?Öª<ÙZåò§œş&ãÛö—¤5ìâR-lˆÀ±8%s{¶àÜKÀæAIBÌ®Òiíf7Bíh¯ÏF¹Ç&lnÄpvÄCÅ­ë¶äø«9À<€__]G(<6vÄq>½b~õ`Óé
+(3MPy¢s=8¿@ôıïG-~‰ü5! Ÿ×.9ÌÊ#Ü¢·÷óV"³»¹ ×¯İàè=+b$“Q$‰ÒOŞ·!¢Ú£{éóœbBí¨‘×“ñXóìèÍGÄÆ¶æ\pëŞ°Â(jí8LH\¶…•(çÖ{oa@à¿7<¾‘€ZdûìÊÚ57™W\'ªˆ¸ë= «ˆ†Ç ~ËÒĞødHÖ,¤N<Ò[dÕÄ?±‰‘¯¯z½÷œ„ášùêÊĞHù—7´uF˜S×®úæİe€õe=ÄNbCf•Éâ´†‰ì½¹¡‰ù'ÒöS¼B&“\œX0ù² 'KfÇîÚƒùÇ:%OfF'Şê–.Ao˜tf‹u5NµUóŸÏ¬"èôÂÓo¿Y¿øLmØƒşH6×ë}4ˆ¸¦Ñ-Úœ\ñ1)?}yF¥qZA†XVÃgÑéØ¸weA§vÀX†°£¦,â]™Íf|·è/FÒ©ŞDÑJ¨ÑÆØKü æáz‰¨Ô»bØ®|té}(H¾ö†pnüÚ’ÊÏƒƒ6ÁÖ¢Šwà9m˜Ş)¯lª±)5¥¼ãÿ®§§¯+y
+‚¢ ğÓÖØí›ë„=ÇÛÉoB£ ôï_zy‹w•”
+IkU9&êŸèï[ÃóÚHMS}úg4ù+ûëá˜Ç0cOûøv3
+1Í´bÉ‚=zRYÖ¨vgkN^]}mÖ3ç¬Ù¿{¥d:±åì@X‡;›*Ê•ÕĞÑD'ı—ğ?@İ¹Æ¤yFqxá}_@û«€€€ŠÔÊ´«5›º¶YÛt»lı°Ûç%kšš%[L[­ŠºnêZ-õÖQEA±^ÑLÍ¼ ÖŠDÔRÔz·+(È”dı°&K³fÉöí$ÏIäÉINÎy~ùÿÿ¡1¯ÇãA£Ñ¯ºb®Ï¶ï®6ÁàJ`gzÑiÇã‰›Û>¿wö¯Sx©/ÓºÊT–¦/×¨*Á9IzÍNµS§úÁJP&‰(¾ÍÁ¬KåaGß†‡ñ¹Ì— ğSs]A¥5ídx w<’¥9túú¿ªÿew jªƒc~Ô¹÷b¢''§şbÌ»íİÛÚCIÂa „qÉ €øÌ£`aÊ½é£±Iib<@‹Âí×0D¡RñBë4\FcA“Å¢…ùd4DEX´à9Šº3B`A&Âx08\BğƒğtB!Â&3Cà7.Ö›å¨y×AÀ@}õù´zv\Û,„úÔ9'ä"ƒ¶9ìšYHĞxl&P/Çwm8!|ÀaYqG%1×äZCÂ:‹³ì°x­»Ş‰ÈÜÆ’v;…òlÌE@™Ö%Ønn±x7'Ìká`ÿåÌV
+lÖv¶îScŞK’‰É0  –j¯—èº{çwI„yc™ö±T°«7X8Ü¥‹ïÄ)XwÕ<%ªËwê¬’OEyíºÅ³çOÓÀÀ V¦zïTªGfÉŠ0g‘º[ü–B,aİ«ubÃÜÃÍVÒ!ì`E~É9Ù³~ô0ŸLÅA¶œ[M¢w3œõWóï8­ËtBGa1V7Úmä*2¦µÅ£>_O"åÔ•B‘ò8™ĞÖX¬ª5¹¬½Oè‰ÉÂW:V§s8÷!BÀÀ8ÿèèXÀgÿîû&ÙÛtC‘Îe8Æ6Ò?MéT¬	Øµ™™+¬h[Ë¶p³OópOL4ırïIJZì¶b|[ÀZnË»Õ773<ë^××·ŠÓå>ÄxW_œ¿ÆPÊ†4€$-Šñ:k½€©©²¬¼öÑsqnög#UÙ­®ˆ±3'ï“³ğmV“R
+©«LÊcĞ¥/sØrQûm’*Ò]+ÅÅ’ò.ä2ã¢:ÔHª¼3/w*×^ÇsÿşJóPë
