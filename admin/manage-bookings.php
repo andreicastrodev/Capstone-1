@@ -20,7 +20,7 @@ $query -> bindParam(':cancelby',$cancelby , PDO::PARAM_STR);
 $query-> bindParam(':bid',$bid, PDO::PARAM_STR);
 $query -> execute();
 
-$msg="Booking Cancelled successfully";
+$msg="Shedule Cancelled successfully, email sent to the user";
 }
 
 
@@ -34,7 +34,7 @@ $query = $dbh->prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query-> bindParam(':bcid',$bcid, PDO::PARAM_STR);
 $query -> execute();
-$msg="Booking Confirm successfully";
+$msg="Schedule Confirm successfully, email sent to the user";
 }
 
 	?>
@@ -177,7 +177,12 @@ echo "Canceled by User at " .$result->upddate;
 {
 	?><td>Cancelled</td>
 <?php } else {?>
-<td><a href="manage-bookings.php?bkid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to cancel booking')" >Cancel</a> / <a href="manage-bookings.php?bckid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to cancel booking')" >Confirm</a></td>
+	<form action="email-admin.php"  method="post">
+<td>
+<button type="submit" name="cancel" onclick="window.location.href='manage-bookings.php?bckid=<?php echo htmlentities($result->bookid);?>'">Cancel</button>	
+ <button type="submit" name="confirm" onclick="window.location.href='manage-bookings.php?bckid=<?php echo htmlentities($result->bookid);?>'" >confirm</td> </button>
+ 
+ </form>
 <?php }?>
 
 						  </tr>
@@ -210,9 +215,7 @@ echo "Canceled by User at " .$result->upddate;
 
 </div>
 <!--inner block end here-->
-<!--copy rights start here-->
 <?php include('includes/footer.php');?>
-<!--COPY rights end here-->
 </div>
 </div>
   <!--//content-inner-->

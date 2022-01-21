@@ -11,3 +11,4 @@ if (isset($_POST['submit1'])) {
     mail($mailTo, $subject, $txt, $headers);
     header("Location: thankyou-email.php");
 }
+

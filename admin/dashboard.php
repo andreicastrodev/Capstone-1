@@ -69,7 +69,7 @@ $cnt=$query->rowCount();
 								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
-								<h3>Bookings</h3>
+								<h3>Schedules</h3>
 										<?php $sql1 = "SELECT BookingId from tblbooking";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
@@ -154,7 +154,6 @@ $cnt5=$query5->rowCount();
 
 </div>
 <!--inner block end here-->
-<!--copy rights start here-->
 <?php include('includes/footer.php');?>
 </div>
 </div>

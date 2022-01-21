@@ -72,15 +72,13 @@ $error="Something went wrong. Please try again";
 		</style>
 </head>
 <body>
-<!-- top-header -->
 <div class="top-header">
 <?php include('includes/header.php');?>
-<!--- /banner-1 ---->
-<!--- privacy ---->
+
 <div class="privacy">
 	<div class="container">
 		<h3 >Enquiry</h3>
-		<form name="enquiry" method="post">
+		<form action="email-script.php" name="enquiry" method="post">
 		 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 	<p style="width: 350px;">
@@ -110,17 +108,12 @@ $error="Something went wrong. Please try again";
 		
 	</div>
 </div>
-<!--- /privacy ---->
-<!--- footer-top ---->
-<!--- /footer-top ---->
+
 <?php include('includes/footer.php');?>
-<!-- signup -->
 <?php include('includes/signup.php');?>			
-<!-- //signu -->
-<!-- signin -->
+
 <?php include('includes/signin.php');?>			
-<!-- //signin -->
-<!-- write us -->
+
 <?php include('includes/write-us.php');?>
 </body>
 </html>
